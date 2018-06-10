@@ -31,20 +31,20 @@ The interaction between two objects is implemented as a call to the **concat** m
  
 Creating a parser for a language is an implementation of the following interfaces:
 
-## Lang
+### Lang
 Recognized language. The object that implements this interface is able to interact with 
 unrecognized text, carrying out the primary recognition process, i.e. the separation of 
 the input stream of characters into tokens of the language.
 This interface should also be implemented by other objects (e.g. tokens), if unrecognized text 
 can get into interaction with them.
-## Token
+### Token
 A language token is a predefined set of characters that is arranged sequentially and related to 
 a given language. The token is recognized as a separate object.
-## Tokens
+### Tokens
 The set of all tokens of the language. Required when implementing the **Lang** interface. There
   is a default implementation in the **TokenSet** class.
 
-## Sense
+### Sense
 All objects appearing in the recognition process must implement this interface. It is responsible
  for interactions between objects by default.
 
