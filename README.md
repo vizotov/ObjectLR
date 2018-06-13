@@ -78,5 +78,5 @@ dependencies {
  
 ## Example languages
 
-will be published soon...
+[FileNameLang](https://github.com/vizotov/FileNameLang)
 
