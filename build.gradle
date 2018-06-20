@@ -86,7 +86,7 @@ targetCompatibility=1.8
 
 group 'su.izotov'
 archivesBaseName = "ObjectLR"
-version '0.1'
+version '0.2'
 
 uploadArchives {
   repositories {
@@ -107,7 +107,7 @@ uploadArchives {
         packaging 'jar'
         // optionally artifactId can be defined here
         description 'The Java Object Language Recognition library is the implementation of the ' +
-          'language recognition feature using object-oriented approach.' 
+          'language recognition feature using object-oriented approach.'
         url 'https://github.com/vizotov/ObjectLR'
 
         scm {

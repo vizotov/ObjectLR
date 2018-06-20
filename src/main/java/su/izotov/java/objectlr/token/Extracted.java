@@ -176,7 +176,7 @@ public interface Extracted
   }
 
   /**
-   * Source text of this
+   * @return Source text of this
    */
   String toSource();
 }

@@ -26,19 +26,20 @@ package su.izotov.java.objectlr.token;
 import su.izotov.java.objectlr.Lang;
 import su.izotov.java.objectlr.print.StringCell;
 import su.izotov.java.objectlr.print.TextCell;
+import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
  * text construction related to a language
  * @author Vladimir Izotov
  */
 public interface Token
-    extends Extracted, Lang {
+    extends Extracted, Lang, Tokens {
   /**
    * the leftmost parsed element, related to this token in the string
    * @param text the string
    * @return token
    */
-  default Extracted leftMostParsed(final String text) {
+  @Override default Extracted leftMostParsed(final String text) {
     final Extracted ret;
     if (text.contains(this.toSource())) {
       ret = this;

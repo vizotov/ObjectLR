@@ -29,7 +29,6 @@ import java.util.Iterator;
 import java.util.Set;
 import su.izotov.java.objectlr.token.EmptyToken;
 import su.izotov.java.objectlr.token.Extracted;
-import su.izotov.java.objectlr.token.Token;
 
 /**
  * set of tokens
@@ -37,21 +36,21 @@ import su.izotov.java.objectlr.token.Token;
  */
 public class TokensSet
     implements Tokens {
-  private final Set<Token> tokens = new HashSet<>(10);
+  private final Set<Tokens> tokens = new HashSet<>(10);
 
-  public TokensSet(final Token... tokens) {
+  public TokensSet(final Tokens... tokens) {
     this.tokens.addAll(Arrays.asList(tokens));
   }
 
-  public TokensSet(final Token token) {
-    this.tokens.add(token);
+  public TokensSet(final Tokens tokens) {
+    this.tokens.add(tokens);
   }
 
   @Override public final Extracted leftMostParsed(final String text) {
     if (this.tokens.isEmpty()) {
       return new EmptyToken();
     }
-    final Iterator<Token> iterator = this.tokens.iterator();
+    final Iterator<Tokens> iterator = this.tokens.iterator();
     Extracted ret = iterator.next().leftMostParsed(text);
     while (iterator.hasNext()) {
       ret = ret.leftMost(iterator.next().leftMostParsed(text), text);

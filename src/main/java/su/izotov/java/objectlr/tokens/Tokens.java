@@ -34,7 +34,8 @@ public interface Tokens
     extends Sense {
   /**
    * The leftmost recognized element in the string
-   * @return the ParsedElement
+   * @param text the string
+   * @return token
    */
   Extracted leftMostParsed(String text);
 }
