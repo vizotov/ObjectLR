@@ -39,7 +39,7 @@ import su.izotov.java.objectlr.tokens.Tokens;
  * @author Vladimir Izotov
  */
 public interface Sense
-    extends Printable, Lang {
+    extends Printable {
   /**
    * tokens of this language
    * @return tokens

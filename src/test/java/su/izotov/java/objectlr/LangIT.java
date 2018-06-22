@@ -74,7 +74,7 @@ public class LangIT {
 
   @Test public void testConcat5() {
     String text = "it is not token";
-    Lang instance = new MKLangImpl();
+    Sense instance = new MKLangImpl();
     Sense expResult = new MKTextSense(text);
     Sense result = instance.concat(new Text(text));
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));

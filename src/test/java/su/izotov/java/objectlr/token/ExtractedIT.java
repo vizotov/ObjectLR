@@ -30,6 +30,7 @@ import su.izotov.java.objectlr.MKFirstToken;
 import su.izotov.java.objectlr.MKSecondToken;
 import su.izotov.java.objectlr.MKThirdToken;
 import su.izotov.java.objectlr.Sense;
+import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
  * @author Vladimir Izotov
@@ -195,6 +196,14 @@ public class ExtractedIT {
 
     @Override public int firstPositionIn(final String text) {
       throw new UnsupportedOperationException("#firstPositionIn()");
+    }
+
+    @Override public Tokens tokens() {
+      throw new UnsupportedOperationException("#tokens()");
+    }
+
+    @Override public Sense textEnvelope(final String text) {
+      throw new UnsupportedOperationException("#textEnvelope()");
     }
   }
 }

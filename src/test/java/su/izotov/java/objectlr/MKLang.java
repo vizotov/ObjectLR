@@ -36,7 +36,7 @@ import su.izotov.java.objectlr.tokens.TokensSet;
  * @author Vladimir Izotov
  */
 public interface MKLang
-    extends Lang {
+    extends Sense {
   static Tokens tokens = new TokensSet(
       new MKFirstToken(), //
       new MKSecondToken(), //

@@ -35,7 +35,7 @@ import su.izotov.java.objectlr.token.Text;
  * @version $Id$
  * @since 1.0
  */
-public class Sentence<T extends Lang, R extends Sense> {
+public class Sentence<T extends Sense, R extends Sense> {
   private final String text;
   private final T      language;
 
