@@ -21,42 +21,21 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package su.izotov.java.objectlr;
+package su.izotov.java.objectlr.tokens;
 
-import su.izotov.java.objectlr.print.TextCell;
-import su.izotov.java.objectlr.tokens.Tokens;
+import su.izotov.java.objectlr.token.EmptyToken;
+import su.izotov.java.objectlr.token.Extracted;
 
 /**
- * buffer with one sense
- * <p>Created with IntelliJ IDEA.</p>
+ * the empty set of tokens
+ * Created with IntelliJ IDEA.
  * @author Vladimir Izotov
  * @version $Id$
  * @since 1.0
  */
-public class BufferedOne
-    implements Buffer {
-  private final Sense sense;
-
-  public BufferedOne(final Sense sense) {
-    if (sense instanceof Buffer) {
-      throw new RuntimeException("Can not put buffer into the buffer!");
-    }
-    this.sense = sense;
-  }
-
-  @Override public final Sense concat(final Sense sense) {
-    return this.sense.concatDD(sense);
-  }
-
-  @Override public final TextCell toVisual() {
-    return this.sense.toVisual();
-  }
-
-  @Override public Tokens tokens() {
-    return sense.tokens();
-  }
-
-  @Override public Sense textEnvelope(final String text) {
-    return sense.textEnvelope(text);
+public class EmptyTokensSet
+    implements Tokens {
+  @Override public Extracted leftMostParsed(final String text) {
+    return new EmptyToken();
   }
 }

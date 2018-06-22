@@ -23,15 +23,13 @@
  */
 package su.izotov.java.objectlr.tokens;
 
-import su.izotov.java.objectlr.Sense;
 import su.izotov.java.objectlr.token.Extracted;
 
 /**
  * the Collection of tokens
  * @author Vladimir Izotov
  */
-public interface Tokens
-    extends Sense {
+public interface Tokens {
   /**
    * The leftmost recognized element in the string
    * @param text the string

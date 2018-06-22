@@ -24,6 +24,7 @@
 package su.izotov.java.objectlr;
 
 import su.izotov.java.objectlr.print.TextCell;
+import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
  * the buffer contains the chain of senses
@@ -61,5 +62,13 @@ public class BufferedChain
 
   @Override public final TextCell toVisual() {
     return this.parent.toVisual().addBottom(this.current.toVisual());
+  }
+
+  @Override public Tokens tokens() {
+    return current.tokens();
+  }
+
+  @Override public Sense textEnvelope(final String text) {
+    return current.textEnvelope(text);
   }
 }

@@ -23,7 +23,10 @@
  */
 package su.izotov.java.objectlr.token;
 
+import su.izotov.java.objectlr.Sense;
 import su.izotov.java.objectlr.print.TextCell;
+import su.izotov.java.objectlr.tokens.EmptyTokensSet;
+import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
  * the string for recognition
@@ -59,5 +62,13 @@ public final class Text
 
   @Override public String toSource() {
     return this.text;
+  }
+
+  @Override public Tokens tokens() {
+    return new EmptyTokensSet();
+  }
+
+  @Override public Sense textEnvelope(final String text) {
+    return new Text(this.text + text);
   }
 }

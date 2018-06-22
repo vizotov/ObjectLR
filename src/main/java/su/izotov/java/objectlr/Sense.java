@@ -30,13 +30,30 @@ import su.izotov.java.objectlr.print.Printable;
 import su.izotov.java.objectlr.print.StringCell;
 import su.izotov.java.objectlr.print.TextCell;
 import su.izotov.java.objectlr.token.EmptyToken;
+import su.izotov.java.objectlr.token.Extracted;
+import su.izotov.java.objectlr.token.Unrecognized;
+import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
  * the recognized sense object
  * @author Vladimir Izotov
  */
 public interface Sense
-    extends Printable {
+    extends Printable, Lang {
+  /**
+   * tokens of this language
+   * @return tokens
+   */
+  Tokens tokens();
+
+  /**
+   * Unrecognized text must be wrapped in a special class for further work with it. This method
+   * should return an object of this class - a special "token" of the language that wraps the generic unrecognizable text.
+   * @param text unrecognized text
+   * @return the wrapped text
+   */
+  Sense textEnvelope(String text);
+
   /**
    * converts a sense into a simple text representation
    */
@@ -63,21 +80,46 @@ public interface Sense
     return this;
   }
 
-  /**
-   * end of the recognition process and try to represent the result as object of the needed type
-   * @param <R> the needed type of the result
-   * @return object of the needed type
-   * @throws RecognitionException if recognition process is fail
-   */
-  @SuppressWarnings("unchecked") default <R> R asReturnObject()
-      throws RecognitionException {
-    final Sense ret = this;
-    try {
-      return (R) ret;
-    } catch (final RuntimeException ignored) {
-      Logger.getGlobal().info("Unrecognizable chain!");
-      Logger.getGlobal().info(this.toVisual().toString());
-      throw new RecognitionException(this);
+  default Sense concat(final Unrecognized text) {
+    Extracted restPart = text;
+    TextCell log = new StringCell("------ Start recognition");
+    log = log.addBottom(text.toVisual());
+    log = log.addBottom("------------------------------------------------");
+    Sense result = this;
+    while (restPart.length() != 0) {
+      // recognized element
+      final Extracted leftMostParsed = result.tokens().leftMostParsed(restPart.toSource());
+      // the text before recognized element
+      final String precedingString = leftMostParsed.precedingIn(restPart);
+      final Sense precedingText;
+      if (precedingString.isEmpty()) {
+        precedingText = new EmptyToken();
+      } else {
+        precedingText = result.textEnvelope(precedingString);
+      }
+      restPart = leftMostParsed.followingIn(restPart);
+      log = log.addBottom(result.toVisual()
+                                .addRight(" | ")
+                                .addRight(precedingText.toVisual())
+                                .addRight(" | ")
+                                .addRight(leftMostParsed.toVisual())
+                                .addRight(" | ")
+                                .addRight(restPart.toVisual()));
+      log = log.addBottom("------------------------------------------------");
+      result = result.concatDD(precedingText);
+      log = log.addBottom(result.toVisual()
+                                .addRight(" | ")
+                                .addRight(leftMostParsed.toVisual())
+                                .addRight(" | ")
+                                .addRight(restPart.toVisual()));
+      log = log.addBottom("------------------------------------------------");
+      result = result.concatDD(leftMostParsed);
+      log = log.addBottom(result.toVisual().addRight(" | ").addRight(restPart.toVisual()));
+      log = log.addBottom("------------------------------------------------");
     }
+    log = log.addBottom(result.toVisual()).addBottom(new StringCell("------ End recognition"));
+    final TextCell finalLog = log;
+    Logger.getGlobal().info(finalLog::toString);
+    return result;
   }
 }

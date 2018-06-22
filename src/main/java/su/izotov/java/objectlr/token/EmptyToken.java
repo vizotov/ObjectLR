@@ -24,6 +24,8 @@
 package su.izotov.java.objectlr.token;
 
 import su.izotov.java.objectlr.Sense;
+import su.izotov.java.objectlr.tokens.EmptyTokensSet;
+import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
  * Empty token for using in situations of absence tokens in the string.
@@ -58,5 +60,13 @@ public final class EmptyToken
 
   @Override public int length() {
     return 0;
+  }
+
+  @Override public Tokens tokens() {
+    return new EmptyTokensSet();
+  }
+
+  @Override public Sense textEnvelope(final String text) {
+    return new Text(text);
   }
 }
