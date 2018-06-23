@@ -26,7 +26,7 @@ package su.izotov.java.objectlr.token;
 import su.izotov.java.objectlr.Sense;
 
 /**
- * parsed part of the string
+ * a parsed part of the string
  * @author Vladimir Izotov
  */
 public interface Extracted

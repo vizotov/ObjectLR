@@ -68,7 +68,7 @@ public class BufferedChain
     return current.tokens();
   }
 
-  @Override public Sense textEnvelope(final String text) {
-    return current.textEnvelope(text);
+  @Override public Sense textToken(final String text) {
+    return current.textToken(text);
   }
 }

@@ -41,25 +41,18 @@ import su.izotov.java.objectlr.tokens.Tokens;
 public interface Sense
     extends Printable {
   /**
-   * tokens of this language
+   * tokens of the language understood by this object
    * @return tokens
    */
   Tokens tokens();
 
   /**
    * Unrecognized text must be wrapped in a special class for further work with it. This method
-   * should return an object of this class - a special "token" of the language that wraps the generic unrecognizable text.
+   * should return an object of this class - a special "token" of the language that wraps the text.
    * @param text unrecognized text
    * @return the wrapped text
    */
-  Sense textEnvelope(String text);
-
-  /**
-   * converts a sense into a simple text representation
-   */
-  @Override default TextCell toVisual() {
-    return new StringCell(this.getClass().getSimpleName());
-  }
+  Sense textToken(String text);
 
   /**
    * interaction of senses
@@ -95,7 +88,7 @@ public interface Sense
       if (precedingString.isEmpty()) {
         precedingText = new EmptyToken();
       } else {
-        precedingText = result.textEnvelope(precedingString);
+        precedingText = result.textToken(precedingString);
       }
       restPart = leftMostParsed.followingIn(restPart);
       log = log.addBottom(result.toVisual()

@@ -202,7 +202,7 @@ public class ExtractedIT {
       throw new UnsupportedOperationException("#tokens()");
     }
 
-    @Override public Sense textEnvelope(final String text) {
+    @Override public Sense textToken(final String text) {
       throw new UnsupportedOperationException("#textEnvelope()");
     }
   }

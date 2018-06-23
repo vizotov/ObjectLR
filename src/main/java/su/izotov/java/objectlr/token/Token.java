@@ -23,7 +23,6 @@
  */
 package su.izotov.java.objectlr.token;
 
-import su.izotov.java.objectlr.Sense;
 import su.izotov.java.objectlr.print.StringCell;
 import su.izotov.java.objectlr.print.TextCell;
 import su.izotov.java.objectlr.tokens.Tokens;
@@ -33,7 +32,7 @@ import su.izotov.java.objectlr.tokens.Tokens;
  * @author Vladimir Izotov
  */
 public interface Token
-    extends Extracted, Sense, Tokens {
+    extends Extracted, Tokens {
   /**
    * the leftmost parsed element, related to this token in the string
    * @param text the string

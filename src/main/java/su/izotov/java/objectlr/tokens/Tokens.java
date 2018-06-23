@@ -31,7 +31,7 @@ import su.izotov.java.objectlr.token.Extracted;
  */
 public interface Tokens {
   /**
-   * The leftmost recognized element in the string
+   * The leftmost recognized token in the string
    * @param text the string
    * @return token
    */

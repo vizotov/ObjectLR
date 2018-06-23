@@ -68,7 +68,11 @@ public final class Text
     return new EmptyTokensSet();
   }
 
-  @Override public Sense textEnvelope(final String text) {
+  @Override public Sense textToken(final String text) {
     return new Text(this.text + text);
+  }
+
+  @Override public Unrecognized concat(final Unrecognized text) {
+    return new Text(this.text + text.toSource());
   }
 }

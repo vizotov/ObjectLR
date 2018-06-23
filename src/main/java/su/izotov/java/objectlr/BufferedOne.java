@@ -56,7 +56,7 @@ public class BufferedOne
     return sense.tokens();
   }
 
-  @Override public Sense textEnvelope(final String text) {
-    return sense.textEnvelope(text);
+  @Override public Sense textToken(final String text) {
+    return sense.textToken(text);
   }
 }

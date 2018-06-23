@@ -27,9 +27,9 @@ import java.util.logging.Logger;
 import su.izotov.java.objectlr.token.Text;
 
 /**
- * the sentence on the certain language, containing string representation of the recognized object
+ * the sentence on the certain master, containing string representation of the recognized object
  * <p>Created with IntelliJ IDEA.</p>
- * @param <T> the language, on which the sentence is written
+ * @param <T> The type of the master object that will understand the sentence text
  * @param <R> the type of recognizable object
  * @author Vladimir Izotov
  * @version $Id$
@@ -37,11 +37,11 @@ import su.izotov.java.objectlr.token.Text;
  */
 public class Sentence<T extends Sense, R extends Sense> {
   private final String text;
-  private final T      language;
+  private final T      master;
 
-  protected Sentence(final String text, final T language) {
+  protected Sentence(final String text, final T master) {
     this.text = text;
-    this.language = language;
+    this.master = master;
   }
 
   /**
@@ -51,7 +51,7 @@ public class Sentence<T extends Sense, R extends Sense> {
    */
   @SuppressWarnings("unchecked") public final R toObject()
       throws RecognitionException {
-    final Sense ret = this.language.concat(new Text(this.text));
+    final Sense ret = this.master.concat(new Text(this.text));
     try {
       return (R) ret;
     } catch (final RuntimeException ignored) {

@@ -37,7 +37,7 @@ import su.izotov.java.objectlr.tokens.Tokens;
  */
 public class MKThirdToken
     implements Token, MKLang {
-  @Override public Sense textEnvelope(String text) {
+  @Override public Sense textToken(String text) {
     return new MKTextSense(text);
   }
 

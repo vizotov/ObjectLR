@@ -23,10 +23,8 @@
  */
 package su.izotov.java.objectlr.token;
 
-import su.izotov.java.objectlr.Sense;
-
 /**
- * Source text
+ * Source text for the recognition
  * Created with IntelliJ IDEA.
  * @author Vladimir Izotov
  * @version $Id$
@@ -34,8 +32,5 @@ import su.izotov.java.objectlr.Sense;
  */
 public interface Unrecognized
     extends Extracted {
-  default Sense concat(final Sense sense)
-      throws Exception {
-    throw new Exception("Unrecognized text can not interact with other sense!");
-  }
+  Unrecognized concat(final Unrecognized text);
 }

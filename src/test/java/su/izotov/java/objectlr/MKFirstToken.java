@@ -45,7 +45,7 @@ public class MKFirstToken
     return "first";
   }
 
-  @Override public Sense textEnvelope(String text) {
+  @Override public Sense textToken(String text) {
     return new MKTextSense(text);
   }
 }
