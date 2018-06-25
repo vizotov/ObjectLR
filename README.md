@@ -80,7 +80,7 @@ Maven:
 <dependency>
   <groupId>su.izotov</groupId>
   <artifactId>ObjectLR</artifactId>
-  <version>0.3</version>
+  <version>0.4</version>
 </dependency>
 ```
 
@@ -88,7 +88,7 @@ Gradle:
 
 ```groovy
 dependencies {
-    compile 'su.izotov:ObjectLR:0.3'
+    compile 'su.izotov:ObjectLR:0.4'
 }
 ```
  
