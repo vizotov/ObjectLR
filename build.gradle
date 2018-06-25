@@ -86,7 +86,7 @@ targetCompatibility=1.8
 
 group 'su.izotov'
 archivesBaseName = "ObjectLR"
-version '0.3'
+version '0.4'
 
 uploadArchives {
   repositories {

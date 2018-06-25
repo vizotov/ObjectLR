@@ -31,6 +31,8 @@ import su.izotov.java.objectlr.print.StringCell;
 import su.izotov.java.objectlr.print.TextCell;
 import su.izotov.java.objectlr.token.EmptyToken;
 import su.izotov.java.objectlr.token.Extracted;
+import su.izotov.java.objectlr.token.FailedToken;
+import su.izotov.java.objectlr.token.Text;
 import su.izotov.java.objectlr.token.Unrecognized;
 import su.izotov.java.objectlr.tokens.Tokens;
 
@@ -114,5 +116,10 @@ public interface Sense
     final TextCell finalLog = log;
     Logger.getGlobal().info(finalLog::toString);
     return result;
+  }
+
+  default Sense concat(final FailedToken failedToken) {
+    Sense first = this.concatDD(textToken(failedToken.toSource()));
+    return first.concatDD(new Text(failedToken.followingSource()));
   }
 }

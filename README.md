@@ -56,6 +56,14 @@ the input stream of characters into tokens of the language.
 This interface should also be implemented by other objects (e.g. tokens), if unrecognized text 
 can get into interaction with them.
 
+### FailedToken
+
+If a token recognizes the following sequence of tokens as unsuitable for creating the desired
+object, it may be necessary to recognize it not as a token, but as a text. For this purpose,
+it should return as a result of its interaction with subsequent tokens an object of type
+FailedToken containing both its text and the text following it. In this case, it will be
+recognized as text, and recognition of the following text will continue.
+
 ### Setup
 
 Releases are published to sonatype.org and to maven central. You may download artefacts manually:
