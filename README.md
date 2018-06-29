@@ -64,6 +64,10 @@ it should return as a result of its interaction with subsequent tokens an object
 FailedToken containing both its text and the text following it. In this case, it will be
 recognized as text, and recognition of the following text will continue.
 
+### MarkerToken
+
+A token without behavior, like right bracket. He doesn't recognize anything after himself.
+
 ### Setup
 
 Releases are published to sonatype.org and to maven central. You may download artefacts manually:
