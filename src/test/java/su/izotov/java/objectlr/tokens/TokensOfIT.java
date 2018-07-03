@@ -35,14 +35,14 @@ import org.junit.Test;
 import su.izotov.java.objectlr.MKLang;
 import su.izotov.java.objectlr.MKSecondToken;
 import su.izotov.java.objectlr.MKThirdToken;
-import su.izotov.java.objectlr.token.EmptyToken;
+import su.izotov.java.objectlr.token.Absence;
 import su.izotov.java.objectlr.token.Extracted;
-import su.izotov.java.objectlr.token.IncompleteToken;
+import su.izotov.java.objectlr.token.Incomplete;
 
 /**
  * @author Vladimir Izotov
  */
-public class TokensSetIT {
+public class TokensOfIT {
   @Test public void testLeftMostParsed() {
     String text = " tokens second first in the certain order third";
     final MKLang mkLang = new MKLang() {
@@ -58,7 +58,7 @@ public class TokensSetIT {
     final MKLang mkLang = new MKLang() {
     };
     Tokens instance = (Tokens) mkLang.tokens();
-    Extracted expResult = new IncompleteToken(new MKThirdToken(), 4);
+    Extracted expResult = new Incomplete(new MKThirdToken(), 4);
     Extracted result = instance.leftMostParsed(text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
@@ -68,7 +68,7 @@ public class TokensSetIT {
     final MKLang mkLang = new MKLang() {
     };
     Tokens instance = (Tokens) mkLang.tokens();
-    Extracted expResult = new EmptyToken();
+    Extracted expResult = new Absence();
     Extracted result = instance.leftMostParsed(text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }

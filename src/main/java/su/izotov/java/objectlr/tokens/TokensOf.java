@@ -21,24 +21,40 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package su.izotov.java.objectlr.print;
+package su.izotov.java.objectlr.tokens;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import su.izotov.java.objectlr.token.Absence;
+import su.izotov.java.objectlr.token.Extracted;
 
 /**
- * two cells, concatenated from top to bottom
+ * set of tokens
  * @author Vladimir Izotov
  */
-public final class VerticalCellsPair
-    implements TextCell {
-  private final TextCell top;
-  private final TextCell bottom;
+public class TokensOf
+    implements Tokens {
+  private final Set<Tokens> tokens = new HashSet<>(10);
 
-  VerticalCellsPair(
-      final TextCell top, final TextCell bottom) {
-    this.top = top;
-    this.bottom = bottom;
+  public TokensOf(final Tokens... tokens) {
+    this.tokens.addAll(Arrays.asList(tokens));
   }
 
-  @Override public String toString() {
-    return this.top.toString() + '\n' + this.bottom.toString();
+  public TokensOf(final Tokens tokens) {
+    this.tokens.add(tokens);
+  }
+
+  @Override public final Extracted leftMostParsed(final String text) {
+    if (this.tokens.isEmpty()) {
+      return new Absence();
+    }
+    final Iterator<Tokens> iterator = this.tokens.iterator();
+    Extracted ret = iterator.next().leftMostParsed(text);
+    while (iterator.hasNext()) {
+      ret = ret.leftMost(iterator.next().leftMostParsed(text), text);
+    }
+    return ret;
   }
 }

@@ -23,8 +23,8 @@
  */
 package su.izotov.java.objectlr.token;
 
-import su.izotov.java.objectlr.print.StringCell;
-import su.izotov.java.objectlr.print.TextCell;
+import su.izotov.java.objectlr.print.CellOf;
+import su.izotov.java.objectlr.print.Cell;
 import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
@@ -48,8 +48,8 @@ public interface Token
     return ret;
   }
 
-  @Override default TextCell toVisual() {
-    return new StringCell('\'' + this.toSource() + '\'');
+  @Override default Cell toVisual() {
+    return new CellOf('\'' + this.toSource() + '\'');
   }
 
   /**
@@ -61,10 +61,10 @@ public interface Token
   default Extracted incompleteTokenAtEndOf(final String text) {
     for (int i = this.toSource().length() - 1; i > 0; i--) {
       if (text.endsWith(this.toSource().substring(0, i))) {
-        return new IncompleteToken(this, i);
+        return new Incomplete(this, i);
       }
     }
-    return new EmptyToken();
+    return new Absence();
   }
 
   @Override default int firstPositionIn(final String text) {

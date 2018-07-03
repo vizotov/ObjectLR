@@ -21,26 +21,48 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package su.izotov.java.objectlr.token;
-
-import su.izotov.java.objectlr.Sense;
-import su.izotov.java.objectlr.tokens.EmptyTokensSet;
-import su.izotov.java.objectlr.tokens.Tokens;
+package su.izotov.java.objectlr.print;
 
 /**
- * A token without behavior, like right bracket
- * Created with IntelliJ IDEA.
+ * A cell containing the text for creating formatted text output
  * @author Vladimir Izotov
- * @version $Id$
- * @since 1.0
  */
-public interface MarkerToken
-    extends Token {
-  @Override default Tokens tokens() {
-    return new EmptyTokensSet();
+public interface Cell {
+  @Override String toString();
+
+  /**
+   * add new cell to bottom
+   * @param text the string
+   * @return big cell
+   */
+  default Cell addBottom(final String text) {
+    return this.addBottom(new CellOf(text));
   }
 
-  @Override default Sense textToken(final String text) {
-    return new Text(text);
+  /**
+   * add new cell to bottom
+   * @param otherCell param
+   * @return big cell
+   */
+  default Cell addBottom(final Cell otherCell) {
+    return new Vertical(this, otherCell);
+  }
+
+  /**
+   * add new cell to right
+   * @param text param
+   * @return big cell
+   */
+  default Cell addRight(final String text) {
+    return this.addRight(new CellOf(text));
+  }
+
+  /**
+   * add new cell to right
+   * @param otherCell param
+   * @return big cell
+   */
+  default Cell addRight(final Cell otherCell) {
+    return new Horizontal(this, otherCell);
   }
 }

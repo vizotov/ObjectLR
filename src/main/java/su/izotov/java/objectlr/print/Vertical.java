@@ -21,21 +21,24 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package su.izotov.java.objectlr.tokens;
-
-import su.izotov.java.objectlr.token.EmptyToken;
-import su.izotov.java.objectlr.token.Extracted;
+package su.izotov.java.objectlr.print;
 
 /**
- * the empty set of tokens
- * Created with IntelliJ IDEA.
+ * two cells, concatenated from top to bottom
  * @author Vladimir Izotov
- * @version $Id$
- * @since 1.0
  */
-public class EmptyTokensSet
-    implements Tokens {
-  @Override public Extracted leftMostParsed(final String text) {
-    return new EmptyToken();
+public final class Vertical
+    implements Cell {
+  private final Cell top;
+  private final Cell bottom;
+
+  Vertical(
+      final Cell top, final Cell bottom) {
+    this.top = top;
+    this.bottom = bottom;
+  }
+
+  @Override public String toString() {
+    return this.top.toString() + '\n' + this.bottom.toString();
   }
 }

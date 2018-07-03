@@ -24,26 +24,26 @@
 package su.izotov.java.objectlr.token;
 
 import su.izotov.java.objectlr.Sense;
-import su.izotov.java.objectlr.print.TextCell;
-import su.izotov.java.objectlr.tokens.EmptyTokensSet;
+import su.izotov.java.objectlr.print.Cell;
+import su.izotov.java.objectlr.tokens.Empty;
 import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
  * text, which corresponds to beginning of a token
  * @author Vladimir Izotov
  */
-public final class IncompleteToken
+public final class Incomplete
     implements Extracted {
   private final Token token;
   private final int   length;
 
-  public IncompleteToken(final Token token, final int length) {
+  public Incomplete(final Token token, final int length) {
     this.token = token;
     this.length = length;
   }
 
-  public Sense concat(final IncompleteToken incompleteToken) {
-    return new Text(this.toSource() + incompleteToken.toSource());
+  public Sense concat(final Incomplete incomplete) {
+    return new Text(this.toSource() + incomplete.toSource());
   }
 
   public Sense concat(final Token token) {
@@ -74,12 +74,12 @@ public final class IncompleteToken
     return this.length;
   }
 
-  @Override public TextCell toVisual() {
+  @Override public Cell toVisual() {
     return Extracted.super.toVisual().addRight(this.toSource());
   }
 
   @Override public Tokens tokens() {
-    return new EmptyTokensSet();
+    return new Empty();
   }
 
   @Override public Sense textToken(final String text) {

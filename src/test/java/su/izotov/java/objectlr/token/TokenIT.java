@@ -60,7 +60,7 @@ public class TokenIT {
   @Test public void testLeftMostParsed2() {
     String text = "the text with part of token sec";
     Token instance = new MKSecondToken();
-    Extracted expResult = new IncompleteToken(new MKSecondToken(), 3);
+    Extracted expResult = new Incomplete(new MKSecondToken(), 3);
     Extracted result = instance.leftMostParsed(text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
@@ -68,7 +68,7 @@ public class TokenIT {
   @Test public void testLeftMostParsed3() {
     String text = "the text without token";
     Token instance = new MKSecondToken();
-    Extracted expResult = new EmptyToken();
+    Extracted expResult = new Absence();
     Extracted result = instance.leftMostParsed(text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
@@ -76,7 +76,7 @@ public class TokenIT {
   @Test public void testIncompleteTokenAtEndOf() {
     String text = "the text with the piece of token at the end firs";
     Token instance = new MKFirstToken();
-    Extracted expResult = new IncompleteToken(instance, 4);
+    Extracted expResult = new Incomplete(instance, 4);
     Extracted result = instance.incompleteTokenAtEndOf(text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
@@ -84,7 +84,7 @@ public class TokenIT {
   @Test public void testIncompleteTokenAtEndOf2() {
     String text = "the text without tokens";
     Token instance = new MKFirstToken();
-    Extracted expResult = new EmptyToken();
+    Extracted expResult = new Absence();
     Extracted result = instance.incompleteTokenAtEndOf(text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }

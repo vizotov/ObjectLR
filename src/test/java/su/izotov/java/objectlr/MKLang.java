@@ -30,14 +30,14 @@
 package su.izotov.java.objectlr;
 
 import su.izotov.java.objectlr.tokens.Tokens;
-import su.izotov.java.objectlr.tokens.TokensSet;
+import su.izotov.java.objectlr.tokens.TokensOf;
 
 /**
  * @author Vladimir Izotov
  */
 public interface MKLang
     extends Sense {
-  static Tokens tokens = new TokensSet(
+  static Tokens tokens = new TokensOf(
       new MKFirstToken(), //
       new MKSecondToken(), //
       new MKThirdToken());

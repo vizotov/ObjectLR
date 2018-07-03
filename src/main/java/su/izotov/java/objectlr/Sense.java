@@ -27,11 +27,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Logger;
 import su.izotov.java.ddispatch.methods.MethodAmbiguouslyDefinedException;
 import su.izotov.java.objectlr.print.Printable;
-import su.izotov.java.objectlr.print.StringCell;
-import su.izotov.java.objectlr.print.TextCell;
-import su.izotov.java.objectlr.token.EmptyToken;
+import su.izotov.java.objectlr.print.CellOf;
+import su.izotov.java.objectlr.print.Cell;
+import su.izotov.java.objectlr.token.Absence;
 import su.izotov.java.objectlr.token.Extracted;
-import su.izotov.java.objectlr.token.FailedToken;
+import su.izotov.java.objectlr.token.Failed;
 import su.izotov.java.objectlr.token.Text;
 import su.izotov.java.objectlr.token.Unrecognized;
 import su.izotov.java.objectlr.tokens.Tokens;
@@ -63,7 +63,7 @@ public interface Sense
    */
   default Sense concatDD(final Sense sense) {
     try {
-      return new ConcatDispatch(this, sense, BufferedChain::new).invoke();
+      return new Concat(this, sense, Chain::new).invoke();
     } catch (final InvocationTargetException e) {
       throw new RuntimeException(e.getCause());
     } catch (final IllegalAccessException | MethodAmbiguouslyDefinedException e) {
@@ -71,13 +71,13 @@ public interface Sense
     }
   }
 
-  default Sense concat(final EmptyToken emptyToken) {
+  default Sense concat(final Absence absence) {
     return this;
   }
 
   default Sense concat(final Unrecognized text) {
     Extracted restPart = text;
-    TextCell log = new StringCell("------ Start recognition");
+    Cell log = new CellOf("------ Start recognition");
     log = log.addBottom(text.toVisual());
     log = log.addBottom("------------------------------------------------");
     Sense result = this;
@@ -88,7 +88,7 @@ public interface Sense
       final String precedingString = leftMostParsed.precedingIn(restPart);
       final Sense precedingText;
       if (precedingString.isEmpty()) {
-        precedingText = new EmptyToken();
+        precedingText = new Absence();
       } else {
         precedingText = result.textToken(precedingString);
       }
@@ -112,14 +112,14 @@ public interface Sense
       log = log.addBottom(result.toVisual().addRight(" | ").addRight(restPart.toVisual()));
       log = log.addBottom("------------------------------------------------");
     }
-    log = log.addBottom(result.toVisual()).addBottom(new StringCell("------ End recognition"));
-    final TextCell finalLog = log;
+    log = log.addBottom(result.toVisual()).addBottom(new CellOf("------ End recognition"));
+    final Cell finalLog = log;
     Logger.getGlobal().info(finalLog::toString);
     return result;
   }
 
-  default Sense concat(final FailedToken failedToken) {
-    Sense first = this.concatDD(textToken(failedToken.toSource()));
-    return first.concatDD(new Text(failedToken.followingSource()));
+  default Sense concat(final Failed failed) {
+    Sense first = this.concatDD(textToken(failed.toSource()));
+    return first.concatDD(new Text(failed.followingSource()));
   }
 }

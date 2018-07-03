@@ -44,7 +44,7 @@ A language token is a predefined set of characters that is arranged sequentially
 a given language. The token is recognized as a separate object.
 ### Tokens
 The set of all tokens of the language. Required when implementing the **Sense** interface. There
-  is a default implementation in the **TokenSet** class.
+  is a default implementation in the **TokensOf** class.
 
 ### Sense
 All objects appearing in the recognition process must implement this interface. It is responsible
@@ -56,17 +56,17 @@ the input stream of characters into tokens of the language.
 This interface should also be implemented by other objects (e.g. tokens), if unrecognized text 
 can get into interaction with them.
 
-### FailedToken
+### Failed
 
 If a token recognizes the following sequence of tokens as unsuitable for creating the desired
 object, it may be necessary to recognize it not as a token, but as a text. For this purpose,
 it should return as a result of its interaction with subsequent tokens an object of type
-FailedToken containing both its text and the text following it. In this case, it will be
+Failed containing both its text and the text following it. In this case, it will be
 recognized as text, and recognition of the following text will continue.
 
-### MarkerToken
+### Marker
 
-A token without behavior, like right bracket. He doesn't recognize anything after himself.
+A token without behavior, like right bracket. He does not recognize anything after himself.
 
 ### Setup
 

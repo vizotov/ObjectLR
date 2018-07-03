@@ -24,49 +24,23 @@
 package su.izotov.java.objectlr.token;
 
 import su.izotov.java.objectlr.Sense;
-import su.izotov.java.objectlr.tokens.EmptyTokensSet;
+import su.izotov.java.objectlr.tokens.Empty;
 import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
- * Empty token for using in situations of absence tokens in the string.
- * It is always recognized at the end of the string.
+ * A token without behavior, like right bracket
+ * Created with IntelliJ IDEA.
  * @author Vladimir Izotov
+ * @version $Id$
+ * @since 1.0
  */
-public final class EmptyToken
-    implements Extracted {
-  @Override public int firstPositionIn(final String text) {
-    return text.length();
+public interface Marker
+    extends Token {
+  @Override default Tokens tokens() {
+    return new Empty();
   }
 
-  public Sense concat(final Sense sense) {
-    return sense;
-  }
-
-  @Override public String toSource() {
-    return "";
-  }
-
-  public Token concat(final Token token) {
-    return token;
-  }
-
-  @Override public String precedingIn(final Extracted text) {
-    return text.toSource();
-  }
-
-  @Override public Extracted followingIn(final Extracted text) {
-    return new EmptyToken();
-  }
-
-  @Override public int length() {
-    return 0;
-  }
-
-  @Override public Tokens tokens() {
-    return new EmptyTokensSet();
-  }
-
-  @Override public Sense textToken(final String text) {
+  @Override default Sense textToken(final String text) {
     return new Text(text);
   }
 }

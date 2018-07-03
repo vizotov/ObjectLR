@@ -57,7 +57,7 @@ public interface Extracted
   /**
    * leftmost element in the string, either this, or parameter. if both
    * positions are equals, returns shorter one. if neither element is exist,
-   * then returns EmptyToken
+   * then returns Empty token
    * @param parsed parameter
    * @param text where to search elements
    * @return left most element
@@ -66,7 +66,7 @@ public interface Extracted
     final int thisPosition = this.firstPositionIn(text);
     final int tokenPosition = parsed.firstPositionIn(text);
     if (thisPosition == -1 && tokenPosition == -1) {
-      return new EmptyToken();
+      return new Absence();
     } else if (thisPosition == -1) {
       return parsed;
     } else if (tokenPosition == -1) {
@@ -122,7 +122,7 @@ public interface Extracted
     if (this.toSource().contains(text)) {
       return new Text(this.toSource().substring(this.toSource().indexOf(text) + text.length()));
     } else {
-      return new EmptyToken();
+      return new Absence();
     }
   }
 
@@ -134,7 +134,7 @@ public interface Extracted
   default Extracted followingThe(final Token token) {
     final String ret = token.afterFirstOccurrenceIn(this.toSource());
     if (ret.isEmpty()) {
-      return new EmptyToken();
+      return new Absence();
     } else {
       return new Text(ret);
     }
@@ -142,12 +142,12 @@ public interface Extracted
 
   /**
    * The text that follows the incomplete token in the string
-   * @param incompleteToken token
+   * @param incomplete token
    * @return text
    */
-  default Extracted followingThe(final IncompleteToken incompleteToken) {
-    if (this.toSource().endsWith(incompleteToken.toSource())) {
-      return new EmptyToken();
+  default Extracted followingThe(final Incomplete incomplete) {
+    if (this.toSource().endsWith(incomplete.toSource())) {
+      return new Absence();
     } else {
       return this;
     }
@@ -155,12 +155,12 @@ public interface Extracted
 
   /**
    * The text preceding the incomplete token in the string
-   * @param incompleteToken token
+   * @param incomplete token
    * @return text
    */
-  default String precedingThe(final IncompleteToken incompleteToken) {
-    if (this.toSource().endsWith(incompleteToken.toSource())) {
-      return this.toSource().substring(0, this.toSource().length() - incompleteToken.length());
+  default String precedingThe(final Incomplete incomplete) {
+    if (this.toSource().endsWith(incomplete.toSource())) {
+      return this.toSource().substring(0, this.toSource().length() - incomplete.length());
     } else {
       return "";
     }

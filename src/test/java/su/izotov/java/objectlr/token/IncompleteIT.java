@@ -33,10 +33,10 @@ import su.izotov.java.objectlr.Sense;
 /**
  * @author Vladimir Izotov
  */
-public class IncompleteTokenIT {
+public class IncompleteIT {
   @Test public void testTrailingText() {
     Unrecognized text = new Text("before the piece of token sec");
-    IncompleteToken instance = new IncompleteToken(new MKSecondToken(), 3);
+    Incomplete instance = new Incomplete(new MKSecondToken(), 3);
     String expResult = "before the piece of token ";
     String result = instance.precedingIn(text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
@@ -44,14 +44,14 @@ public class IncompleteTokenIT {
 
   @Test public void testFollowingText() {
     Unrecognized text = new Text("simple text without pieces of tokens");
-    IncompleteToken instance = new IncompleteToken(new MKFirstToken(), 2);
+    Incomplete instance = new Incomplete(new MKFirstToken(), 2);
     Sense expResult = text;
     Sense result = instance.followingIn(text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
   @Test public void testToSource() {
-    IncompleteToken instance = new IncompleteToken(new MKFirstToken(), 3);
+    Incomplete instance = new Incomplete(new MKFirstToken(), 3);
     String expResult = "fir";
     String result = instance.toSource();
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));

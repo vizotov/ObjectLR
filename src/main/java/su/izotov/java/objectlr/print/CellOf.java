@@ -27,8 +27,8 @@ package su.izotov.java.objectlr.print;
  * The cell representation based on string
  * @author Vladimir Izotov
  */
-public class StringCell
-    implements TextCell {
+public class CellOf
+    implements Cell {
   private final int    margin;
   private final String text;
 
@@ -36,7 +36,7 @@ public class StringCell
    * Constructor with no right margin restrictions
    * @param text the string
    */
-  public StringCell(final String text) {
+  public CellOf(final String text) {
     this(text, 0);
   }
 
@@ -44,7 +44,7 @@ public class StringCell
    * @param text content of the cell
    * @param margin the margin to wrap lines
    */
-  public StringCell(final String text, final int margin) {
+  public CellOf(final String text, final int margin) {
     this.text = text;
     this.margin = margin;
   }

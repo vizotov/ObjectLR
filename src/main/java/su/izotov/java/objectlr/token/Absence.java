@@ -21,54 +21,52 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package su.izotov.java.objectlr;
+package su.izotov.java.objectlr.token;
 
-import su.izotov.java.objectlr.print.TextCell;
+import su.izotov.java.objectlr.Sense;
+import su.izotov.java.objectlr.tokens.Empty;
 import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
- * the buffer contains the chain of senses
- * <p>Created with IntelliJ IDEA.</p>
+ * Empty token for using in situations of absence tokens in the string.
+ * It is always recognized at the end of the string.
  * @author Vladimir Izotov
- * @version $Id$
- * @since 1.0
  */
-public class BufferedChain
-    implements Buffer {
-  private final Buffer parent;
-  private final Sense  current;
-
-  BufferedChain(final Buffer parent, final Sense current) {
-    if (current instanceof Buffer) {
-      throw new RuntimeException("Can not use buffer inside the buffer!");
-    }
-    this.parent = parent;
-    this.current = current;
+public final class Absence
+    implements Extracted {
+  @Override public int firstPositionIn(final String text) {
+    return text.length();
   }
 
-  BufferedChain(final Sense sense1, final Sense sense2) {
-    this(new BufferedOne(sense1), sense2);
+  public Sense concat(final Sense sense) {
+    return sense;
   }
 
-  @Override public final Sense concat(final Sense sense)
-      throws Exception {
-    final Sense res = this.current.concatDD(sense);
-    if (res instanceof Buffer) {
-      return new BufferedChain(this, sense);
-    } else {
-      return this.parent.concat(res);
-    }
+  @Override public String toSource() {
+    return "";
   }
 
-  @Override public final TextCell toVisual() {
-    return this.parent.toVisual().addBottom(this.current.toVisual());
+  public Token concat(final Token token) {
+    return token;
+  }
+
+  @Override public String precedingIn(final Extracted text) {
+    return text.toSource();
+  }
+
+  @Override public Extracted followingIn(final Extracted text) {
+    return new Absence();
+  }
+
+  @Override public int length() {
+    return 0;
   }
 
   @Override public Tokens tokens() {
-    return current.tokens();
+    return new Empty();
   }
 
   @Override public Sense textToken(final String text) {
-    return current.textToken(text);
+    return new Text(text);
   }
 }

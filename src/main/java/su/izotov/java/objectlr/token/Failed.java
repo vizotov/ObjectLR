@@ -21,42 +21,50 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package su.izotov.java.objectlr;
+package su.izotov.java.objectlr.token;
 
-import su.izotov.java.objectlr.print.TextCell;
+import su.izotov.java.objectlr.Sense;
+import su.izotov.java.objectlr.tokens.Empty;
 import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
- * buffer with one sense
- * <p>Created with IntelliJ IDEA.</p>
+ * If a token recognizes the following sequence of tokens as unsuitable for creating the desired
+ * object, it may be necessary to recognize it not as a token, but as a text. For this purpose,
+ * it should return as a result of its interaction with subsequent tokens an object of type
+ * Failed containing both its text and the text following it. In this case, it will be
+ * recognized as text, and recognition of the following text will continue.
+ * Created with IntelliJ IDEA.
  * @author Vladimir Izotov
  * @version $Id$
  * @since 1.0
  */
-public class BufferedOne
-    implements Buffer {
-  private final Sense sense;
+public class Failed
+    implements Token {
+  private final String selfSource;
+  private final String followingSource;
 
-  public BufferedOne(final Sense sense) {
-    if (sense instanceof Buffer) {
-      throw new RuntimeException("Can not put buffer into the buffer!");
-    }
-    this.sense = sense;
-  }
-
-  @Override public final Sense concat(final Sense sense) {
-    return this.sense.concatDD(sense);
-  }
-
-  @Override public final TextCell toVisual() {
-    return this.sense.toVisual();
+  /**
+   * @param selfSource the source of token to become text
+   * @param followingSource text to re-recognize
+   */
+  public Failed(final String selfSource, final String followingSource) {
+    this.selfSource = selfSource;
+    this.followingSource = followingSource;
   }
 
   @Override public Tokens tokens() {
-    return sense.tokens();
+    return new Empty();
   }
 
   @Override public Sense textToken(final String text) {
-    return sense.textToken(text);
+    return new Text(text);
+  }
+
+  @Override public String toSource() {
+    return selfSource;
+  }
+
+  public String followingSource() {
+    return followingSource;
   }
 }

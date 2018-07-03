@@ -21,30 +21,21 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+package su.izotov.java.objectlr.tokens;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package su.izotov.java.objectlr.print;
-
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import static org.junit.Assert.assertTrue;
-import org.junit.Test;
+import su.izotov.java.objectlr.token.Absence;
+import su.izotov.java.objectlr.token.Extracted;
 
 /**
+ * the empty set of tokens
+ * Created with IntelliJ IDEA.
  * @author Vladimir Izotov
+ * @version $Id$
+ * @since 1.0
  */
-public class StringCellIT {
-  @Test public void testToString() {
-    StringCell instance = new StringCell(
-        "a long line, which will have to be wrapped to a new line again and again until it ends",
-        40);
-    String expResult = "a long line, which will have to be wrapp\n"
-                       + "ed to a new line again and again until i\n"
-                       + "t ends";
-    String result = instance.toString();
-    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
+public class Empty
+    implements Tokens {
+  @Override public Extracted leftMostParsed(final String text) {
+    return new Absence();
   }
 }

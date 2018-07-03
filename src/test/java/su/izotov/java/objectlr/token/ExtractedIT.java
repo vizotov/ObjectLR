@@ -80,7 +80,7 @@ public class ExtractedIT {
     Token token = new MKFirstToken();
     String text = " no tokens exists";
     Token instance = new MKSecondToken();
-    Extracted expResult = new EmptyToken();
+    Extracted expResult = new Absence();
     Extracted result = instance.leftMost(token, text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
@@ -131,7 +131,7 @@ public class ExtractedIT {
   }
 
   @Test public void testPreceding_IncompleteToken() {
-    IncompleteToken it = new IncompleteToken(new MKFirstToken(), 3);
+    Incomplete it = new Incomplete(new MKFirstToken(), 3);
     Extracted instance = new ExtractedImpl("the text is ending on fir");
     String expResult = "the text is ending on ";
     String result = instance.precedingThe(it);

@@ -21,40 +21,30 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package su.izotov.java.objectlr.tokens;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import su.izotov.java.objectlr.token.EmptyToken;
-import su.izotov.java.objectlr.token.Extracted;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package su.izotov.java.objectlr.print;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
 /**
- * set of tokens
  * @author Vladimir Izotov
  */
-public class TokensSet
-    implements Tokens {
-  private final Set<Tokens> tokens = new HashSet<>(10);
-
-  public TokensSet(final Tokens... tokens) {
-    this.tokens.addAll(Arrays.asList(tokens));
-  }
-
-  public TokensSet(final Tokens tokens) {
-    this.tokens.add(tokens);
-  }
-
-  @Override public final Extracted leftMostParsed(final String text) {
-    if (this.tokens.isEmpty()) {
-      return new EmptyToken();
-    }
-    final Iterator<Tokens> iterator = this.tokens.iterator();
-    Extracted ret = iterator.next().leftMostParsed(text);
-    while (iterator.hasNext()) {
-      ret = ret.leftMost(iterator.next().leftMostParsed(text), text);
-    }
-    return ret;
+public class CellOfIT {
+  @Test public void testToString() {
+    CellOf instance = new CellOf(
+        "a long line, which will have to be wrapped to a new line again and again until it ends",
+        40);
+    String expResult = "a long line, which will have to be wrapp\n"
+                       + "ed to a new line again and again until i\n"
+                       + "t ends";
+    String result = instance.toString();
+    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 }

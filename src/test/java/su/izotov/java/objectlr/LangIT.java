@@ -26,7 +26,7 @@ package su.izotov.java.objectlr;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-import su.izotov.java.objectlr.token.IncompleteToken;
+import su.izotov.java.objectlr.token.Incomplete;
 import su.izotov.java.objectlr.token.Text;
 
 /**
@@ -47,7 +47,7 @@ public class LangIT {
   @Test public void testConcat2() {
     String text = "second string after token";
     MKLang instance = new MKLangImpl();
-    Sense expResult = new BufferedChain(
+    Sense expResult = new Chain(
         new MKSecondToken(),//
         new MKTextSense(" string after token"));
     Sense result = instance.concat(new Text(text));
@@ -57,7 +57,7 @@ public class LangIT {
   @Test public void testConcat3() {
     String text = "string before token second";
     MKLang instance = new MKLangImpl();
-    Sense expResult = new BufferedChain(
+    Sense expResult = new Chain(
         new MKTextSense("string before token ")//
         , new MKSecondToken());
     Sense result = instance.concat(new Text(text));
@@ -83,8 +83,8 @@ public class LangIT {
   @Test public void testConcat6() {
     String text = "thi";
     MKLang instance = new MKLangImpl();
-    Sense expResult = new BufferedChain(new MKLangImpl(),
-                                        new IncompleteToken(new MKThirdToken(), 3));
+    Sense expResult = new Chain(new MKLangImpl(),
+                                new Incomplete(new MKThirdToken(), 3));
     Sense result = instance.concat(new Text(text));
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
@@ -108,7 +108,7 @@ public class LangIT {
                        + "MKTextSense  \n"
                        + "'first'\n"
                        + "MKTextSense  ttt \n"
-                       + "IncompleteToken thi";
+                       + "Incomplete thi";
     String result = instance.concat(new Text(text)).toVisual().toString();
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }

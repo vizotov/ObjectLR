@@ -21,48 +21,42 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package su.izotov.java.objectlr.print;
+package su.izotov.java.objectlr;
+
+import su.izotov.java.objectlr.print.Cell;
+import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
- * A cell containing the text for creating formatted text output
+ * buffer with one sense
+ * <p>Created with IntelliJ IDEA.</p>
  * @author Vladimir Izotov
+ * @version $Id$
+ * @since 1.0
  */
-public interface TextCell {
-  @Override String toString();
+public class One
+    implements Buffer {
+  private final Sense sense;
 
-  /**
-   * add new cell to bottom
-   * @param text the string
-   * @return big cell
-   */
-  default TextCell addBottom(final String text) {
-    return this.addBottom(new StringCell(text));
+  public One(final Sense sense) {
+    if (sense instanceof Buffer) {
+      throw new RuntimeException("Can not put buffer into the buffer!");
+    }
+    this.sense = sense;
   }
 
-  /**
-   * add new cell to bottom
-   * @param otherCell param
-   * @return big cell
-   */
-  default TextCell addBottom(final TextCell otherCell) {
-    return new VerticalCellsPair(this, otherCell);
+  @Override public final Sense concat(final Sense sense) {
+    return this.sense.concatDD(sense);
   }
 
-  /**
-   * add new cell to right
-   * @param text param
-   * @return big cell
-   */
-  default TextCell addRight(final String text) {
-    return this.addRight(new StringCell(text));
+  @Override public final Cell toVisual() {
+    return this.sense.toVisual();
   }
 
-  /**
-   * add new cell to right
-   * @param otherCell param
-   * @return big cell
-   */
-  default TextCell addRight(final TextCell otherCell) {
-    return new HorizontalCellsPair(this, otherCell);
+  @Override public Tokens tokens() {
+    return sense.tokens();
+  }
+
+  @Override public Sense textToken(final String text) {
+    return sense.textToken(text);
   }
 }

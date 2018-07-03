@@ -34,8 +34,8 @@ public interface Printable {
   /**
    * @return formatted representation
    */
-  default TextCell toVisual() {
-    return new StringCell(this.getClass().getSimpleName());
+  default Cell toVisual() {
+    return new CellOf(this.getClass().getSimpleName());
   }
 
   ;

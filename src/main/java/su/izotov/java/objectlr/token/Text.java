@@ -24,8 +24,8 @@
 package su.izotov.java.objectlr.token;
 
 import su.izotov.java.objectlr.Sense;
-import su.izotov.java.objectlr.print.TextCell;
-import su.izotov.java.objectlr.tokens.EmptyTokensSet;
+import su.izotov.java.objectlr.print.Cell;
+import su.izotov.java.objectlr.tokens.Empty;
 import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
@@ -40,7 +40,7 @@ public final class Text
     this.text = text;
   }
 
-  @Override public TextCell toVisual() {
+  @Override public Cell toVisual() {
     return Unrecognized.super.toVisual().addRight(this.text);
   }
 
@@ -65,7 +65,7 @@ public final class Text
   }
 
   @Override public Tokens tokens() {
-    return new EmptyTokensSet();
+    return new Empty();
   }
 
   @Override public Sense textToken(final String text) {

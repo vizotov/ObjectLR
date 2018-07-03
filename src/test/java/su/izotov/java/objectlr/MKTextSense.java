@@ -23,8 +23,8 @@
  */
 package su.izotov.java.objectlr;
 
-import su.izotov.java.objectlr.print.TextCell;
-import su.izotov.java.objectlr.token.EmptyToken;
+import su.izotov.java.objectlr.print.Cell;
+import su.izotov.java.objectlr.token.Absence;
 
 /**
  * text sense, which do not need to recognize
@@ -38,7 +38,7 @@ class MKTextSense
     this.text = text;
   }
 
-  @Override public TextCell toVisual() {
+  @Override public Cell toVisual() {
     return MKLang.super.toVisual().addRight(text);
   }
 
@@ -54,12 +54,12 @@ class MKTextSense
    * if this text is empty, returns empty sense
    */
   public Sense orEmpty() {
-    return text.isEmpty() ? new EmptyToken() : this;
+    return text.isEmpty() ? new Absence() : this;
   }
 
   public Sense parse(String text) {
     if (text.isEmpty()) {
-      return new EmptyToken();
+      return new Absence();
     }
     return new MKTextSense(text);
   }
