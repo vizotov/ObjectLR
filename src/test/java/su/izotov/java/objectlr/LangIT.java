@@ -27,6 +27,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import su.izotov.java.objectlr.token.Incomplete;
+import su.izotov.java.objectlr.token.Text;
 import su.izotov.java.objectlr.token.Unrecognized;
 
 /**
@@ -37,9 +38,9 @@ public class LangIT {
       throws Exception {
     String text = "string before token second string after token";
     MKLang instance = new MKLangImpl();
-    String expResult = "MKTextSense string before token \n"
+    String expResult = "'string before token '\n"
                        + "'second'\n"
-                       + "MKTextSense  string after token";
+                       + "' string after token'";
     String result = instance.concat(new Unrecognized(text)).toVisual().toString();
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
@@ -49,7 +50,7 @@ public class LangIT {
     MKLang instance = new MKLangImpl();
     Sense expResult = new Chain(
         new MKSecondToken(),//
-        new MKTextSense(" string after token"));
+        new Text(" string after token"));
     Sense result = instance.concat(new Unrecognized(text));
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
@@ -58,7 +59,7 @@ public class LangIT {
     String text = "string before token second";
     MKLang instance = new MKLangImpl();
     Sense expResult = new Chain(
-        new MKTextSense("string before token ")//
+        new Text("string before token ")//
         , new MKSecondToken());
     Sense result = instance.concat(new Unrecognized(text));
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
@@ -75,7 +76,7 @@ public class LangIT {
   @Test public void testConcat5() {
     String text = "it is not token";
     Sense instance = new MKLangImpl();
-    Sense expResult = new MKTextSense(text);
+    Sense expResult = new Text(text);
     Sense result = instance.concat(new Unrecognized(text));
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
@@ -92,7 +93,7 @@ public class LangIT {
   @Test public void testConcat7() {
     String text = "firstsecond textik";
     MKLang instance = new MKLangImpl();
-    String expResult = "'first'\n" + "'second'\n" + "MKTextSense  textik";
+    String expResult = "'first'\n" + "'second'\n" + "' textik'";
     String result = instance.concat(new Unrecognized(text)).toVisual().toString();
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
@@ -100,14 +101,14 @@ public class LangIT {
   @Test public void testConcat8() {
     String text = "start text firstsecond text third first ttt thi";
     MKLang instance = new MKLangImpl();
-    String expResult = "MKTextSense start text \n"
+    String expResult = "'start text '\n"
                        + "'first'\n"
                        + "'second'\n"
-                       + "MKTextSense  text \n"
+                       + "' text '\n"
                        + "'third'\n"
-                       + "MKTextSense  \n"
+                       + "' '\n"
                        + "'first'\n"
-                       + "MKTextSense  ttt \n"
+                       + "' ttt '\n"
                        + "Incomplete thi";
     String result = instance.concat(new Unrecognized(text)).toVisual().toString();
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));

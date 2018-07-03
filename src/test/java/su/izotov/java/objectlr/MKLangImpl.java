@@ -23,6 +23,7 @@
  */
 package su.izotov.java.objectlr;
 
+import su.izotov.java.objectlr.token.Text;
 import su.izotov.java.objectlr.token.Token;
 
 /**
@@ -33,7 +34,7 @@ import su.izotov.java.objectlr.token.Token;
  */
 public class MKLangImpl
     implements MKLang {
-  public MKTextSense concat(MKTextSense sense) {
+  public Text concat(Text sense) {
     return sense;
   }
 

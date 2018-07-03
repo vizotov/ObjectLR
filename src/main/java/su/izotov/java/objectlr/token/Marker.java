@@ -24,8 +24,6 @@
 package su.izotov.java.objectlr.token;
 
 import su.izotov.java.objectlr.Sense;
-import su.izotov.java.objectlr.tokens.Empty;
-import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
  * A token without behavior, like right bracket
@@ -36,9 +34,6 @@ import su.izotov.java.objectlr.tokens.Tokens;
  */
 public interface Marker
     extends Token {
-  @Override default Tokens tokens() {
-    return new Empty();
-  }
 
   @Override default Sense textToken(final String text) {
     return new Unrecognized(text);

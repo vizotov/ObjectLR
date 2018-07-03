@@ -25,8 +25,6 @@ package su.izotov.java.objectlr.token;
 
 import su.izotov.java.objectlr.Sense;
 import su.izotov.java.objectlr.print.Cell;
-import su.izotov.java.objectlr.tokens.Empty;
-import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
  * text, which corresponds to beginning of a token
@@ -76,10 +74,6 @@ public final class Incomplete
 
   @Override public Cell toVisual() {
     return Extracted.super.toVisual().addRight(this.toSource());
-  }
-
-  @Override public Tokens tokens() {
-    return new Empty();
   }
 
   @Override public Sense textToken(final String text) {

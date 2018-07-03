@@ -44,8 +44,4 @@ public class MKFirstToken
   @Override public String toSource() {
     return "first";
   }
-
-  @Override public Sense textToken(String text) {
-    return new MKTextSense(text);
-  }
 }

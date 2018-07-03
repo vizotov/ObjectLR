@@ -24,8 +24,6 @@
 package su.izotov.java.objectlr.token;
 
 import su.izotov.java.objectlr.Sense;
-import su.izotov.java.objectlr.tokens.Empty;
-import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
  * If a token recognizes the following sequence of tokens as unsuitable for creating the desired
@@ -50,10 +48,6 @@ public class Failed
   public Failed(final String selfSource, final String followingSource) {
     this.selfSource = selfSource;
     this.followingSource = followingSource;
-  }
-
-  @Override public Tokens tokens() {
-    return new Empty();
   }
 
   @Override public Sense textToken(final String text) {

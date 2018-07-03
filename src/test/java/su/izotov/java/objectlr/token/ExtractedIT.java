@@ -197,13 +197,5 @@ public class ExtractedIT {
     @Override public int firstPositionIn(final String text) {
       throw new UnsupportedOperationException("#firstPositionIn()");
     }
-
-    @Override public Tokens tokens() {
-      throw new UnsupportedOperationException("#tokens()");
-    }
-
-    @Override public Sense textToken(final String text) {
-      throw new UnsupportedOperationException("#textEnvelope()");
-    }
   }
 }

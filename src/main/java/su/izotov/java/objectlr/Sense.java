@@ -32,7 +32,9 @@ import su.izotov.java.objectlr.print.Printable;
 import su.izotov.java.objectlr.token.Absence;
 import su.izotov.java.objectlr.token.Extracted;
 import su.izotov.java.objectlr.token.Failed;
+import su.izotov.java.objectlr.token.Text;
 import su.izotov.java.objectlr.token.Unrecognized;
+import su.izotov.java.objectlr.tokens.Empty;
 import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
@@ -45,7 +47,9 @@ public interface Sense
    * tokens of the language understood by this object
    * @return tokens
    */
-  Tokens tokens();
+  default Tokens tokens() {
+    return new Empty();
+  }
 
   /**
    * Unrecognized text must be wrapped in a special class for further work with it. This method
@@ -53,7 +57,9 @@ public interface Sense
    * @param text unrecognized text
    * @return the wrapped text
    */
-  Sense textToken(String text);
+  default Sense textToken(String text) {
+    return new Text(text);
+  }
 
   /**
    * interaction of senses

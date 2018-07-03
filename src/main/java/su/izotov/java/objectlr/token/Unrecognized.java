@@ -25,8 +25,6 @@ package su.izotov.java.objectlr.token;
 
 import su.izotov.java.objectlr.Sense;
 import su.izotov.java.objectlr.print.Cell;
-import su.izotov.java.objectlr.tokens.Empty;
-import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
  * Source text for the recognition
@@ -62,10 +60,6 @@ public final class Unrecognized
 
   @Override public String toSource() {
     return this.text;
-  }
-
-  @Override public Tokens tokens() {
-    return new Empty();
   }
 
   @Override public Sense textToken(final String text) {

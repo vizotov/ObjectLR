@@ -46,7 +46,4 @@ public interface MKLang
     return tokens;
   }
 
-  @Override default Sense textToken(String text) {
-    return new MKTextSense(text);
-  }
 }

@@ -21,46 +21,31 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package su.izotov.java.objectlr;
+package su.izotov.java.objectlr.token;
 
-import su.izotov.java.objectlr.print.Cell;
-import su.izotov.java.objectlr.token.Absence;
+import su.izotov.java.objectlr.Sense;
 
 /**
- * text sense, which do not need to recognize
+ * the text is not containing tokens
+ * Created with IntelliJ IDEA.
  * @author Vladimir Izotov
+ * @version $Id$
+ * @since 1.0
  */
-class MKTextSense
-    implements MKLang {
+public class Text
+    implements Token {
   private final String text;
 
-  public MKTextSense(String text) {
+  public Text(final String text) {
     this.text = text;
   }
 
-  @Override public Cell toVisual() {
-    return MKLang.super.toVisual().addRight(text);
-  }
-
-  public String toStr() {
+  @Override public String toSource() {
     return text;
   }
 
-  public Sense concat(MKTextSense other) {
-    return new MKTextSense(text + other.toStr()).orEmpty();
-  }
-
-  /**
-   * if this text is empty, returns empty sense
-   */
-  public Sense orEmpty() {
-    return text.isEmpty() ? new Absence() : this;
-  }
-
-  public Sense parse(String text) {
-    if (text.isEmpty()) {
-      return new Absence();
-    }
-    return new MKTextSense(text);
+  public Sense concat(Text other) {
+    String value = text + other.toSource();
+    return value.isEmpty() ? new Absence() : new Text(value);
   }
 }

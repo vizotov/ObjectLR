@@ -68,6 +68,10 @@ recognized as text, and recognition of the following text will continue.
 
 A token without behavior, like right bracket. He does not recognize anything after himself.
 
+### Text
+
+If no recognizable objects found, then the incoming text is treated as **Text** object.
+
 ### Setup
 
 Releases are published to sonatype.org and to maven central. You may download artefacts manually:
