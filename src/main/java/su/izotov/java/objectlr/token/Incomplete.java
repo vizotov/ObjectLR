@@ -43,11 +43,11 @@ public final class Incomplete
   }
 
   public Sense concat(final Incomplete incomplete) {
-    return new Text(this.toSource() + incomplete.toSource());
+    return new Unrecognized(this.toSource() + incomplete.toSource());
   }
 
   public Sense concat(final Token token) {
-    return new Text(this.toSource() + token.toSource());
+    return new Unrecognized(this.toSource() + token.toSource());
   }
 
   @Override public int firstPositionIn(final String text) {
@@ -83,6 +83,6 @@ public final class Incomplete
   }
 
   @Override public Sense textToken(final String text) {
-    return new Text(this.toSource() + text);
+    return new Unrecognized(this.toSource() + text);
   }
 }

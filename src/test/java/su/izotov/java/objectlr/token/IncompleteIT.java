@@ -35,18 +35,18 @@ import su.izotov.java.objectlr.Sense;
  */
 public class IncompleteIT {
   @Test public void testTrailingText() {
-    Unrecognized text = new Text("before the piece of token sec");
+    Unrecognized unrecognized = new Unrecognized("before the piece of token sec");
     Incomplete instance = new Incomplete(new MKSecondToken(), 3);
     String expResult = "before the piece of token ";
-    String result = instance.precedingIn(text);
+    String result = instance.precedingIn(unrecognized);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
   @Test public void testFollowingText() {
-    Unrecognized text = new Text("simple text without pieces of tokens");
+    Unrecognized unrecognized = new Unrecognized("simple text without pieces of tokens");
     Incomplete instance = new Incomplete(new MKFirstToken(), 2);
-    Sense expResult = text;
-    Sense result = instance.followingIn(text);
+    Sense expResult = unrecognized;
+    Sense result = instance.followingIn(unrecognized);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 

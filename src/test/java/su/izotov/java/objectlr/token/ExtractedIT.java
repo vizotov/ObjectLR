@@ -37,42 +37,42 @@ import su.izotov.java.objectlr.tokens.Tokens;
  */
 public class ExtractedIT {
   @Test public void testPreceding() {
-    Unrecognized text = new Text("before second after");
+    Unrecognized unrecognized = new Unrecognized("before second after");
     Token instance = new MKSecondToken();
     String expResult = "before ";
-    String result = instance.precedingIn(text);
+    String result = instance.precedingIn(unrecognized);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
   @Test public void testPreceding2() {
-    Unrecognized text = new Text("before second after");
+    Unrecognized unrecognized = new Unrecognized("before second after");
     Token instance = new MKFirstToken();
     String expResult = "";
-    String result = instance.precedingIn(text);
+    String result = instance.precedingIn(unrecognized);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
   @Test public void testPreceding3() {
-    Unrecognized text = new Text("before seco");
+    Unrecognized unrecognized = new Unrecognized("before seco");
     Token instance = new MKSecondToken();
     String expResult = "";
-    String result = instance.precedingIn(text);
+    String result = instance.precedingIn(unrecognized);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
   @Test public void testFollowingText() {
-    Unrecognized text = new Text("before second after");
+    Unrecognized unrecognized = new Unrecognized("before second after");
     Token instance = new MKSecondToken();
-    Sense expResult = new Text(" after");
-    Sense result = instance.followingIn(text);
+    Sense expResult = new Unrecognized(" after");
+    Sense result = instance.followingIn(unrecognized);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
   @Test public void testFollowingText2() {
-    Unrecognized text = new Text("before second after");
+    Unrecognized unrecognized = new Unrecognized("before second after");
     Token instance = new MKFirstToken();
-    Sense expResult = text;
-    Sense result = instance.followingIn(text);
+    Sense expResult = unrecognized;
+    Sense result = instance.followingIn(unrecognized);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 

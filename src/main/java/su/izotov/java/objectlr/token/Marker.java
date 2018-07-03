@@ -41,6 +41,6 @@ public interface Marker
   }
 
   @Override default Sense textToken(final String text) {
-    return new Text(text);
+    return new Unrecognized(text);
   }
 }

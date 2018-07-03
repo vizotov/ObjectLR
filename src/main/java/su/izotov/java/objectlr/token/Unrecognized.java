@@ -23,14 +23,56 @@
  */
 package su.izotov.java.objectlr.token;
 
+import su.izotov.java.objectlr.Sense;
+import su.izotov.java.objectlr.print.Cell;
+import su.izotov.java.objectlr.tokens.Empty;
+import su.izotov.java.objectlr.tokens.Tokens;
+
 /**
  * Source text for the recognition
- * Created with IntelliJ IDEA.
  * @author Vladimir Izotov
- * @version $Id$
- * @since 1.0
  */
-public interface Unrecognized
-    extends Extracted {
-  Unrecognized concat(final Unrecognized text);
+public final class Unrecognized
+    implements Extracted {
+  private final String text;
+
+  public Unrecognized(final String text) {
+    this.text = text;
+  }
+
+  @Override public Cell toVisual() {
+    return Extracted.super.toVisual().addRight(this.text);
+  }
+
+  @Override public String precedingIn(final Extracted text) {
+    return text.precedingThe(this.text);
+  }
+
+  @Override public Extracted followingIn(final Extracted text) {
+    return text.followingThe(this.text);
+  }
+
+  @Override public int length() {
+    return this.text.length();
+  }
+
+  @Override public int firstPositionIn(final String text) {
+    return text.indexOf(this.text);
+  }
+
+  @Override public String toSource() {
+    return this.text;
+  }
+
+  @Override public Tokens tokens() {
+    return new Empty();
+  }
+
+  @Override public Sense textToken(final String text) {
+    return new Unrecognized(this.text + text);
+  }
+
+  public Unrecognized concat(final Unrecognized unrecognized) {
+    return new Unrecognized(this.text + unrecognized.toSource());
+  }
 }

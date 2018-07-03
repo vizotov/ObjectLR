@@ -57,7 +57,7 @@ public class Failed
   }
 
   @Override public Sense textToken(final String text) {
-    return new Text(text);
+    return new Unrecognized(text);
   }
 
   @Override public String toSource() {

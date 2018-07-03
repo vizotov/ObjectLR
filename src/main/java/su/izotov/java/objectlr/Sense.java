@@ -26,13 +26,12 @@ package su.izotov.java.objectlr;
 import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Logger;
 import su.izotov.java.ddispatch.methods.MethodAmbiguouslyDefinedException;
-import su.izotov.java.objectlr.print.Printable;
-import su.izotov.java.objectlr.print.CellOf;
 import su.izotov.java.objectlr.print.Cell;
+import su.izotov.java.objectlr.print.CellOf;
+import su.izotov.java.objectlr.print.Printable;
 import su.izotov.java.objectlr.token.Absence;
 import su.izotov.java.objectlr.token.Extracted;
 import su.izotov.java.objectlr.token.Failed;
-import su.izotov.java.objectlr.token.Text;
 import su.izotov.java.objectlr.token.Unrecognized;
 import su.izotov.java.objectlr.tokens.Tokens;
 
@@ -75,10 +74,10 @@ public interface Sense
     return this;
   }
 
-  default Sense concat(final Unrecognized text) {
-    Extracted restPart = text;
+  default Sense concat(final Unrecognized unrecognized) {
+    Extracted restPart = unrecognized;
     Cell log = new CellOf("------ Start recognition");
-    log = log.addBottom(text.toVisual());
+    log = log.addBottom(unrecognized.toVisual());
     log = log.addBottom("------------------------------------------------");
     Sense result = this;
     while (restPart.length() != 0) {
@@ -120,6 +119,6 @@ public interface Sense
 
   default Sense concat(final Failed failed) {
     Sense first = this.concatDD(textToken(failed.toSource()));
-    return first.concatDD(new Text(failed.followingSource()));
+    return first.concatDD(new Unrecognized(failed.followingSource()));
   }
 }
