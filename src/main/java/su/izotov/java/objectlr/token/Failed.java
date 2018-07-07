@@ -24,6 +24,8 @@
 package su.izotov.java.objectlr.token;
 
 import su.izotov.java.objectlr.Sense;
+import su.izotov.java.objectlr.print.Cell;
+import su.izotov.java.objectlr.print.CellOf;
 
 /**
  * If a token recognizes the following sequence of tokens as unsuitable for creating the desired
@@ -60,5 +62,13 @@ public class Failed
 
   public String followingSource() {
     return followingSource;
+  }
+
+  @Override public Cell toVisual() {
+    return new CellOf(this.getClass().getSimpleName() + " '" + selfSource + "' " + followingSource);
+  }
+
+  public Failed concat(final Unrecognized text) {
+    return new Failed(selfSource, followingSource + text.toSource());
   }
 }

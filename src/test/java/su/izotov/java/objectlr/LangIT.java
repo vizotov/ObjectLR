@@ -26,6 +26,7 @@ package su.izotov.java.objectlr;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
+import su.izotov.java.objectlr.token.Failed;
 import su.izotov.java.objectlr.token.Incomplete;
 import su.izotov.java.objectlr.token.Text;
 import su.izotov.java.objectlr.token.Unrecognized;
@@ -50,7 +51,7 @@ public class LangIT {
     MKLang instance = new MKLangImpl();
     Sense expResult = new Chain(
         new MKSecondToken(),//
-        new Text(" string after token"));
+        new MKText(" string after token"));
     Sense result = instance.concat(new Unrecognized(text));
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
@@ -59,7 +60,7 @@ public class LangIT {
     String text = "string before token second";
     MKLang instance = new MKLangImpl();
     Sense expResult = new Chain(
-        new Text("string before token ")//
+        new MKText("string before token ")//
         , new MKSecondToken());
     Sense result = instance.concat(new Unrecognized(text));
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
@@ -76,7 +77,7 @@ public class LangIT {
   @Test public void testConcat5() {
     String text = "it is not token";
     Sense instance = new MKLangImpl();
-    Sense expResult = new Text(text);
+    Sense expResult = new MKText(text);
     Sense result = instance.concat(new Unrecognized(text));
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }

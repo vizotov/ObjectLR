@@ -21,32 +21,25 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package su.izotov.java.objectlr;
 
-import su.izotov.java.objectlr.tokens.Tokens;
-import su.izotov.java.objectlr.tokens.TokensOf;
+import su.izotov.java.objectlr.token.Token;
 
 /**
+ * Created with IntelliJ IDEA.
  * @author Vladimir Izotov
+ * @version $Id$
+ * @since 1.0
  */
-public interface MKLang
-    extends Sense {
-  static Tokens tokens = new TokensOf(
-      new MKFirstToken(), //
-      new MKSecondToken(), //
-      new MKThirdToken());
+public class MKText
+    implements Token {
+  private final String text;
 
-  @Override default Tokens tokens() {
-    return tokens;
+  public MKText(final String text) {
+    this.text = text;
   }
 
-  @Override default Sense textToken(String text) {
-    return new MKText(text);
+  @Override public String toSource() {
+    return text;
   }
 }

@@ -123,6 +123,11 @@ public interface Sense
     return result;
   }
 
+  /**
+   * re-recognizing following token as text
+   * @param failed representation of the following token and following text
+   * @return recognition result
+   */
   default Sense concat(final Failed failed) {
     Sense first = this.concatDD(textToken(failed.toSource()));
     return first.concatDD(new Unrecognized(failed.followingSource()));
