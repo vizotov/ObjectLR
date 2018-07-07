@@ -23,7 +23,6 @@
  */
 package su.izotov.java.objectlr.token;
 
-import su.izotov.java.objectlr.print.CellOf;
 import su.izotov.java.objectlr.print.Cell;
 import su.izotov.java.objectlr.tokens.Tokens;
 
@@ -49,7 +48,7 @@ public interface Token
   }
 
   @Override default Cell toVisual() {
-    return new CellOf('\'' + this.toSource() + '\'');
+    return Extracted.super.toVisual().addRight('\'' + this.toSource() + '\'');
   }
 
   /**

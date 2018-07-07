@@ -39,9 +39,9 @@ public class LangIT {
       throws Exception {
     String text = "string before token second string after token";
     MKLang instance = new MKLangImpl();
-    String expResult = "'string before token '\n"
-                       + "'second'\n"
-                       + "' string after token'";
+    String expResult = "MKText 'string before token '\n"
+                       + "MKSecondToken 'second'\n"
+                       + "MKText ' string after token'";
     String result = instance.concat(new Unrecognized(text)).toVisual().toString();
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
@@ -94,7 +94,7 @@ public class LangIT {
   @Test public void testConcat7() {
     String text = "firstsecond textik";
     MKLang instance = new MKLangImpl();
-    String expResult = "'first'\n" + "'second'\n" + "' textik'";
+    String expResult = "MKFirstToken 'first'\n" + "MKSecondToken 'second'\n" + "MKText ' textik'";
     String result = instance.concat(new Unrecognized(text)).toVisual().toString();
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
@@ -102,14 +102,14 @@ public class LangIT {
   @Test public void testConcat8() {
     String text = "start text firstsecond text third first ttt thi";
     MKLang instance = new MKLangImpl();
-    String expResult = "'start text '\n"
-                       + "'first'\n"
-                       + "'second'\n"
-                       + "' text '\n"
-                       + "'third'\n"
-                       + "' '\n"
-                       + "'first'\n"
-                       + "' ttt '\n"
+    String expResult = "MKText 'start text '\n"
+                       + "MKFirstToken 'first'\n"
+                       + "MKSecondToken 'second'\n"
+                       + "MKText ' text '\n"
+                       + "MKThirdToken 'third'\n"
+                       + "MKText ' '\n"
+                       + "MKFirstToken 'first'\n"
+                       + "MKText ' ttt '\n"
                        + "Incomplete thi";
     String result = instance.concat(new Unrecognized(text)).toVisual().toString();
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
