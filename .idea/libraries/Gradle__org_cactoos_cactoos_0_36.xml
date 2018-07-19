@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.cactoos:cactoos:0.36">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cactoos/cactoos/0.36/d3b61aab81e5cf5b036853f93776e68c2c1588d8/cactoos-0.36.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.cactoos/cactoos/0.36/996f49721f6e19f6c7bbb10d093cd6066e6c6a85/cactoos-0.36-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

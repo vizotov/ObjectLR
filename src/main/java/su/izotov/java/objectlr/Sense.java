@@ -23,8 +23,15 @@
  */
 package su.izotov.java.objectlr;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Collection;
 import java.util.logging.Logger;
+import org.cactoos.collection.CollectionOf;
+import org.cactoos.collection.Filtered;
+import org.cactoos.collection.Joined;
+import org.cactoos.collection.Mapped;
 import su.izotov.java.ddispatch.methods.MethodAmbiguouslyDefinedException;
 import su.izotov.java.objectlr.print.Cell;
 import su.izotov.java.objectlr.print.CellOf;
@@ -33,9 +40,10 @@ import su.izotov.java.objectlr.token.Absence;
 import su.izotov.java.objectlr.token.Extracted;
 import su.izotov.java.objectlr.token.Failed;
 import su.izotov.java.objectlr.token.Text;
+import su.izotov.java.objectlr.token.Token;
 import su.izotov.java.objectlr.token.Unrecognized;
-import su.izotov.java.objectlr.tokens.Empty;
 import su.izotov.java.objectlr.tokens.Tokens;
+import su.izotov.java.objectlr.tokens.TokensOf;
 
 /**
  * the recognized sense object
@@ -44,11 +52,45 @@ import su.izotov.java.objectlr.tokens.Tokens;
 public interface Sense
     extends Printable {
   /**
-   * tokens of the language understood by this object
+   * Tokens of the language understood by this object. By default, the list of tokens is composed as follows:
+   * <p> - the list of parameters classes of the 'concat' methods of this object, its superclasses
+   * and interfaces is used as the source data.</p>
+   * <p> - only classes that have a constructor with the first parameter implementing the Token
+   * interface are left in this list.</p>
+   * <p> - The following is a list of the classes of these first parameters that implement the
+   * Token interface.</p>
+   * <p> - only classes that have a default constructor are left in this list.</p>
+   * <p> - their instances are added to the list of understood tokens.</p>
    * @return tokens
    */
   default Tokens tokens() {
-    return new Empty();
+    final Collection<Method> allMethods = new CollectionOf<>(this.getClass().getMethods());
+    final Collection<Method> concatMethods = new Filtered<>(
+        method -> method.getName().equals("concat") && method.getParameterTypes().length == 1,
+        allMethods);
+    final Collection<Class> parameterClasses = new Mapped<>(method -> method.getParameterTypes()[0],
+                                                            concatMethods);
+    final Iterable<Iterable<Constructor>> constructorSets = new Mapped<>(clazz -> new CollectionOf<Constructor>(
+        clazz.getConstructors()), parameterClasses);
+    final Collection<Constructor> constructors = new Joined<Constructor>(constructorSets);
+    final Collection<Constructor> withTokenParameter = new Filtered<Constructor>(constructor -> constructor.getParameterTypes().length > 0
+                                                                                                && Token.class
+                                                                                                    .isAssignableFrom(
+                                                                                                        constructor
+                                                                                                            .getParameterTypes()[0]),
+                                                                                 constructors);
+    final Collection<Class> tokenClasses = new Mapped<Constructor, Class>(constructor -> constructor
+        .getParameterTypes()[0], withTokenParameter);
+    final Iterable<Iterable<Constructor>> tokenConstructorSets = new Mapped<>(clazz -> new CollectionOf<Constructor>(
+        clazz.getConstructors()), tokenClasses);
+    final Collection<Constructor> tokenConstructors = new Joined<Constructor>(tokenConstructorSets);
+    final Collection<Constructor> tokenDefaultConstructors = new Filtered<Constructor>(constructor -> constructor.getParameterTypes().length
+                                                                                                      == 0,
+                                                                                       tokenConstructors);
+    final Collection<Tokens> tokens = new Mapped<Constructor, Tokens>(constructor -> (Tokens)
+        constructor
+        .newInstance(), tokenDefaultConstructors);
+    return new TokensOf(tokens);
   }
 
   /**

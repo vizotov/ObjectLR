@@ -21,41 +21,30 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package su.izotov.java.objectlr.tokens;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import su.izotov.java.objectlr.token.Absence;
-import su.izotov.java.objectlr.token.Extracted;
+package su.izotov.java.objectlr;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+import su.izotov.java.objectlr.tokens.Tokens;
+import su.izotov.java.objectlr.tokens.TokensOf;
 
 /**
- * set of tokens
+ * Created with IntelliJ IDEA.
  * @author Vladimir Izotov
+ * @version $Id$
+ * @since 1.0
  */
-public class TokensOf
-    implements Tokens {
-  private final Set<Tokens> tokens = new HashSet<>(10);
-
-  public TokensOf(final Tokens... tokens) {
-    this(Arrays.asList(tokens));
-  }
-
-  public TokensOf(final Collection<Tokens> tokens) {
-    this.tokens.addAll(tokens);
-  }
-
-  @Override public final Extracted leftMostParsed(final String text) {
-    if (this.tokens.isEmpty()) {
-      return new Absence();
-    }
-    final Iterator<Tokens> iterator = this.tokens.iterator();
-    Extracted ret = iterator.next().leftMostParsed(text);
-    while (iterator.hasNext()) {
-      ret = ret.leftMost(iterator.next().leftMostParsed(text), text);
-    }
-    return ret;
+public class SenseTest {
+  /**
+   * ${CLASS} can work.
+   * @throws Exception If fails
+   */
+  @Test public void testTokens() {
+    Sense instance = new MKAutoTokens();
+    Tokens expResult = new TokensOf(new MKFirstToken(), new MKSecondToken());
+    Tokens result = instance.tokens();
+    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 }
