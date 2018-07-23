@@ -43,7 +43,7 @@ public class SenseTest {
    */
   @Test public void testTokens() {
     Sense instance = new MKAutoTokens();
-    Tokens expResult = new TokensOf(new MKFirstToken(), new MKSecondToken());
+    Tokens expResult = new TokensOf(new MKFirstToken(), new MKSecondToken(), new MKThirdToken());
     Tokens result = instance.tokens();
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
