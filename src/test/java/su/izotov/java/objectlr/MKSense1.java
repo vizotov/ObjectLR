@@ -37,4 +37,8 @@ public class MKSense1 implements Sense {
   public MKSense1(MKSense3 token){
 
   }
+
+  @Override public String toSource() {
+    throw new UnsupportedOperationException("#toSource()");
+  }
 }

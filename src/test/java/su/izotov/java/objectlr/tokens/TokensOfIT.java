@@ -46,6 +46,9 @@ public class TokensOfIT {
   @Test public void testLeftMostParsed() {
     String text = " tokens second first in the certain order third";
     final MKLang mkLang = new MKLang() {
+      @Override public String toSource() {
+        throw new UnsupportedOperationException("#toSource()");
+      }
     };
     Tokens instance = (Tokens) mkLang.tokens();
     Extracted expResult = new MKSecondToken();
@@ -56,6 +59,9 @@ public class TokensOfIT {
   @Test public void testLeftMostParsed2() {
     String text = " there is only part of token thir";
     final MKLang mkLang = new MKLang() {
+      @Override public String toSource() {
+        throw new UnsupportedOperationException("#toSource()");
+      }
     };
     Tokens instance = (Tokens) mkLang.tokens();
     Extracted expResult = new Incomplete(new MKThirdToken(), 4);
@@ -66,6 +72,9 @@ public class TokensOfIT {
   @Test public void testLeftMostParsed3() {
     String text = " no token";
     final MKLang mkLang = new MKLang() {
+      @Override public String toSource() {
+        throw new UnsupportedOperationException("#toSource()");
+      }
     };
     Tokens instance = (Tokens) mkLang.tokens();
     Extracted expResult = new Absence();

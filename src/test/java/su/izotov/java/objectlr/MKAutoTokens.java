@@ -34,4 +34,8 @@ public class MKAutoTokens implements Sense, MKFace {
   public Sense concat(MKSense1 sense1){
     return sense1;
   }
+
+  @Override public String toSource() {
+    return "";
+  }
 }

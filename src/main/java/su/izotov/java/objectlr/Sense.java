@@ -95,9 +95,8 @@ public interface Sense
                                        new Mapped<Constructor, Class>(constructor -> constructor.getParameterTypes()[0],
                                                                       withTokenParameter));
       parameterClasses = new Filtered<Class>(clazz -> !usedClasses.contains(clazz),
-                                             new Mapped<Constructor, Class>(
-                                                 constructor -> constructor.getParameterTypes()[0],
-                                                 withNotTokenParameter));
+                                             new Mapped<Constructor, Class>(constructor -> constructor
+                                                 .getParameterTypes()[0], withNotTokenParameter));
       usedClasses.addAll(parameterClasses);
     } while (!parameterClasses.isEmpty())
         ;
@@ -190,7 +189,12 @@ public interface Sense
    * @return recognition result
    */
   default Sense concat(final Failed failed) {
-    Sense first = this.concatDD(textToken(failed.toSource()));
-    return first.concatDD(new Unrecognized(failed.followingSource()));
+    return new Excluded(failed.token(), this)
+               .concatDD(new Unrecognized(failed.toSource()));
   }
+
+  /**
+   * @return Source text of this
+   */
+  String toSource();
 }

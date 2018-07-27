@@ -21,28 +21,49 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+
 package su.izotov.java.objectlr;
 
-import su.izotov.java.objectlr.token.Text;
 import su.izotov.java.objectlr.token.Token;
+import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
- * <p>Created with IntelliJ IDEA.</p>
+ * Do not use the specified token in the subsequent recognition of Unrecognized text. The
+ * recognition occurs as if the following text was recognized by the given sense, but without the
+ * use of this token.
+ * Created with IntelliJ IDEA.
  * @author Vladimir Izotov
  * @version $Id$
  * @since 1.0
  */
-public class MKLangImpl
-    implements MKLang {
-  public Text concat(Text sense) {
-    return sense;
+public class Excluded
+    implements Sense {
+  private final Token token;
+  private final Sense sense;
+
+  /**
+   * Ctor.
+   * @param token the excluded token
+   * @param sense the recognizer
+   */
+  public Excluded(final Token token, final Sense sense) {
+    this.token = token;
+    this.sense = sense;
   }
 
-  public Token concat(Token token) {
-    return token;
+  @Override public Sense textToken(final String text) {
+    return sense.textToken(text);
   }
 
   @Override public String toSource() {
-    return "";
+    return sense.toSource();
+  }
+
+  @Override public Tokens tokens() {
+    return sense.tokens().exclude(token);
+  }
+
+  public Sense concat(Sense sense) {
+    return this.sense.concatDD(sense);
   }
 }

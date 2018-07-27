@@ -21,28 +21,34 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package su.izotov.java.objectlr;
 
-import su.izotov.java.objectlr.token.Text;
-import su.izotov.java.objectlr.token.Token;
+package su.izotov.java.objectlr.tokens;
+
+import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
- * <p>Created with IntelliJ IDEA.</p>
+ * Created with IntelliJ IDEA.
  * @author Vladimir Izotov
  * @version $Id$
  * @since 1.0
  */
-public class MKLangImpl
-    implements MKLang {
-  public Text concat(Text sense) {
-    return sense;
+public class TokensOfTest {
+  /**
+   * ${CLASS} can work.
+   * @throws Exception If fails
+   */
+  @Test public void testExclude()
+      throws Exception {
+    // TODO
   }
 
-  public Token concat(Token token) {
-    return token;
-  }
-
-  @Override public String toSource() {
-    return "";
+  /**
+   * ${CLASS} can work.
+   * @throws Exception If fails
+   */
+  @Test public void testContains()
+      throws Exception {
+    // TODO
   }
 }

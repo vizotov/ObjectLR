@@ -23,7 +23,9 @@
  */
 package su.izotov.java.objectlr.token;
 
+import su.izotov.java.objectlr.Sense;
 import su.izotov.java.objectlr.print.Cell;
+import su.izotov.java.objectlr.tokens.Empty;
 import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
@@ -102,5 +104,22 @@ public interface Token
    */
   default boolean existsIn(final String text) {
     return this.firstPositionIn(text) != -1;
+  }
+
+  /**
+   * by default recognizing Text is a failed recognition
+   * @param text following text
+   * @return failed
+   */
+  default Sense concat(Text text) {
+    return new Failed(this, text.toSource());
+  }
+
+  default Tokens exclude(Tokens tokens) {
+    return tokens.contains(this) ? new Empty() : this;
+  }
+
+  default boolean contains(Token token){
+    return getClass().equals(token.getClass())&&toSource().equals(token.toSource());
   }
 }

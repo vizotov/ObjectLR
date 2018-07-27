@@ -71,4 +71,8 @@ public class Chain
   @Override public Sense textToken(final String text) {
     return current.textToken(text);
   }
+
+  @Override public String toSource() {
+    return parent.toSource()+current.toSource();
+  }
 }

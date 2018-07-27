@@ -24,6 +24,7 @@
 package su.izotov.java.objectlr.tokens;
 
 import su.izotov.java.objectlr.token.Extracted;
+import su.izotov.java.objectlr.token.Token;
 
 /**
  * the Collection of tokens
@@ -36,4 +37,19 @@ public interface Tokens {
    * @return token
    */
   Extracted leftMostParsed(String text);
+
+  /**
+   * Creates a new token set from an existing token set that does not intersect with a given
+   * token set
+   * @param tokens the filter
+   * @return new tokens
+   */
+  Tokens exclude(Tokens tokens);
+
+  /**
+   * check the existence of a token in a set
+   * @param token checked token
+   * @return true/false
+   */
+  boolean contains(Token token);
 }

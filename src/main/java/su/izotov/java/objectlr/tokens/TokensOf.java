@@ -28,8 +28,12 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import org.cactoos.collection.Mapped;
+import org.cactoos.scalar.Or;
+import org.cactoos.scalar.UncheckedScalar;
 import su.izotov.java.objectlr.token.Absence;
 import su.izotov.java.objectlr.token.Extracted;
+import su.izotov.java.objectlr.token.Token;
 
 /**
  * set of tokens
@@ -47,7 +51,8 @@ public class TokensOf
     this.tokens.addAll(tokens);
   }
 
-  @Override public final Extracted leftMostParsed(final String text) {
+  @Override public final Extracted leftMostParsed(
+      final String text) {
     if (this.tokens.isEmpty()) {
       return new Absence();
     }
@@ -57,5 +62,14 @@ public class TokensOf
       ret = ret.leftMost(iterator.next().leftMostParsed(text), text);
     }
     return ret;
+  }
+
+  @Override public Tokens exclude(final Tokens tokens) {
+    return new TokensOf(new Mapped<>(tokens1 -> tokens1.exclude(tokens), this.tokens));
+  }
+
+  @Override public boolean contains(final Token token) {
+    return new UncheckedScalar<>(new Or(new Mapped<Tokens, Boolean>(tokens1 -> tokens1.contains(
+        token), this.tokens))).value();
   }
 }

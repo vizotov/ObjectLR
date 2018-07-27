@@ -33,7 +33,7 @@ import su.izotov.java.objectlr.Sense;
  * @since 1.0
  */
 public class Text
-    implements Token {
+    implements Sense {
   private final String text;
 
   public Text(final String text) {

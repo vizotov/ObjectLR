@@ -59,4 +59,8 @@ public class One
   @Override public Sense textToken(final String text) {
     return sense.textToken(text);
   }
+
+  @Override public String toSource() {
+    return sense.toSource();
+  }
 }

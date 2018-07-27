@@ -35,4 +35,8 @@ public class MKSense3
   public MKSense3(MKThirdToken token){
 
   }
+
+  @Override public String toSource() {
+    throw new UnsupportedOperationException("#toSource()");
+  }
 }

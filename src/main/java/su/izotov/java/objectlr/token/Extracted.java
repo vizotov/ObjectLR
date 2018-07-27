@@ -175,17 +175,4 @@ public interface Extracted
     return this.precedingThe(token.toSource());
   }
 
-  /**
-   * @return Source text of this
-   */
-  String toSource();
-
-  /**
-   * by default recognizing Text is a failed recognition
-   * @param text following text
-   * @return failed
-   */
-  default Sense concat(Text text){
-    return new Failed(toSource(),text.toSource());
-  }
 }

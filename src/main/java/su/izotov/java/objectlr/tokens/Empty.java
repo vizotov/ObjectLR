@@ -25,6 +25,7 @@ package su.izotov.java.objectlr.tokens;
 
 import su.izotov.java.objectlr.token.Absence;
 import su.izotov.java.objectlr.token.Extracted;
+import su.izotov.java.objectlr.token.Token;
 
 /**
  * the empty set of tokens
@@ -35,7 +36,16 @@ import su.izotov.java.objectlr.token.Extracted;
  */
 public class Empty
     implements Tokens {
-  @Override public Extracted leftMostParsed(final String text) {
+  @Override public Extracted leftMostParsed(
+      final String text) {
     return new Absence();
+  }
+
+  @Override public Tokens exclude(final Tokens tokens) {
+    return this;
+  }
+
+  @Override public boolean contains(final Token token) {
+    return false;
   }
 }

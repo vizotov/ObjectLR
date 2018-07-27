@@ -29,26 +29,26 @@ import su.izotov.java.objectlr.print.CellOf;
 
 /**
  * If a token recognizes the following sequence of tokens as unsuitable for creating the desired
- * object, it may be necessary to recognize it not as a token, but as a text. For this purpose,
- * it should return as a result of its interaction with subsequent tokens an object of type
- * Failed containing both its text and the text following it. In this case, it will be
- * recognized as text, and recognition of the following text will continue.
+ * object, it may be necessary to recognize it as other token or not as a token, but as a text. For
+ * this purpose, it should return as a result of its interaction with subsequent tokens an object
+ * of type Failed containing both failed token and the text following it. In this case, it will be
+ * re-recognized, and recognition of the following text will continue.
  * Created with IntelliJ IDEA.
  * @author Vladimir Izotov
  * @version $Id$
  * @since 1.0
  */
 public class Failed
-    implements Token {
-  private final String selfSource;
-  private final String followingSource;
+    implements Sense {
+  private final Token token;
+  private final String    followingSource;
 
   /**
-   * @param selfSource the source of token to become text
+   * @param token the token with failed recognition
    * @param followingSource text to re-recognize
    */
-  public Failed(final String selfSource, final String followingSource) {
-    this.selfSource = selfSource;
+  public Failed(final Token token, final String followingSource) {
+    this.token = token;
     this.followingSource = followingSource;
   }
 
@@ -56,19 +56,20 @@ public class Failed
     return new Unrecognized(text);
   }
 
-  @Override public String toSource() {
-    return selfSource;
-  }
-
-  public String followingSource() {
-    return followingSource;
-  }
-
   @Override public Cell toVisual() {
-    return new CellOf(this.getClass().getSimpleName() + " '" + selfSource + "' " + followingSource);
+    return new CellOf(this.getClass().getSimpleName() + " ").addRight(token.toVisual())
+                                                            .addRight(" " + followingSource);
   }
 
   public Failed concat(final Unrecognized text) {
-    return new Failed(selfSource, followingSource + text.toSource());
+    return new Failed(token, followingSource + text.toSource());
+  }
+
+  @Override public String toSource() {
+    return token.toSource()+followingSource;
+  }
+
+  public Token token() {
+    return token;
   }
 }

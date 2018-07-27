@@ -34,4 +34,8 @@ public class MKSense2 implements Sense{
   public MKSense2(MKSecondToken token){
 
   }
+
+  @Override public String toSource() {
+    throw new UnsupportedOperationException("#toSource()");
+  }
 }
