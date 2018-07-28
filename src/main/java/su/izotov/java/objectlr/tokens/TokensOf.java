@@ -28,6 +28,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import org.cactoos.Func;
 import org.cactoos.collection.Mapped;
 import org.cactoos.scalar.Or;
 import org.cactoos.scalar.UncheckedScalar;
@@ -69,7 +70,8 @@ public class TokensOf
   }
 
   @Override public boolean contains(final Token token) {
-    return new UncheckedScalar<>(new Or(new Mapped<Tokens, Boolean>(tokens1 -> tokens1.contains(
-        token), this.tokens))).value();
+    return new UncheckedScalar<>(new Or(
+        (Func<Tokens, Boolean>) tokens1 -> tokens1.contains(token),
+        this.tokens)).value();
   }
 }

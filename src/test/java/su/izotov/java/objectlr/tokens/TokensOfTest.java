@@ -21,11 +21,14 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-
 package su.izotov.java.objectlr.tokens;
 
-import static org.junit.Assert.*;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
+import su.izotov.java.objectlr.MKFirstToken;
+import su.izotov.java.objectlr.MKSecondToken;
+import su.izotov.java.objectlr.MKThirdToken;
 
 /**
  * Created with IntelliJ IDEA.
@@ -34,21 +37,42 @@ import org.junit.Test;
  * @since 1.0
  */
 public class TokensOfTest {
-  /**
-   * ${CLASS} can work.
-   * @throws Exception If fails
-   */
-  @Test public void testExclude()
-      throws Exception {
-    // TODO
+  @Test public void testExclude() {
+    Tokens instance = new TokensOf(
+        new MKFirstToken(),
+        new TokensOf(new MKSecondToken(), new MKThirdToken()));
+    Tokens expResult = new TokensOf(new TokensOf(new MKSecondToken(), new MKThirdToken()));
+    Tokens result = instance.exclude(new MKFirstToken());
+    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
-  /**
-   * ${CLASS} can work.
-   * @throws Exception If fails
-   */
-  @Test public void testContains()
-      throws Exception {
-    // TODO
+  @Test public void testExclude2() {
+    Tokens instance = new TokensOf(
+        new MKFirstToken(),
+        new TokensOf(new MKSecondToken(), new MKThirdToken()));
+    Tokens expResult = new TokensOf(new MKFirstToken(), new TokensOf(new MKThirdToken()));
+    Tokens result = instance.exclude(new MKSecondToken());
+    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
+  }
+
+  @Test public void testContains() {
+    Tokens instance = new TokensOf(
+        new MKFirstToken(),
+        new TokensOf(new MKSecondToken(), new MKThirdToken()));
+    assertTrue(instance.contains(new MKFirstToken()));
+  }
+
+  @Test public void testContains2() {
+    Tokens instance = new TokensOf(
+        new MKFirstToken(),
+        new TokensOf(new MKSecondToken(), new MKThirdToken()));
+    assertTrue(instance.contains(new MKSecondToken()));
+  }
+
+  @Test public void testContains3() {
+    Tokens instance = new TokensOf(
+        new MKFirstToken(),
+        new TokensOf(new MKSecondToken()));
+    assertTrue(!instance.contains(new MKThirdToken()));
   }
 }
