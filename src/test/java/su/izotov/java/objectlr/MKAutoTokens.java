@@ -30,7 +30,9 @@ package su.izotov.java.objectlr;
  * @version $Id$
  * @since 1.0
  */
-public class MKAutoTokens implements Sense, MKFace {
+public final class MKAutoTokens
+    implements Sense,
+               MKFace {
   public Sense concat(MKSense1 sense1){
     return sense1;
   }

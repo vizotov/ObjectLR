@@ -30,7 +30,7 @@ import org.junit.Test;
 /**
  * @author Vladimir Izotov
  */
-public class HorizontalIT {
+public final class HorizontalIT {
   private static final String THREE_LINES_TEXT = "the first line\n" + "second\n" + "third";
   private static final String FIVE_LINES_TEXT  = "the line number one\n"
                                                  + "very long line number two\n"

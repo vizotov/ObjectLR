@@ -34,18 +34,21 @@ import su.izotov.java.objectlr.token.Token;
  * @version $Id$
  * @since 1.0
  */
-public class Empty
+public final class Empty
     implements Tokens {
-  @Override public Extracted leftMostParsed(
-      final String text) {
+
+  @Override
+  public final Extracted leftMostParsed(final String text) {
     return new Absence();
   }
 
-  @Override public Tokens exclude(final Tokens tokens) {
+  @Override
+  public final Tokens exclude(final Tokens tokens) {
     return this;
   }
 
-  @Override public boolean contains(final Token token) {
+  @Override
+  public final boolean contains(final Token token) {
     return false;
   }
 }

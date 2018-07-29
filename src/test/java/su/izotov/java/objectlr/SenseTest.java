@@ -36,7 +36,7 @@ import su.izotov.java.objectlr.tokens.TokensOf;
  * @version $Id$
  * @since 1.0
  */
-public class SenseTest {
+public final class SenseTest {
   /**
    * ${CLASS} can work.
    * @throws Exception If fails

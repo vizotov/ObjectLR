@@ -35,8 +35,13 @@ import su.izotov.java.ddispatch.Dispatch;
  */
 class Concat
     extends Dispatch<Sense, Sense, Sense> {
-  public Concat(
-      final Sense master, final Sense guest, final BiFunction<Sense, Sense, Sense> defaultMethod) {
-    super(master, guest, "concat", defaultMethod);
+
+  public Concat(final Sense master,
+                final Sense guest,
+                final BiFunction<Sense, Sense, Sense> defaultMethod) {
+    super(master,
+          guest,
+          "concat",
+          defaultMethod);
   }
 }

@@ -32,41 +32,51 @@ import su.izotov.java.objectlr.print.Cell;
  */
 public final class Unrecognized
     implements Extracted {
+
   private final String text;
 
   public Unrecognized(final String text) {
     this.text = text;
   }
 
-  @Override public Cell toVisual() {
-    return Extracted.super.toVisual().addRight(this.text);
+  @Override
+  public Cell toVisual() {
+    return Extracted.super.toVisual()
+                          .addRight(this.text);
   }
 
-  @Override public String precedingIn(final Extracted text) {
+  @Override
+  public String precedingIn(final Extracted text) {
     return text.precedingThe(this.text);
   }
 
-  @Override public Extracted followingIn(final Extracted text) {
+  @Override
+  public Extracted followingIn(final Extracted text) {
     return text.followingThe(this.text);
   }
 
-  @Override public int length() {
+  @Override
+  public int length() {
     return this.text.length();
   }
 
-  @Override public int firstPositionIn(final String text) {
+  @Override
+  public int firstPositionIn(final String text) {
     return text.indexOf(this.text);
   }
 
-  @Override public String toSource() {
-    return this.text;
-  }
-
-  @Override public Sense textToken(final String text) {
+  @Override
+  public Sense textToken(final String text) {
     return new Unrecognized(this.text + text);
   }
 
+  @Override
   public Unrecognized concat(final Unrecognized unrecognized) {
     return new Unrecognized(this.text + unrecognized.toSource());
+  }
+
+  @Override
+  public String toSource() {
+    return this.text;
   }
 }

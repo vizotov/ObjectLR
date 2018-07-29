@@ -27,59 +27,78 @@ package su.izotov.java.objectlr.print;
  * Two cells, concatenated left to right
  * @author Vladimir Izotov
  */
-public class Horizontal
+public final class Horizontal
     implements Cell {
+
   private final Cell left;
   private final Cell right;
 
-  public Horizontal(final Cell left, final Cell right) {
+  public Horizontal(final String left,
+                    final String right) {
+    this(new CellOf(left),
+         new CellOf(right));
+  }
+
+  public Horizontal(final Cell left,
+                    final Cell right) {
     this.left = left;
     this.right = right;
   }
 
-  public Horizontal(final String left, final String right) {
-    this(new CellOf(left), new CellOf(right));
-  }
-
-  @Override public final String toString() {
+  @Override
+  public final String toString() {
     final String strLeft = this.left.toString();
     final String strRight = this.right.toString();
     String ret;
     if (strLeft.isEmpty()) {
       ret = strRight;
-    } else if (strRight.isEmpty()) {
+    }
+    else if (strRight.isEmpty()) {
       ret = strLeft;
-    } else {
-      final String[] arr1 = strLeft.split("\n", -1);
-      final String[] arr2 = strRight.split("\n", -1);
+    }
+    else {
+      final String[] arr1 = strLeft.split("\n",
+                                          -1);
+      final String[] arr2 = strRight.split("\n",
+                                           -1);
       int maximumLength = 0;
       for (final String s1 : arr1) {
-        maximumLength = Integer.max(maximumLength, s1.length());
+        maximumLength = Integer.max(maximumLength,
+                                    s1.length());
       }
-      final int minBlockHigh = Integer.min(arr1.length, arr2.length);
-      StringBuilder sb = new StringBuilder(2000);
+      final int minBlockHigh = Integer.min(arr1.length,
+                                           arr2.length);
+      final StringBuilder sb = new StringBuilder(2000);
       while (sb.length() < maximumLength) {
-        sb.append("                                                                              "
-                  + "                 ");
+        sb.append("                                                                                               ");
       }
-      String spaces = sb.toString();
+      final String spaces = sb.toString();
       ret = "";
-      for (int i = 0; i < minBlockHigh; i++) {
+      for (int i = 0;
+           i < minBlockHigh;
+           i++) {
         if (i != 0 && i < minBlockHigh) {
           ret += "\n";
         }
-        ret += (arr1[i] + spaces).substring(0, maximumLength) + ' ' + arr2[i];
+        ret += (arr1[i] + spaces).substring(0,
+                                            maximumLength) + ' ' + arr2[i];
       }
       if (minBlockHigh < arr2.length) {
         ret += "\n";
-        for (int i1 = minBlockHigh; i1 < arr2.length; i1++) {
+        for (int i1 = minBlockHigh;
+             i1 < arr2.length;
+             i1++) {
           if (i1 != minBlockHigh && i1 < arr2.length) {
             ret += "\n";
           }
-          ret += spaces.substring(0, maximumLength) + ' ' + arr2[i1];
+          ret += spaces.substring(0,
+                                  maximumLength) + ' ' + arr2[i1];
         }
-      } else {
-        for (int i2 = minBlockHigh; i2 < arr1.length; i2++) {
+      }
+      else {
+        for (int i2 = minBlockHigh;
+             i2 < arr1.length;
+             i2++) {
           if (i2 < arr1.length) {
             ret += "\n";
           }

@@ -31,7 +31,7 @@ import su.izotov.java.objectlr.token.Token;
  * @version $Id$
  * @since 1.0
  */
-public class MKText
+public final class MKText
     implements Token {
   private final String text;
 

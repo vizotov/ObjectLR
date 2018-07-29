@@ -26,15 +26,13 @@ package su.izotov.java.objectlr;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-import su.izotov.java.objectlr.token.Failed;
 import su.izotov.java.objectlr.token.Incomplete;
-import su.izotov.java.objectlr.token.Text;
 import su.izotov.java.objectlr.token.Unrecognized;
 
 /**
  * @author Vladimir Izotov
  */
-public class LangIT {
+public final class LangIT {
   @Test public void testConcat()
       throws Exception {
     String text = "string before token second string after token";

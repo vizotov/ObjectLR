@@ -38,38 +38,46 @@ import su.izotov.java.objectlr.print.CellOf;
  * @version $Id$
  * @since 1.0
  */
-public class Failed
+public final class Failed
     implements Sense {
+
   private final Token token;
-  private final String    followingSource;
+  private final String followingSource;
 
   /**
    * @param token the token with failed recognition
    * @param followingSource text to re-recognize
    */
-  public Failed(final Token token, final String followingSource) {
+  public Failed(final Token token,
+                final String followingSource) {
     this.token = token;
     this.followingSource = followingSource;
   }
 
-  @Override public Sense textToken(final String text) {
+  @Override
+  public final Sense textToken(final String text) {
     return new Unrecognized(text);
   }
 
-  @Override public Cell toVisual() {
-    return new CellOf(this.getClass().getSimpleName() + " ").addRight(token.toVisual())
-                                                            .addRight(" " + followingSource);
+  @Override
+  public final Failed concat(final Unrecognized text) {
+    return new Failed(this.token,
+                      this.followingSource + text.toSource());
   }
 
-  public Failed concat(final Unrecognized text) {
-    return new Failed(token, followingSource + text.toSource());
+  @Override
+  public final String toSource() {
+    return this.token.toSource() + this.followingSource;
   }
 
-  @Override public String toSource() {
-    return token.toSource()+followingSource;
+  @Override
+  public final Cell toVisual() {
+    return new CellOf(this.getClass()
+                          .getSimpleName() + " ").addRight(this.token.toVisual())
+                                                 .addRight(" " + this.followingSource);
   }
 
-  public Token token() {
-    return token;
+  public final Token token() {
+    return this.token;
   }
 }

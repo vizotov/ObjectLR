@@ -33,8 +33,9 @@ import su.izotov.java.objectlr.tokens.Tokens;
  * @version $Id$
  * @since 1.0
  */
-public class One
+public final class One
     implements Buffer {
+
   private final Sense sense;
 
   public One(final Sense sense) {
@@ -44,23 +45,28 @@ public class One
     this.sense = sense;
   }
 
-  @Override public final Sense concat(final Sense sense) {
+  @Override
+  public final Sense concat(final Sense sense) {
     return this.sense.concatDD(sense);
   }
 
-  @Override public final Cell toVisual() {
+  @Override
+  public final Cell toVisual() {
     return this.sense.toVisual();
   }
 
-  @Override public Tokens tokens() {
-    return sense.tokens();
+  @Override
+  public final Tokens tokens() {
+    return this.sense.tokens();
   }
 
-  @Override public Sense textToken(final String text) {
-    return sense.textToken(text);
+  @Override
+  public final Sense textToken(final String text) {
+    return this.sense.textToken(text);
   }
 
-  @Override public String toSource() {
-    return sense.toSource();
+  @Override
+  public final String toSource() {
+    return this.sense.toSource();
   }
 }

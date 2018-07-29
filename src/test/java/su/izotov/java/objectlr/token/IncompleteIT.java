@@ -33,7 +33,7 @@ import su.izotov.java.objectlr.Sense;
 /**
  * @author Vladimir Izotov
  */
-public class IncompleteIT {
+public final class IncompleteIT {
   @Test public void testTrailingText() {
     Unrecognized unrecognized = new Unrecognized("before the piece of token sec");
     Incomplete instance = new Incomplete(new MKSecondToken(), 3);

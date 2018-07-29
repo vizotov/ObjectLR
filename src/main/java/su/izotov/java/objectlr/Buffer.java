@@ -32,8 +32,9 @@ package su.izotov.java.objectlr;
  */
 public interface Buffer
     extends Sense {
-  Sense concat(Sense sense)
-      throws Exception;
+
+  Sense concat(Sense sense) throws
+                            Exception;
 
   default Sense concat(final Buffer buffer) {
     throw new RuntimeException("Can not concat buffer to buffer!");

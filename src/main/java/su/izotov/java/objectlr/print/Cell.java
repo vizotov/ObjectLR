@@ -28,7 +28,9 @@ package su.izotov.java.objectlr.print;
  * @author Vladimir Izotov
  */
 public interface Cell {
-  @Override String toString();
+
+  @Override
+  String toString();
 
   /**
    * add new cell to bottom
@@ -45,7 +47,8 @@ public interface Cell {
    * @return big cell
    */
   default Cell addBottom(final Cell otherCell) {
-    return new Vertical(this, otherCell);
+    return new Vertical(this,
+                        otherCell);
   }
 
   /**
@@ -63,6 +66,7 @@ public interface Cell {
    * @return big cell
    */
   default Cell addRight(final Cell otherCell) {
-    return new Horizontal(this, otherCell);
+    return new Horizontal(this,
+                          otherCell);
   }
 }

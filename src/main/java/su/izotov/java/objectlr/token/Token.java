@@ -33,24 +33,24 @@ import su.izotov.java.objectlr.tokens.Tokens;
  * @author Vladimir Izotov
  */
 public interface Token
-    extends Extracted, Tokens {
+    extends Extracted,
+            Tokens {
+
   /**
    * the leftmost parsed element, related to this token in the string
    * @param text the string
    * @return token
    */
-  @Override default Extracted leftMostParsed(final String text) {
+  @Override
+  default Extracted leftMostParsed(final String text) {
     final Extracted ret;
     if (text.contains(this.toSource())) {
       ret = this;
-    } else {
+    }
+    else {
       ret = this.incompleteTokenAtEndOf(text);
     }
     return ret;
-  }
-
-  @Override default Cell toVisual() {
-    return Extracted.super.toVisual().addRight('\'' + this.toSource() + '\'');
   }
 
   /**
@@ -60,41 +60,54 @@ public interface Token
    * @return the ParsedElement
    */
   default Extracted incompleteTokenAtEndOf(final String text) {
-    for (int i = this.toSource().length() - 1; i > 0; i--) {
-      if (text.endsWith(this.toSource().substring(0, i))) {
-        return new Incomplete(this, i);
+    for (int i = this.toSource()
+                     .length() - 1;
+         i > 0;
+         i--) {
+      if (text.endsWith(this.toSource()
+                            .substring(0,
+                                       i))) {
+        return new Incomplete(this,
+                              i);
       }
     }
     return new Absence();
   }
 
-  @Override default int firstPositionIn(final String text) {
-    return text.indexOf(this.toSource());
+  @Override
+  default Tokens exclude(final Tokens tokens) {
+    return tokens.contains(this) ?
+           new Empty() :
+           this;
   }
 
-  @Override default String precedingIn(final Extracted text) {
+  @Override
+  default boolean contains(final Token token) {
+    return this.getClass()
+               .equals(token.getClass()) && this.toSource()
+                                                .equals(token.toSource());
+  }
+
+  @Override
+  default Cell toVisual() {
+    return Extracted.super.toVisual()
+                          .addRight('\'' + this.toSource() + '\'');
+  }
+
+  @Override
+  default String precedingIn(final Extracted text) {
     return text.precedingThe(this);
   }
 
-  @Override default Extracted followingIn(final Extracted text) {
+  @Override
+  default Extracted followingIn(final Extracted text) {
     return text.followingThe(this);
   }
 
-  @Override default int length() {
-    return this.toSource().length();
-  }
-
-  /**
-   * text after first occurrence of this token in the string
-   * @param text the string
-   * @return the text
-   */
-  default String afterFirstOccurrenceIn(final String text) {
-    if (this.existsIn(text)) {
-      return text.substring(this.firstPositionIn(text) + this.toSource().length());
-    } else {
-      return text;
-    }
+  @Override
+  default int length() {
+    return this.toSource()
+               .length();
   }
 
   /**
@@ -106,20 +119,33 @@ public interface Token
     return this.firstPositionIn(text) != -1;
   }
 
+  @Override
+  default int firstPositionIn(final String text) {
+    return text.indexOf(this.toSource());
+  }
+
+  /**
+   * text after first occurrence of this token in the string
+   * @param text the string
+   * @return the text
+   */
+  default String afterFirstOccurrenceIn(final String text) {
+    if (this.existsIn(text)) {
+      return text.substring(this.firstPositionIn(text) + this.toSource()
+                                                             .length());
+    }
+    else {
+      return text;
+    }
+  }
+
   /**
    * by default recognizing Text is a failed recognition
    * @param text following text
    * @return failed
    */
-  default Sense concat(Text text) {
-    return new Failed(this, text.toSource());
-  }
-
-  default Tokens exclude(Tokens tokens) {
-    return tokens.contains(this) ? new Empty() : this;
-  }
-
-  default boolean contains(Token token){
-    return getClass().equals(token.getClass())&&toSource().equals(token.toSource());
+  default Sense concat(final Text text) {
+    return new Failed(this,
+                      text.toSource());
   }
 }

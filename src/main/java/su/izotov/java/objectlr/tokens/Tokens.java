@@ -31,6 +31,7 @@ import su.izotov.java.objectlr.token.Token;
  * @author Vladimir Izotov
  */
 public interface Tokens {
+
   /**
    * The leftmost recognized token in the string
    * @param text the string

@@ -36,43 +36,58 @@ import su.izotov.java.objectlr.MKThirdToken;
  * @version $Id$
  * @since 1.0
  */
-public class TokensOfTest {
-  @Test public void testExclude() {
-    Tokens instance = new TokensOf(
-        new MKFirstToken(),
-        new TokensOf(new MKSecondToken(), new MKThirdToken()));
-    Tokens expResult = new TokensOf(new TokensOf(new MKSecondToken(), new MKThirdToken()));
+public final class TokensOfTest {
+
+  @Test
+  public void testExclude() {
+    Tokens instance = new TokensOf(new MKFirstToken(),
+                                   new TokensOf(new MKSecondToken(),
+                                                new MKThirdToken()));
+    Tokens expResult = new TokensOf(new TokensOf(new MKSecondToken(),
+                                                 new MKThirdToken()));
     Tokens result = instance.exclude(new MKFirstToken());
-    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
+    assertTrue(EqualsBuilder.reflectionEquals(expResult,
+                                              result,
+                                              false,
+                                              null,
+                                              true));
   }
 
-  @Test public void testExclude2() {
-    Tokens instance = new TokensOf(
-        new MKFirstToken(),
-        new TokensOf(new MKSecondToken(), new MKThirdToken()));
-    Tokens expResult = new TokensOf(new MKFirstToken(), new TokensOf(new MKThirdToken()));
+  @Test
+  public void testExclude2() {
+    Tokens instance = new TokensOf(new MKFirstToken(),
+                                   new TokensOf(new MKSecondToken(),
+                                                new MKThirdToken()));
+    Tokens expResult = new TokensOf(new MKFirstToken(),
+                                    new TokensOf(new MKThirdToken()));
     Tokens result = instance.exclude(new MKSecondToken());
-    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
+    assertTrue(EqualsBuilder.reflectionEquals(expResult,
+                                              result,
+                                              false,
+                                              null,
+                                              true));
   }
 
-  @Test public void testContains() {
-    Tokens instance = new TokensOf(
-        new MKFirstToken(),
-        new TokensOf(new MKSecondToken(), new MKThirdToken()));
+  @Test
+  public void testContains() {
+    Tokens instance = new TokensOf(new MKFirstToken(),
+                                   new TokensOf(new MKSecondToken(),
+                                                new MKThirdToken()));
     assertTrue(instance.contains(new MKFirstToken()));
   }
 
-  @Test public void testContains2() {
-    Tokens instance = new TokensOf(
-        new MKFirstToken(),
-        new TokensOf(new MKSecondToken(), new MKThirdToken()));
+  @Test
+  public void testContains2() {
+    Tokens instance = new TokensOf(new MKFirstToken(),
+                                   new TokensOf(new MKSecondToken(),
+                                                new MKThirdToken()));
     assertTrue(instance.contains(new MKSecondToken()));
   }
 
-  @Test public void testContains3() {
-    Tokens instance = new TokensOf(
-        new MKFirstToken(),
-        new TokensOf(new MKSecondToken()));
+  @Test
+  public void testContains3() {
+    Tokens instance = new TokensOf(new MKFirstToken(),
+                                   new TokensOf(new MKSecondToken()));
     assertTrue(!instance.contains(new MKThirdToken()));
   }
 }

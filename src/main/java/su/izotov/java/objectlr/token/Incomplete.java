@@ -32,10 +32,12 @@ import su.izotov.java.objectlr.print.Cell;
  */
 public final class Incomplete
     implements Extracted {
-  private final Token token;
-  private final int   length;
 
-  public Incomplete(final Token token, final int length) {
+  private final Token token;
+  private final int length;
+
+  public Incomplete(final Token token,
+                    final int length) {
     this.token = token;
     this.length = length;
   }
@@ -48,35 +50,46 @@ public final class Incomplete
     return new Unrecognized(this.toSource() + token.toSource());
   }
 
-  @Override public int firstPositionIn(final String text) {
+  @Override
+  public String precedingIn(final Extracted text) {
+    return text.precedingThe(this);
+  }
+
+  @Override
+  public Extracted followingIn(final Extracted text) {
+    return text.followingThe(this);
+  }
+
+  @Override
+  public int length() {
+    return this.length;
+  }
+
+  @Override
+  public int firstPositionIn(final String text) {
     if (text.endsWith(this.toSource())) {
       return text.length() - this.length;
-    } else {
+    }
+    else {
       return -1;
     }
   }
 
-  @Override public String toSource() {
-    return this.token.toSource().substring(0, this.length);
+  @Override
+  public Cell toVisual() {
+    return Extracted.super.toVisual()
+                          .addRight(this.toSource());
   }
 
-  @Override public String precedingIn(final Extracted text) {
-    return text.precedingThe(this);
-  }
-
-  @Override public Extracted followingIn(final Extracted text) {
-    return text.followingThe(this);
-  }
-
-  @Override public int length() {
-    return this.length;
-  }
-
-  @Override public Cell toVisual() {
-    return Extracted.super.toVisual().addRight(this.toSource());
-  }
-
-  @Override public Sense textToken(final String text) {
+  @Override
+  public Sense textToken(final String text) {
     return new Unrecognized(this.toSource() + text);
+  }
+
+  @Override
+  public String toSource() {
+    return this.token.toSource()
+                     .substring(0,
+                                this.length);
   }
 }

@@ -35,11 +35,13 @@ import su.izotov.java.objectlr.token.Unrecognized;
  * @version $Id$
  * @since 1.0
  */
-public class Sentence<T extends Sense, R extends Sense> {
-  private final String text;
-  private final T      master;
+public final class Sentence<T extends Sense, R extends Sense> {
 
-  protected Sentence(final String text, final T master) {
+  private final String text;
+  private final T master;
+
+  protected Sentence(final String text,
+                     final T master) {
     this.text = text;
     this.master = master;
   }
@@ -49,14 +51,18 @@ public class Sentence<T extends Sense, R extends Sense> {
    * @return an object
    * @throws RecognitionException if recognition process fail
    */
-  @SuppressWarnings("unchecked") public final R toObject()
-      throws RecognitionException {
+  @SuppressWarnings("unchecked")
+  public final R toObject() throws
+                            RecognitionException {
     final Sense ret = this.master.concat(new Unrecognized(this.text));
     try {
       return (R) ret;
     } catch (final RuntimeException ignored) {
-      Logger.getGlobal().info("Unrecognizable text!");
-      Logger.getGlobal().info(ret.toVisual().toString());
+      Logger.getGlobal()
+            .info("Unrecognizable text!");
+      Logger.getGlobal()
+            .info(ret.toVisual()
+                     .toString());
       throw new RecognitionException(ret);
     }
   }

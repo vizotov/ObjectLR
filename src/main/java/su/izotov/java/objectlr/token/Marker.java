@@ -35,7 +35,8 @@ import su.izotov.java.objectlr.Sense;
 public interface Marker
     extends Token {
 
-  @Override default Sense textToken(final String text) {
+  @Override
+  default Sense textToken(final String text) {
     return new Unrecognized(text);
   }
 }

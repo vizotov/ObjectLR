@@ -40,8 +40,9 @@ import su.izotov.java.objectlr.token.Token;
  * set of tokens
  * @author Vladimir Izotov
  */
-public class TokensOf
+public final class TokensOf
     implements Tokens {
+
   private final Set<Tokens> tokens = new HashSet<>(10);
 
   public TokensOf(final Tokens... tokens) {
@@ -52,26 +53,33 @@ public class TokensOf
     this.tokens.addAll(tokens);
   }
 
-  @Override public final Extracted leftMostParsed(
-      final String text) {
+  @Override
+  public final Extracted leftMostParsed(final String text) {
     if (this.tokens.isEmpty()) {
       return new Absence();
     }
     final Iterator<Tokens> iterator = this.tokens.iterator();
-    Extracted ret = iterator.next().leftMostParsed(text);
+    Extracted ret = iterator.hasNext() ?
+                    iterator.next()
+                            .leftMostParsed(text) :
+                    new Absence();
     while (iterator.hasNext()) {
-      ret = ret.leftMost(iterator.next().leftMostParsed(text), text);
+      ret = ret.leftMost(iterator.next()
+                                 .leftMostParsed(text),
+                         text);
     }
     return ret;
   }
 
-  @Override public Tokens exclude(final Tokens tokens) {
-    return new TokensOf(new Mapped<>(tokens1 -> tokens1.exclude(tokens), this.tokens));
+  @Override
+  public final Tokens exclude(final Tokens tokens) {
+    return new TokensOf(new Mapped<>(tokens1 -> tokens1.exclude(tokens),
+                                     this.tokens));
   }
 
-  @Override public boolean contains(final Token token) {
-    return new UncheckedScalar<>(new Or(
-        (Func<Tokens, Boolean>) tokens1 -> tokens1.contains(token),
-        this.tokens)).value();
+  @Override
+  public final boolean contains(final Token token) {
+    return new UncheckedScalar<>(new Or((Func<Tokens, Boolean>) tokens1 -> tokens1.contains(token),
+                                        this.tokens)).value();
   }
 }

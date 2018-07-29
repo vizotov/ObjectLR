@@ -32,7 +32,7 @@ import su.izotov.java.objectlr.MKSecondToken;
 /**
  * @author Vladimir Izotov
  */
-public class TokenIT {
+public final class TokenIT {
   @Test public void testTextAfterFirstOccupence() {
     String text = "before second after second";
     Token instance = new MKSecondToken();

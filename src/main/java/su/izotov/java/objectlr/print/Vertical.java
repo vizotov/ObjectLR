@@ -29,16 +29,18 @@ package su.izotov.java.objectlr.print;
  */
 public final class Vertical
     implements Cell {
+
   private final Cell top;
   private final Cell bottom;
 
-  Vertical(
-      final Cell top, final Cell bottom) {
+  Vertical(final Cell top,
+           final Cell bottom) {
     this.top = top;
     this.bottom = bottom;
   }
 
-  @Override public String toString() {
+  @Override
+  public String toString() {
     return this.top.toString() + '\n' + this.bottom.toString();
   }
 }

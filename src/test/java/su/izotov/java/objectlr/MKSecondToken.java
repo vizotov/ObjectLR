@@ -35,7 +35,7 @@ import su.izotov.java.objectlr.tokens.Tokens;
 /**
  * @author Vladimir Izotov
  */
-public class MKSecondToken
+public final class MKSecondToken
     implements Token, MKLang {
 
   @Override public Tokens tokens() {

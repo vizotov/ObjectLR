@@ -42,7 +42,7 @@ import su.izotov.java.objectlr.token.Incomplete;
 /**
  * @author Vladimir Izotov
  */
-public class TokensOfIT {
+public final class TokensOfIT {
   @Test public void testLeftMostParsed() {
     String text = " tokens second first in the certain order third";
     final MKLang mkLang = new MKLang() {

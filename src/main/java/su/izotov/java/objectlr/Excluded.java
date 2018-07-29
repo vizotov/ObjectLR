@@ -21,7 +21,6 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-
 package su.izotov.java.objectlr;
 
 import su.izotov.java.objectlr.token.Token;
@@ -36,34 +35,39 @@ import su.izotov.java.objectlr.tokens.Tokens;
  * @version $Id$
  * @since 1.0
  */
-public class Excluded
+public final class Excluded
     implements Sense {
+
   private final Token token;
   private final Sense sense;
 
   /**
-   * Ctor.
    * @param token the excluded token
    * @param sense the recognizer
    */
-  public Excluded(final Token token, final Sense sense) {
+  public Excluded(final Token token,
+                  final Sense sense) {
     this.token = token;
     this.sense = sense;
   }
 
-  @Override public Sense textToken(final String text) {
-    return sense.textToken(text);
+  @Override
+  public final Tokens tokens() {
+    return this.sense.tokens()
+                     .exclude(this.token);
   }
 
-  @Override public String toSource() {
-    return sense.toSource();
+  @Override
+  public final Sense textToken(final String text) {
+    return this.sense.textToken(text);
   }
 
-  @Override public Tokens tokens() {
-    return sense.tokens().exclude(token);
+  @Override
+  public final String toSource() {
+    return this.sense.toSource();
   }
 
-  public Sense concat(Sense sense) {
+  public final Sense concat(final Sense sense) {
     return this.sense.concatDD(sense);
   }
 }

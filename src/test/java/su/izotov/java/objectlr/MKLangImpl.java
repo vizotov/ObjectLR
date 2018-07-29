@@ -32,7 +32,7 @@ import su.izotov.java.objectlr.token.Token;
  * @version $Id$
  * @since 1.0
  */
-public class MKLangImpl
+public final class MKLangImpl
     implements MKLang {
   public Text concat(Text sense) {
     return sense;

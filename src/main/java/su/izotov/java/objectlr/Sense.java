@@ -53,92 +53,6 @@ import su.izotov.java.objectlr.tokens.TokensOf;
  */
 public interface Sense
     extends Printable {
-  /**
-   * Tokens of the language understood by this object. By default, the list of tokens is composed as follows:
-   * <p> - the list of parameters classes of the 'concat' methods of this object, its superclasses
-   * and interfaces is used as the source data.</p>
-   * <p> - this list recursively adds the first parameter classes of their constructors that do
-   * not implement the Token class.
-   * </p>
-   * <p> - only classes that have a constructor with the first parameter implementing the Token
-   * interface are left in this list.</p>
-   * <p> - The following is a list of the classes of these first parameters that implement the
-   * Token interface.</p>
-   * <p> - only classes that have a default constructor are left in this list.</p>
-   * <p> - their instances are added to the list of understood tokens.</p>
-   * @return tokens
-   */
-  default Tokens tokens() {
-    final Collection<Method> allMethods = new CollectionOf<>(this.getClass().getMethods());
-    final Collection<Method> concatMethods = new Filtered<>(
-        method -> method.getName().equals("concat") && method.getParameterTypes().length == 1,
-        allMethods);
-    Collection<Class> tokenClasses = new LinkedList<>();
-    Collection<Class> parameterClasses = new Mapped<>(method -> method.getParameterTypes()[0],
-                                                      concatMethods);
-    Collection<Class> usedClasses = new HashSet<>();
-    do {
-      final Iterable<Iterable<Constructor>> constructorSets = new Mapped<>(clazz -> new CollectionOf<Constructor>(
-          clazz.getConstructors()), parameterClasses);
-      final Collection<Constructor> constructors = new Joined<Constructor>(constructorSets);
-      final Collection<Constructor> withTokenParameter = new Filtered<Constructor>(constructor -> constructor.getParameterTypes().length > 0
-                                                                                                  && Token.class
-                                                                                                      .isAssignableFrom(
-                                                                                                          constructor
-                                                                                                              .getParameterTypes()[0]),
-                                                                                   constructors);
-      final Collection<Constructor> withNotTokenParameter = new Filtered<Constructor>(
-          constructor -> constructor.getParameterTypes().length > 0
-                         && !Token.class.isAssignableFrom(constructor.getParameterTypes()[0]),
-          constructors);
-      tokenClasses = new Joined<Class>(tokenClasses,
-                                       new Mapped<Constructor, Class>(constructor -> constructor.getParameterTypes()[0],
-                                                                      withTokenParameter));
-      parameterClasses = new Filtered<Class>(clazz -> !usedClasses.contains(clazz),
-                                             new Mapped<Constructor, Class>(constructor -> constructor
-                                                 .getParameterTypes()[0], withNotTokenParameter));
-      usedClasses.addAll(parameterClasses);
-    } while (!parameterClasses.isEmpty())
-        ;
-    final Iterable<Iterable<Constructor>> tokenConstructorSets = new Mapped<>(clazz -> new CollectionOf<Constructor>(
-        clazz.getConstructors()), tokenClasses);
-    final Collection<Constructor> tokenConstructors = new Joined<Constructor>(tokenConstructorSets);
-    final Collection<Constructor> tokenDefaultConstructors = new Filtered<Constructor>(constructor -> constructor.getParameterTypes().length
-                                                                                                      == 0,
-                                                                                       tokenConstructors);
-    final Collection<Tokens> tokens = new Mapped<Constructor, Tokens>(constructor -> (Tokens) constructor
-        .newInstance(), tokenDefaultConstructors);
-    return new TokensOf(tokens);
-  }
-
-  /**
-   * Unrecognized text must be wrapped in a special class for further work with it. This method
-   * should return an object of this class - a special "token" of the language that wraps the text.
-   * @param text unrecognized text
-   * @return the wrapped text
-   */
-  default Sense textToken(String text) {
-    return new Text(text);
-  }
-
-  /**
-   * interaction of senses
-   * @param sense the second object
-   * @return The result of interaction
-   */
-  default Sense concatDD(final Sense sense) {
-    try {
-      return new Concat(this, sense, Chain::new).invoke();
-    } catch (final InvocationTargetException e) {
-      throw new RuntimeException(e.getCause());
-    } catch (final IllegalAccessException | MethodAmbiguouslyDefinedException e) {
-      throw new RuntimeException(e);
-    }
-  }
-
-  default Sense concat(final Absence absence) {
-    return this;
-  }
 
   default Sense concat(final Unrecognized unrecognized) {
     Extracted restPart = unrecognized;
@@ -148,13 +62,15 @@ public interface Sense
     Sense result = this;
     while (restPart.length() != 0) {
       // recognized element
-      final Extracted leftMostParsed = result.tokens().leftMostParsed(restPart.toSource());
+      final Extracted leftMostParsed = result.tokens()
+                                             .leftMostParsed(restPart.toSource());
       // the text before recognized element
       final String precedingString = leftMostParsed.precedingIn(restPart);
       final Sense precedingText;
       if (precedingString.isEmpty()) {
         precedingText = new Absence();
-      } else {
+      }
+      else {
         precedingText = result.textToken(precedingString);
       }
       restPart = leftMostParsed.followingIn(restPart);
@@ -174,13 +90,96 @@ public interface Sense
                                 .addRight(restPart.toVisual()));
       log = log.addBottom("------------------------------------------------");
       result = result.concatDD(leftMostParsed);
-      log = log.addBottom(result.toVisual().addRight(" | ").addRight(restPart.toVisual()));
+      log = log.addBottom(result.toVisual()
+                                .addRight(" | ")
+                                .addRight(restPart.toVisual()));
       log = log.addBottom("------------------------------------------------");
     }
-    log = log.addBottom(result.toVisual()).addBottom(new CellOf("------ End recognition"));
+    log = log.addBottom(result.toVisual())
+             .addBottom(new CellOf("------ End recognition"));
     final Cell finalLog = log;
-    Logger.getGlobal().info(finalLog::toString);
+    Logger.getGlobal()
+          .info(finalLog::toString);
     return result;
+  }
+
+  /**
+   * Tokens of the language understood by this object. By default, the list of tokens is composed as follows:
+   * <p> - the list of parameters classes of the 'concat' methods of this object, its superclasses
+   * and interfaces is used as the source data.</p>
+   * <p> - this list recursively adds the first parameter classes of their constructors that do
+   * not implement the Token class.
+   * </p>
+   * <p> - only classes that have a constructor with the first parameter implementing the Token
+   * interface are left in this list.</p>
+   * <p> - The following is a list of the classes of these first parameters that implement the
+   * Token interface.</p>
+   * <p> - only classes that have a default constructor are left in this list.</p>
+   * <p> - their instances are added to the list of understood tokens.</p>
+   * @return tokens
+   */
+  default Tokens tokens() {
+    final Collection<Method> allMethods = new CollectionOf<>(this.getClass()
+                                                                 .getMethods());
+    final Collection<Method> concatMethods = new Filtered<>(method -> "concat".equals(method.getName()) && method.getParameterTypes().length == 1,
+                                                            allMethods);
+    Collection<Class> tokenClasses = new LinkedList<>();
+    Collection<Class> parameterClasses = new Mapped<>(method -> method.getParameterTypes()[0],
+                                                      concatMethods);
+    final Collection<Class> usedClasses = new HashSet<>();
+    do {
+      final Collection<Constructor> constructors = new Joined<>(new Mapped<>(clazz1 -> new CollectionOf<>(clazz1.getConstructors()),
+                                                                             parameterClasses));
+      tokenClasses = new Joined<>(tokenClasses,
+                                  new Mapped<>(constructor -> constructor.getParameterTypes()[0],
+                                               new Filtered<>(constructor1 -> constructor1.getParameterTypes().length > 0 && Token.class.isAssignableFrom(constructor1.getParameterTypes()[0]),
+                                                              constructors)));
+      parameterClasses = new Filtered<>(clazz -> !usedClasses.contains(clazz),
+                                        new Mapped<>(constructor -> constructor.getParameterTypes()[0],
+                                                     new Filtered<>(constructor11 -> constructor11.getParameterTypes().length > 0 && !Token.class.isAssignableFrom(constructor11.getParameterTypes()[0]),
+                                                                    constructors)));
+      usedClasses.addAll(parameterClasses);
+    } while (!parameterClasses.isEmpty())
+        ;
+    final Iterable<Iterable<Constructor>> tokenConstructorSets = new Mapped<>(clazz -> new CollectionOf<>(clazz.getConstructors()),
+                                                                              tokenClasses);
+    final Collection<Constructor> tokenConstructors = new Joined<>(tokenConstructorSets);
+    final Collection<Constructor> tokenDefaultConstructors = new Filtered<>(constructor -> constructor.getParameterTypes().length == 0,
+                                                                            tokenConstructors);
+    final Collection<Tokens> tokens = new Mapped<>(constructor -> (Tokens) constructor.newInstance(),
+                                                   tokenDefaultConstructors);
+    return new TokensOf(tokens);
+  }
+
+  /**
+   * Unrecognized text must be wrapped in a special class for further work with it. This method
+   * should return an object of this class - a special "token" of the language that wraps the text.
+   * @param text unrecognized text
+   * @return the wrapped text
+   */
+  default Sense textToken(final String text) {
+    return new Text(text);
+  }
+
+  default Sense concat(final Absence absence) {
+    return this;
+  }
+
+  /**
+   * interaction of senses
+   * @param sense the second object
+   * @return The result of interaction
+   */
+  default Sense concatDD(final Sense sense) {
+    try {
+      return new Concat(this,
+                        sense,
+                        Chain::new).invoke();
+    } catch (final InvocationTargetException e) {
+      throw new RuntimeException(e.getCause());
+    } catch (final IllegalAccessException | MethodAmbiguouslyDefinedException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   /**
@@ -189,8 +188,8 @@ public interface Sense
    * @return recognition result
    */
   default Sense concat(final Failed failed) {
-    return new Excluded(failed.token(), this)
-               .concatDD(new Unrecognized(failed.toSource()));
+    return new Excluded(failed.token(),
+                        this).concatDD(new Unrecognized(failed.toSource()));
   }
 
   /**

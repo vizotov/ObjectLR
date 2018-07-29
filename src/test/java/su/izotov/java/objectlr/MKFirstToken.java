@@ -35,7 +35,7 @@ import su.izotov.java.objectlr.tokens.Tokens;
 /**
  * @author Vladimir Izotov
  */
-public class MKFirstToken
+public final class MKFirstToken
     implements Token, MKLang {
   @Override public Tokens tokens() {
     return MKLang.tokens;

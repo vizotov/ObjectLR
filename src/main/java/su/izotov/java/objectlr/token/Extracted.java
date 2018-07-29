@@ -31,6 +31,7 @@ import su.izotov.java.objectlr.Sense;
  */
 public interface Extracted
     extends Sense {
+
   /**
    * if this text is contained in the parameter, then
    * @param text parameter
@@ -62,22 +63,29 @@ public interface Extracted
    * @param text where to search elements
    * @return left most element
    */
-  default Extracted leftMost(final Extracted parsed, final String text) {
+  default Extracted leftMost(final Extracted parsed,
+                             final String text) {
     final int thisPosition = this.firstPositionIn(text);
     final int tokenPosition = parsed.firstPositionIn(text);
     if (thisPosition == -1 && tokenPosition == -1) {
       return new Absence();
-    } else if (thisPosition == -1) {
+    }
+    else if (thisPosition == -1) {
       return parsed;
-    } else if (tokenPosition == -1) {
+    }
+    else if (tokenPosition == -1) {
       return this;
-    } else if (thisPosition > tokenPosition) {
+    }
+    else if (thisPosition > tokenPosition) {
       return parsed;
-    } else if (tokenPosition > thisPosition) {
+    }
+    else if (tokenPosition > thisPosition) {
       return this;
-    } else if (this.length() > parsed.length()) {
+    }
+    else if (this.length() > parsed.length()) {
       return this;
-    } else {
+    }
+    else {
       return parsed;
     }
   }
@@ -106,9 +114,14 @@ public interface Extracted
    * @return preceding text
    */
   default String precedingThe(final String text) {
-    if (this.toSource().contains(text)) {
-      return this.toSource().substring(0, this.toSource().indexOf(text));
-    } else {
+    if (this.toSource()
+            .contains(text)) {
+      return this.toSource()
+                 .substring(0,
+                            this.toSource()
+                                .indexOf(text));
+    }
+    else {
       return "";
     }
   }
@@ -119,9 +132,13 @@ public interface Extracted
    * @return following text
    */
   default Extracted followingThe(final String text) {
-    if (this.toSource().contains(text)) {
-      return new Unrecognized(this.toSource().substring(this.toSource().indexOf(text) + text.length()));
-    } else {
+    if (this.toSource()
+            .contains(text)) {
+      return new Unrecognized(this.toSource()
+                                  .substring(this.toSource()
+                                                 .indexOf(text) + text.length()));
+    }
+    else {
       return new Absence();
     }
   }
@@ -135,7 +152,8 @@ public interface Extracted
     final String ret = token.afterFirstOccurrenceIn(this.toSource());
     if (ret.isEmpty()) {
       return new Absence();
-    } else {
+    }
+    else {
       return new Unrecognized(ret);
     }
   }
@@ -146,9 +164,11 @@ public interface Extracted
    * @return text
    */
   default Extracted followingThe(final Incomplete incomplete) {
-    if (this.toSource().endsWith(incomplete.toSource())) {
+    if (this.toSource()
+            .endsWith(incomplete.toSource())) {
       return new Absence();
-    } else {
+    }
+    else {
       return this;
     }
   }
@@ -159,9 +179,14 @@ public interface Extracted
    * @return text
    */
   default String precedingThe(final Incomplete incomplete) {
-    if (this.toSource().endsWith(incomplete.toSource())) {
-      return this.toSource().substring(0, this.toSource().length() - incomplete.length());
-    } else {
+    if (this.toSource()
+            .endsWith(incomplete.toSource())) {
+      return this.toSource()
+                 .substring(0,
+                            this.toSource()
+                                .length() - incomplete.length());
+    }
+    else {
       return "";
     }
   }
@@ -174,5 +199,4 @@ public interface Extracted
   default String precedingThe(final Token token) {
     return this.precedingThe(token.toSource());
   }
-
 }

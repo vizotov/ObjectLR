@@ -36,7 +36,7 @@ import org.junit.Test;
 /**
  * @author Vladimir Izotov
  */
-public class CellOfIT {
+public final class CellOfIT {
   @Test public void testToString() {
     CellOf instance = new CellOf(
         "a long line, which will have to be wrapped to a new line again and again until it ends",

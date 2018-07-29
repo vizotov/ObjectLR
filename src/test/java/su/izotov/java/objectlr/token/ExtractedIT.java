@@ -30,12 +30,11 @@ import su.izotov.java.objectlr.MKFirstToken;
 import su.izotov.java.objectlr.MKSecondToken;
 import su.izotov.java.objectlr.MKThirdToken;
 import su.izotov.java.objectlr.Sense;
-import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
  * @author Vladimir Izotov
  */
-public class ExtractedIT {
+public final class ExtractedIT {
   @Test public void testPreceding() {
     Unrecognized unrecognized = new Unrecognized("before second after");
     Token instance = new MKSecondToken();
@@ -170,7 +169,7 @@ public class ExtractedIT {
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result.toSource(), false, null, true));
   }
 
-  public class ExtractedImpl
+  public final class ExtractedImpl
       implements Extracted {
     private final String text;
 

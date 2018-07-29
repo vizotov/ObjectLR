@@ -33,12 +33,20 @@ import su.izotov.java.objectlr.tokens.Tokens;
  * @version $Id$
  * @since 1.0
  */
-public class Chain
+public final class Chain
     implements Buffer {
-  private final Buffer parent;
-  private final Sense  current;
 
-  Chain(final Buffer parent, final Sense current) {
+  private final Buffer parent;
+  private final Sense current;
+
+  Chain(final Sense sense1,
+        final Sense sense2) {
+    this(new One(sense1),
+         sense2);
+  }
+
+  Chain(final Buffer parent,
+        final Sense current) {
     if (current instanceof Buffer) {
       throw new RuntimeException("Can not use buffer inside the buffer!");
     }
@@ -46,33 +54,37 @@ public class Chain
     this.current = current;
   }
 
-  Chain(final Sense sense1, final Sense sense2) {
-    this(new One(sense1), sense2);
-  }
-
-  @Override public final Sense concat(final Sense sense)
-      throws Exception {
+  @Override
+  public final Sense concat(final Sense sense) throws
+                                               Exception {
     final Sense res = this.current.concatDD(sense);
     if (res instanceof Buffer) {
-      return new Chain(this, sense);
-    } else {
+      return new Chain(this,
+                       sense);
+    }
+    else {
       return this.parent.concat(res);
     }
   }
 
-  @Override public final Cell toVisual() {
-    return this.parent.toVisual().addBottom(this.current.toVisual());
+  @Override
+  public final Cell toVisual() {
+    return this.parent.toVisual()
+                      .addBottom(this.current.toVisual());
   }
 
-  @Override public Tokens tokens() {
-    return current.tokens();
+  @Override
+  public final Tokens tokens() {
+    return this.current.tokens();
   }
 
-  @Override public Sense textToken(final String text) {
-    return current.textToken(text);
+  @Override
+  public final Sense textToken(final String text) {
+    return this.current.textToken(text);
   }
 
-  @Override public String toSource() {
-    return parent.toSource()+current.toSource();
+  @Override
+  public final String toSource() {
+    return this.parent.toSource() + this.current.toSource();
   }
 }

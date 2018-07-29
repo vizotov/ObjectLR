@@ -31,12 +31,12 @@ package su.izotov.java.objectlr.print;
  * @since 1.0
  */
 public interface Printable {
+
   /**
    * @return formatted representation
    */
   default Cell toVisual() {
-    return new CellOf(this.getClass().getSimpleName());
+    return new CellOf(this.getClass()
+                          .getSimpleName());
   }
-
-  ;
 }

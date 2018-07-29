@@ -30,7 +30,7 @@ package su.izotov.java.objectlr;
  * @version $Id$
  * @since 1.0
  */
-public class MKSense3
+public final class MKSense3
     implements Sense {
   public MKSense3(MKThirdToken token){
 

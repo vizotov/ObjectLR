@@ -27,9 +27,10 @@ package su.izotov.java.objectlr.print;
  * The cell representation based on string
  * @author Vladimir Izotov
  */
-public class CellOf
+public final class CellOf
     implements Cell {
-  private final int    margin;
+
+  private final int margin;
   private final String text;
 
   /**
@@ -37,25 +38,30 @@ public class CellOf
    * @param text the string
    */
   public CellOf(final String text) {
-    this(text, 0);
+    this(text,
+         0);
   }
 
   /**
    * @param text content of the cell
    * @param margin the margin to wrap lines
    */
-  public CellOf(final String text, final int margin) {
+  public CellOf(final String text,
+                final int margin) {
     this.text = text;
     this.margin = margin;
   }
 
-  @Override public final String toString() {
-    String ret;
+  @Override
+  public final String toString() {
+    final String ret;
     if (this.margin == 0) {
       ret = this.text;
-    } else {
-      StringBuilder builder = new StringBuilder(100);
-      final String[] lines = this.text.split("\n", -1);
+    }
+    else {
+      final StringBuilder builder = new StringBuilder(100);
+      final String[] lines = this.text.split("\n",
+                                             -1);
       for (final String line : lines) {
         String rest = line;
         while (true) {
@@ -63,9 +69,11 @@ public class CellOf
             builder.append("\n");
           }
           if (rest.length() > this.margin) {
-            builder.append(rest.substring(0, this.margin));
+            builder.append(rest.substring(0,
+                                          this.margin));
             rest = rest.substring(this.margin);
-          } else {
+          }
+          else {
             builder.append(rest);
             break;
           }

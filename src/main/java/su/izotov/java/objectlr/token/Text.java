@@ -32,20 +32,24 @@ import su.izotov.java.objectlr.Sense;
  * @version $Id$
  * @since 1.0
  */
-public class Text
+public final class Text
     implements Sense {
+
   private final String text;
 
   public Text(final String text) {
     this.text = text;
   }
 
-  @Override public String toSource() {
-    return text;
+  public final Sense concat(final Text other) {
+    final String value = this.text + other.toSource();
+    return value.isEmpty() ?
+           new Absence() :
+           new Text(value);
   }
 
-  public Sense concat(Text other) {
-    String value = text + other.toSource();
-    return value.isEmpty() ? new Absence() : new Text(value);
+  @Override
+  public final String toSource() {
+    return this.text;
   }
 }

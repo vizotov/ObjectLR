@@ -32,35 +32,42 @@ import su.izotov.java.objectlr.Sense;
  */
 public final class Absence
     implements Extracted {
-  @Override public int firstPositionIn(final String text) {
-    return text.length();
+
+  @Override
+  public String precedingIn(final Extracted text) {
+    return text.toSource();
   }
 
   public Sense concat(final Sense sense) {
     return sense;
   }
 
-  @Override public String toSource() {
-    return "";
+  @Override
+  public Extracted followingIn(final Extracted text) {
+    return new Absence();
   }
 
   public Token concat(final Token token) {
     return token;
   }
 
-  @Override public String precedingIn(final Extracted text) {
-    return text.toSource();
-  }
-
-  @Override public Extracted followingIn(final Extracted text) {
-    return new Absence();
-  }
-
-  @Override public int length() {
+  @Override
+  public int length() {
     return 0;
   }
 
-  @Override public Sense textToken(final String text) {
+  @Override
+  public int firstPositionIn(final String text) {
+    return text.length();
+  }
+
+  @Override
+  public Sense textToken(final String text) {
     return new Unrecognized(text);
+  }
+
+  @Override
+  public String toSource() {
+    return "";
   }
 }
