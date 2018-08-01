@@ -112,6 +112,7 @@ public interface Sense
    * </p>
    * <p> - only classes that have a constructor with the first parameter implementing the Token
    * interface are left in this list.</p>
+   * <p> - if the first parameter of the constructor is of a String, the second parameter is used in the previous steps.</p>
    * <p> - The following is a list of the classes of these first parameters that implement the
    * Token interface.</p>
    * <p> - only classes that have a default constructor are left in this list.</p>
@@ -130,14 +131,20 @@ public interface Sense
     do {
       final Collection<Constructor> constructors = new Joined<>(new Mapped<>(clazz1 -> new CollectionOf<>(clazz1.getConstructors()),
                                                                              parameterClasses));
+      Collection<Class> firstParamCandidates = new Mapped<>(constructor -> constructor.getParameterTypes()[0],
+                                                            new Filtered<>(constructor1 -> constructor1.getParameterTypes().length > 0 && !String.class.isAssignableFrom(constructor1.getParameterTypes()[0]),
+                                                                           constructors));
+      Collection<Class> secondParamCandidates = new Mapped<>(constructor -> constructor.getParameterTypes()[1],
+                                                             new Filtered<>(constructor1 -> constructor1.getParameterTypes().length > 1 && String.class.isAssignableFrom(constructor1.getParameterTypes()[0]),
+                                                                            constructors));
       tokenClasses = new Joined<>(tokenClasses,
-                                  new Mapped<>(constructor -> constructor.getParameterTypes()[0],
-                                               new Filtered<>(constructor1 -> constructor1.getParameterTypes().length > 0 && Token.class.isAssignableFrom(constructor1.getParameterTypes()[0]),
-                                                              constructors)));
+                                  new Filtered<>(clazz -> Token.class.isAssignableFrom(clazz),
+                                                 new Joined<>(firstParamCandidates,
+                                                              secondParamCandidates)));
       parameterClasses = new Filtered<>(clazz -> !usedClasses.contains(clazz),
-                                        new Mapped<>(constructor -> constructor.getParameterTypes()[0],
-                                                     new Filtered<>(constructor11 -> constructor11.getParameterTypes().length > 0 && !Token.class.isAssignableFrom(constructor11.getParameterTypes()[0]),
-                                                                    constructors)));
+                                        new Filtered<>(clazz -> !Token.class.isAssignableFrom(clazz),
+                                                       new Joined<>(firstParamCandidates,
+                                                                    secondParamCandidates)));
       usedClasses.addAll(parameterClasses);
     } while (!parameterClasses.isEmpty())
         ;

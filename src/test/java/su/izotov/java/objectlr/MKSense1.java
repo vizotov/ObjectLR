@@ -32,7 +32,9 @@ package su.izotov.java.objectlr;
  */
 public final class MKSense1
     implements Sense {
-  public MKSense1(MKFirstToken token){
+
+  public MKSense1(String dummy,
+                  MKFirstToken token) {
 
   }
   public MKSense1(MKSense3 token){
