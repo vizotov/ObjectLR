@@ -24,7 +24,7 @@
 package su.izotov.java.objectlr;
 
 import java.util.logging.Logger;
-import su.izotov.java.objectlr.token.Unrecognized;
+import su.izotov.java.objectlr.token.Source;
 
 /**
  * the sentence on the certain master, containing string representation of the recognized object
@@ -54,7 +54,7 @@ public final class Sentence<T extends Sense, R extends Sense> {
   @SuppressWarnings("unchecked")
   public final R toObject() throws
                             RecognitionException {
-    final Sense ret = this.master.concat(new Unrecognized(this.text));
+    final Sense ret = this.master.concat(new Source(this.text));
     try {
       return (R) ret;
     } catch (final RuntimeException ignored) {

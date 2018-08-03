@@ -27,7 +27,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import su.izotov.java.objectlr.token.Incomplete;
-import su.izotov.java.objectlr.token.Unrecognized;
+import su.izotov.java.objectlr.token.Source;
 
 /**
  * @author Vladimir Izotov
@@ -40,7 +40,9 @@ public final class LangIT {
     String expResult = "MKText 'string before token '\n"
                        + "MKSecondToken 'second'\n"
                        + "MKText ' string after token'";
-    String result = instance.concat(new Unrecognized(text)).toVisual().toString();
+    String result = instance.concat(new Source(text))
+                            .toVisual()
+                            .toString();
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
@@ -50,7 +52,7 @@ public final class LangIT {
     Sense expResult = new Chain(
         new MKSecondToken(),//
         new MKText(" string after token"));
-    Sense result = instance.concat(new Unrecognized(text));
+    Sense result = instance.concat(new Source(text));
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
@@ -60,7 +62,7 @@ public final class LangIT {
     Sense expResult = new Chain(
         new MKText("string before token ")//
         , new MKSecondToken());
-    Sense result = instance.concat(new Unrecognized(text));
+    Sense result = instance.concat(new Source(text));
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
@@ -68,7 +70,7 @@ public final class LangIT {
     String text = "second";
     MKLang instance = new MKLangImpl();
     Sense expResult = new MKSecondToken();
-    Sense result = instance.concat(new Unrecognized(text));
+    Sense result = instance.concat(new Source(text));
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
@@ -76,7 +78,7 @@ public final class LangIT {
     String text = "it is not token";
     Sense instance = new MKLangImpl();
     Sense expResult = new MKText(text);
-    Sense result = instance.concat(new Unrecognized(text));
+    Sense result = instance.concat(new Source(text));
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
@@ -85,7 +87,7 @@ public final class LangIT {
     MKLang instance = new MKLangImpl();
     Sense expResult = new Chain(new MKLangImpl(),
                                 new Incomplete(new MKThirdToken(), 3));
-    Sense result = instance.concat(new Unrecognized(text));
+    Sense result = instance.concat(new Source(text));
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
@@ -93,7 +95,9 @@ public final class LangIT {
     String text = "firstsecond textik";
     MKLang instance = new MKLangImpl();
     String expResult = "MKFirstToken 'first'\n" + "MKSecondToken 'second'\n" + "MKText ' textik'";
-    String result = instance.concat(new Unrecognized(text)).toVisual().toString();
+    String result = instance.concat(new Source(text))
+                            .toVisual()
+                            .toString();
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
@@ -109,7 +113,9 @@ public final class LangIT {
                        + "MKFirstToken 'first'\n"
                        + "MKText ' ttt '\n"
                        + "Incomplete thi";
-    String result = instance.concat(new Unrecognized(text)).toVisual().toString();
+    String result = instance.concat(new Source(text))
+                            .toVisual()
+                            .toString();
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
@@ -117,7 +123,7 @@ public final class LangIT {
     String text = "";
     MKLang instance = new MKLangImpl();
     Sense expResult = new MKLangImpl();
-    Sense result = instance.concat(new Unrecognized(text));
+    Sense result = instance.concat(new Source(text));
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 }

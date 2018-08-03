@@ -55,14 +55,14 @@ public final class Failed
   }
 
   @Override
-  public final Sense textToken(final String text) {
-    return new Unrecognized(text);
+  public final Failed concat(final Source text) {
+    return new Failed(this.token,
+                      this.followingSource + text.toSource());
   }
 
   @Override
-  public final Failed concat(final Unrecognized text) {
-    return new Failed(this.token,
-                      this.followingSource + text.toSource());
+  public final Sense textToken(final String text) {
+    return new Source(text);
   }
 
   @Override

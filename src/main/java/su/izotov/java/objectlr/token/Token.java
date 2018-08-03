@@ -141,11 +141,11 @@ public interface Token
 
   /**
    * by default recognizing Text is a failed recognition
-   * @param text following text
+   * @param unrecognized following text
    * @return failed
    */
-  default Sense concat(final Text text) {
+  default Sense concat(final Unrecognized unrecognized) {
     return new Failed(this,
-                      text.toSource());
+                      unrecognized.toSource());
   }
 }

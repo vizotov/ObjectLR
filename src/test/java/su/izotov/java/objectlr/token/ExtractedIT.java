@@ -36,42 +36,42 @@ import su.izotov.java.objectlr.Sense;
  */
 public final class ExtractedIT {
   @Test public void testPreceding() {
-    Unrecognized unrecognized = new Unrecognized("before second after");
+    Source source = new Source("before second after");
     Token instance = new MKSecondToken();
     String expResult = "before ";
-    String result = instance.precedingIn(unrecognized);
+    String result = instance.precedingIn(source);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
   @Test public void testPreceding2() {
-    Unrecognized unrecognized = new Unrecognized("before second after");
+    Source source = new Source("before second after");
     Token instance = new MKFirstToken();
     String expResult = "";
-    String result = instance.precedingIn(unrecognized);
+    String result = instance.precedingIn(source);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
   @Test public void testPreceding3() {
-    Unrecognized unrecognized = new Unrecognized("before seco");
+    Source source = new Source("before seco");
     Token instance = new MKSecondToken();
     String expResult = "";
-    String result = instance.precedingIn(unrecognized);
+    String result = instance.precedingIn(source);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
   @Test public void testFollowingText() {
-    Unrecognized unrecognized = new Unrecognized("before second after");
+    Source source = new Source("before second after");
     Token instance = new MKSecondToken();
-    Sense expResult = new Unrecognized(" after");
-    Sense result = instance.followingIn(unrecognized);
+    Sense expResult = new Source(" after");
+    Sense result = instance.followingIn(source);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
   @Test public void testFollowingText2() {
-    Unrecognized unrecognized = new Unrecognized("before second after");
+    Source source = new Source("before second after");
     Token instance = new MKFirstToken();
-    Sense expResult = unrecognized;
-    Sense result = instance.followingIn(unrecognized);
+    Sense expResult = source;
+    Sense result = instance.followingIn(source);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 

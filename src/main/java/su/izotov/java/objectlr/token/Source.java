@@ -24,32 +24,59 @@
 package su.izotov.java.objectlr.token;
 
 import su.izotov.java.objectlr.Sense;
+import su.izotov.java.objectlr.print.Cell;
 
 /**
- * the text is not containing tokens
- * Created with IntelliJ IDEA.
+ * Source text for the recognition
  * @author Vladimir Izotov
- * @version $Id$
- * @since 1.0
  */
-public final class Text
-    implements Sense {
+public final class Source
+    implements Extracted {
 
   private final String text;
 
-  public Text(final String text) {
+  public Source(final String text) {
     this.text = text;
   }
 
-  public final Sense concat(final Text other) {
-    final String value = this.text + other.toSource();
-    return value.isEmpty() ?
-           new Absence() :
-           new Text(value);
+  @Override
+  public Cell toVisual() {
+    return Extracted.super.toVisual()
+                          .addRight(this.text);
   }
 
   @Override
-  public final String toSource() {
+  public String precedingIn(final Extracted text) {
+    return text.precedingThe(this.text);
+  }
+
+  @Override
+  public Extracted followingIn(final Extracted text) {
+    return text.followingThe(this.text);
+  }
+
+  @Override
+  public int length() {
+    return this.text.length();
+  }
+
+  @Override
+  public int firstPositionIn(final String text) {
+    return text.indexOf(this.text);
+  }
+
+  @Override
+  public Source concat(final Source source) {
+    return new Source(this.text + source.toSource());
+  }
+
+  @Override
+  public Sense textToken(final String text) {
+    return new Source(this.text + text);
+  }
+
+  @Override
+  public String toSource() {
     return this.text;
   }
 }

@@ -41,7 +41,7 @@ import su.izotov.java.objectlr.print.Printable;
 import su.izotov.java.objectlr.token.Absence;
 import su.izotov.java.objectlr.token.Extracted;
 import su.izotov.java.objectlr.token.Failed;
-import su.izotov.java.objectlr.token.Text;
+import su.izotov.java.objectlr.token.Source;
 import su.izotov.java.objectlr.token.Token;
 import su.izotov.java.objectlr.token.Unrecognized;
 import su.izotov.java.objectlr.tokens.Tokens;
@@ -54,10 +54,10 @@ import su.izotov.java.objectlr.tokens.TokensOf;
 public interface Sense
     extends Printable {
 
-  default Sense concat(final Unrecognized unrecognized) {
-    Extracted restPart = unrecognized;
+  default Sense concat(final Source source) {
+    Extracted restPart = source;
     Cell log = new CellOf("------ Start recognition");
-    log = log.addBottom(unrecognized.toVisual());
+    log = log.addBottom(source.toVisual());
     log = log.addBottom("------------------------------------------------");
     Sense result = this;
     while (restPart.length() != 0) {
@@ -165,7 +165,7 @@ public interface Sense
    * @return the wrapped text
    */
   default Sense textToken(final String text) {
-    return new Text(text);
+    return new Unrecognized(text);
   }
 
   default Sense concat(final Absence absence) {
@@ -196,7 +196,7 @@ public interface Sense
    */
   default Sense concat(final Failed failed) {
     return new Excluded(failed.token(),
-                        this).concatDD(new Unrecognized(failed.toSource()));
+                        this).concatDD(new Source(failed.toSource()));
   }
 
   /**

@@ -134,8 +134,8 @@ public interface Extracted
   default Extracted followingThe(final String text) {
     if (this.toSource()
             .contains(text)) {
-      return new Unrecognized(this.toSource()
-                                  .substring(this.toSource()
+      return new Source(this.toSource()
+                            .substring(this.toSource()
                                                  .indexOf(text) + text.length()));
     }
     else {
@@ -154,7 +154,7 @@ public interface Extracted
       return new Absence();
     }
     else {
-      return new Unrecognized(ret);
+      return new Source(ret);
     }
   }
 

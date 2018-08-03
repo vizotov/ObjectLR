@@ -23,8 +23,8 @@
  */
 package su.izotov.java.objectlr;
 
-import su.izotov.java.objectlr.token.Text;
 import su.izotov.java.objectlr.token.Token;
+import su.izotov.java.objectlr.token.Unrecognized;
 
 /**
  * <p>Created with IntelliJ IDEA.</p>
@@ -34,7 +34,8 @@ import su.izotov.java.objectlr.token.Token;
  */
 public final class MKLangImpl
     implements MKLang {
-  public Text concat(Text sense) {
+
+  public Unrecognized concat(Unrecognized sense) {
     return sense;
   }
 

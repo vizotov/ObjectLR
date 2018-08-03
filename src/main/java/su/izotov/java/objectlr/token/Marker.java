@@ -37,6 +37,6 @@ public interface Marker
 
   @Override
   default Sense textToken(final String text) {
-    return new Unrecognized(text);
+    return new Source(text);
   }
 }

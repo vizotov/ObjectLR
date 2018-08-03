@@ -63,7 +63,7 @@ public final class Absence
 
   @Override
   public Sense textToken(final String text) {
-    return new Unrecognized(text);
+    return new Source(text);
   }
 
   @Override

@@ -27,7 +27,7 @@ import su.izotov.java.objectlr.token.Token;
 import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
- * Do not use the specified token in the subsequent recognition of Unrecognized text. The
+ * Do not use the specified token in the subsequent recognition of Source text. The
  * recognition occurs as if the following text was recognized by the given sense, but without the
  * use of this token.
  * Created with IntelliJ IDEA.
