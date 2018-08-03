@@ -137,14 +137,14 @@ public interface Sense
       Collection<Class> secondParamCandidates = new Mapped<>(constructor -> constructor.getParameterTypes()[1],
                                                              new Filtered<>(constructor1 -> constructor1.getParameterTypes().length > 1 && String.class.isAssignableFrom(constructor1.getParameterTypes()[0]),
                                                                             constructors));
-      tokenClasses = new Joined<>(tokenClasses,
+      final Joined<Class> candidates = new Joined<Class>(firstParamCandidates,
+                                                         secondParamCandidates);
+      tokenClasses = new Joined<Class>(tokenClasses,
                                   new Filtered<>(clazz -> Token.class.isAssignableFrom(clazz),
-                                                 new Joined<>(firstParamCandidates,
-                                                              secondParamCandidates)));
+                                                 candidates));
       parameterClasses = new Filtered<>(clazz -> !usedClasses.contains(clazz),
                                         new Filtered<>(clazz -> !Token.class.isAssignableFrom(clazz),
-                                                       new Joined<>(firstParamCandidates,
-                                                                    secondParamCandidates)));
+                                                       candidates));
       usedClasses.addAll(parameterClasses);
     } while (!parameterClasses.isEmpty())
         ;

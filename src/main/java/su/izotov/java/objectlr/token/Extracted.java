@@ -57,7 +57,7 @@ public interface Extracted
 
   /**
    * leftmost element in the string, either this, or parameter. if both
-   * positions are equals, returns shorter one. if neither element is exist,
+   * positions are equals, returns longer one. if neither element is exist,
    * then returns Empty token
    * @param parsed parameter
    * @param text where to search elements
@@ -66,20 +66,20 @@ public interface Extracted
   default Extracted leftMost(final Extracted parsed,
                              final String text) {
     final int thisPosition = this.firstPositionIn(text);
-    final int tokenPosition = parsed.firstPositionIn(text);
-    if (thisPosition == -1 && tokenPosition == -1) {
+    final int parsedPosition = parsed.firstPositionIn(text);
+    if (thisPosition == -1 && parsedPosition == -1) {
       return new Absence();
     }
     else if (thisPosition == -1) {
       return parsed;
     }
-    else if (tokenPosition == -1) {
+    else if (parsedPosition == -1) {
       return this;
     }
-    else if (thisPosition > tokenPosition) {
+    else if (thisPosition > parsedPosition) {
       return parsed;
     }
-    else if (tokenPosition > thisPosition) {
+    else if (parsedPosition > thisPosition) {
       return this;
     }
     else if (this.length() > parsed.length()) {
