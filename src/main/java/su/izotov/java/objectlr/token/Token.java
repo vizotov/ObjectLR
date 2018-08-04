@@ -42,8 +42,8 @@ public interface Token
    * @return token
    */
   @Override
-  default Extracted leftMostParsed(final String text) {
-    final Extracted ret;
+  default Token leftMostParsed(final String text) {
+    final Token ret;
     if (text.contains(this.toSource())) {
       ret = this;
     }
@@ -59,7 +59,7 @@ public interface Token
    * @param text the string
    * @return the ParsedElement
    */
-  default Extracted incompleteTokenAtEndOf(final String text) {
+  default Token incompleteTokenAtEndOf(final String text) {
     for (int i = this.toSource()
                      .length() - 1;
          i > 0;
@@ -147,5 +147,40 @@ public interface Token
   default Sense concat(final Unrecognized unrecognized) {
     return new Failed(this,
                       unrecognized.toSource());
+  }
+
+  /**
+   * leftmost element in the string, either this, or parameter. if both
+   * positions are equals, returns longer one. if neither element is exist,
+   * then returns Empty token
+   * @param parsed parameter
+   * @param text where to search elements
+   * @return left most element
+   */
+  default Token leftMost(final Token parsed,
+                         final String text) {
+    final int thisPosition = this.firstPositionIn(text);
+    final int parsedPosition = parsed.firstPositionIn(text);
+    if (thisPosition == -1 && parsedPosition == -1) {
+      return new Absence();
+    }
+    else if (thisPosition == -1) {
+      return parsed;
+    }
+    else if (parsedPosition == -1) {
+      return this;
+    }
+    else if (thisPosition > parsedPosition) {
+      return parsed;
+    }
+    else if (parsedPosition > thisPosition) {
+      return this;
+    }
+    else if (this.length() > parsed.length()) {
+      return this;
+    }
+    else {
+      return parsed;
+    }
   }
 }

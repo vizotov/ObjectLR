@@ -24,14 +24,13 @@
 package su.izotov.java.objectlr.token;
 
 import su.izotov.java.objectlr.Sense;
-import su.izotov.java.objectlr.print.Cell;
 
 /**
  * text, which corresponds to beginning of a token
  * @author Vladimir Izotov
  */
 public final class Incomplete
-    implements Extracted {
+    implements Token {
 
   private final Token token;
   private final int length;
@@ -73,12 +72,6 @@ public final class Incomplete
     else {
       return -1;
     }
-  }
-
-  @Override
-  public Cell toVisual() {
-    return Extracted.super.toVisual()
-                          .addRight(this.toSource());
   }
 
   @Override

@@ -54,12 +54,12 @@ public final class TokensOf
   }
 
   @Override
-  public final Extracted leftMostParsed(final String text) {
+  public final Token leftMostParsed(final String text) {
     if (this.tokens.isEmpty()) {
       return new Absence();
     }
     final Iterator<Tokens> iterator = this.tokens.iterator();
-    Extracted ret = iterator.hasNext() ?
+    Token ret = iterator.hasNext() ?
                     iterator.next()
                             .leftMostParsed(text) :
                     new Absence();

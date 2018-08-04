@@ -24,7 +24,6 @@
 package su.izotov.java.objectlr.tokens;
 
 import su.izotov.java.objectlr.token.Absence;
-import su.izotov.java.objectlr.token.Extracted;
 import su.izotov.java.objectlr.token.Token;
 
 /**
@@ -38,7 +37,7 @@ public final class Empty
     implements Tokens {
 
   @Override
-  public final Extracted leftMostParsed(final String text) {
+  public final Token leftMostParsed(final String text) {
     return new Absence();
   }
 

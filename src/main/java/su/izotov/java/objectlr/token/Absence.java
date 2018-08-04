@@ -31,7 +31,7 @@ import su.izotov.java.objectlr.Sense;
  * @author Vladimir Izotov
  */
 public final class Absence
-    implements Extracted {
+    implements Token {
 
   @Override
   public String precedingIn(final Extracted text) {

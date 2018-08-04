@@ -85,8 +85,7 @@ public final class LangIT {
   @Test public void testConcat6() {
     String text = "thi";
     MKLang instance = new MKLangImpl();
-    Sense expResult = new Chain(new MKLangImpl(),
-                                new Incomplete(new MKThirdToken(), 3));
+    Sense expResult = new Incomplete(new MKThirdToken(), 3);
     Sense result = instance.concat(new Source(text));
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
@@ -112,7 +111,7 @@ public final class LangIT {
                        + "MKText ' '\n"
                        + "MKFirstToken 'first'\n"
                        + "MKText ' ttt '\n"
-                       + "Incomplete thi";
+                       + "Incomplete 'thi'";
     String result = instance.concat(new Source(text))
                             .toVisual()
                             .toString();

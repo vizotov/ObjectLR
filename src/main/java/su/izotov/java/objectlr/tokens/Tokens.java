@@ -23,7 +23,6 @@
  */
 package su.izotov.java.objectlr.tokens;
 
-import su.izotov.java.objectlr.token.Extracted;
 import su.izotov.java.objectlr.token.Token;
 
 /**
@@ -37,7 +36,7 @@ public interface Tokens {
    * @param text the string
    * @return token
    */
-  Extracted leftMostParsed(String text);
+  Token leftMostParsed(String text);
 
   /**
    * Creates a new token set from an existing token set that does not intersect with a given
