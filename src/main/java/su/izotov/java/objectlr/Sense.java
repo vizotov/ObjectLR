@@ -38,12 +38,11 @@ import su.izotov.java.ddispatch.methods.MethodAmbiguouslyDefinedException;
 import su.izotov.java.objectlr.print.Cell;
 import su.izotov.java.objectlr.print.CellOf;
 import su.izotov.java.objectlr.print.Printable;
+import su.izotov.java.objectlr.text.Source;
+import su.izotov.java.objectlr.text.Unrecognized;
 import su.izotov.java.objectlr.token.Absence;
-import su.izotov.java.objectlr.token.Extracted;
 import su.izotov.java.objectlr.token.Failed;
-import su.izotov.java.objectlr.token.Source;
 import su.izotov.java.objectlr.token.Token;
-import su.izotov.java.objectlr.token.Unrecognized;
 import su.izotov.java.objectlr.tokens.Tokens;
 import su.izotov.java.objectlr.tokens.TokensOf;
 
@@ -55,15 +54,15 @@ public interface Sense
     extends Printable {
 
   default Sense concat(final Source source) {
-    Extracted restPart = source;
+    Source restPart = source;
     Cell log = new CellOf("------ Start recognition");
     log = log.addBottom(source.toVisual());
     log = log.addBottom("------------------------------------------------");
     Sense result = this;
     while (restPart.length() != 0) {
       // recognized element
-      final Extracted leftMostParsed = result.tokens()
-                                             .leftMostParsed(restPart.toSource());
+      final Token leftMostParsed = result.tokens()
+                                         .leftMostParsed(restPart.toSource());
       // the text before recognized element
       final String precedingString = leftMostParsed.precedingIn(restPart);
       final Sense precedingText;

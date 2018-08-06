@@ -29,6 +29,7 @@ import org.junit.Test;
 import su.izotov.java.objectlr.MKFirstToken;
 import su.izotov.java.objectlr.MKSecondToken;
 import su.izotov.java.objectlr.Sense;
+import su.izotov.java.objectlr.text.Source;
 
 /**
  * @author Vladimir Izotov

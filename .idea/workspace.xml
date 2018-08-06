@@ -2,15 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9bc43a3-4223-4794-bfcd-86f57b615ff6" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Sense.java" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Sense.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Sentence.java" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Sentence.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Text.java" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Text.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Absence.java" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Absence.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Extracted.java" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Extracted.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Extracted.java" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Source.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Failed.java" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Failed.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Incomplete.java" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Incomplete.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Marker.java" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Marker.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Source.java" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Token.java" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Token.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/tokens/Empty.java" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/tokens/Empty.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/tokens/Tokens.java" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/tokens/Tokens.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Unrecognized.java" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Unrecognized.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/tokens/TokensOf.java" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/tokens/TokensOf.java" />
       <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/LangIT.java" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/LangIT.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKLangImpl.java" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKLangImpl.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/token/ExtractedIT.java" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/token/SourceIT.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/token/IncompleteIT.java" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/token/IncompleteIT.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/token/TokenIT.java" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/token/TokenIT.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/tokens/TokensOfIT.java" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/tokens/TokensOfIT.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/README.md/" />
@@ -40,10 +50,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="Text.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Text.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Text.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="33" column="17" lean-forward="false" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+            <state relative-caret-position="221">
+              <caret line="35" column="17" lean-forward="false" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -72,8 +82,18 @@
       <file leaf-file-name="TokensOf.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/tokens/TokensOf.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="66" column="21" lean-forward="false" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
+            <state relative-caret-position="-238">
+              <caret line="41" column="19" lean-forward="false" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Buffer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Buffer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="32" column="17" lean-forward="false" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -82,8 +102,8 @@
       <file leaf-file-name="Token.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Token.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="777">
-              <caret line="184" column="3" lean-forward="false" selection-start-line="184" selection-start-column="3" selection-end-line="184" selection-end-column="3" />
+            <state relative-caret-position="198">
+              <caret line="159" column="16" lean-forward="false" selection-start-line="159" selection-start-column="16" selection-end-line="159" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -93,7 +113,7 @@
         <entry file="file://$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/LangIT.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="112" column="34" lean-forward="true" selection-start-line="112" selection-start-column="34" selection-end-line="112" selection-end-column="34" />
+              <caret line="112" column="34" lean-forward="false" selection-start-line="112" selection-start-column="34" selection-end-line="112" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -102,8 +122,8 @@
       <file leaf-file-name="Incomplete.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Incomplete.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="74" column="3" lean-forward="false" selection-start-line="74" selection-start-column="3" selection-end-line="74" selection-end-column="3" />
+            <state relative-caret-position="658">
+              <caret line="75" column="3" lean-forward="false" selection-start-line="75" selection-start-column="3" selection-end-line="75" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -112,38 +132,128 @@
       <file leaf-file-name="Absence.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Absence.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="33" column="20" lean-forward="false" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
+            <state relative-caret-position="374">
+              <caret line="62" column="3" lean-forward="false" selection-start-line="62" selection-start-column="3" selection-end-line="62" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Extracted.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Extracted.java">
+      <file leaf-file-name="Failed.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Failed.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="32" column="14" lean-forward="true" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
+            <state relative-caret-position="403">
+              <caret line="60" column="54" lean-forward="false" selection-start-line="60" selection-start-column="54" selection-end-line="60" selection-end-column="54" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Source.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Source.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Source.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="32" column="19" lean-forward="false" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
+            <state relative-caret-position="198">
+              <caret line="38" column="23" lean-forward="false" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Sense.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Unrecognized.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Unrecognized.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="35" column="19" lean-forward="false" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TokensOfIT.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/tokens/TokensOfIT.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="52" column="40" lean-forward="false" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SourceIT.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/token/SourceIT.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="37" column="25" lean-forward="false" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Chain.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Chain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="78" column="3" lean-forward="false" selection-start-line="78" selection-start-column="3" selection-end-line="78" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Concat.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Concat.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="35" column="6" lean-forward="false" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Marker.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Marker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Excluded.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Excluded.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="47" column="13" lean-forward="false" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="One.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/One.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="69" column="21" lean-forward="false" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Sense.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Sense.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="54" column="17" lean-forward="true" selection-start-line="54" selection-start-column="17" selection-end-line="54" selection-end-column="17" />
+            <state relative-caret-position="340">
+              <caret line="196" column="15" lean-forward="false" selection-start-line="196" selection-start-column="15" selection-end-line="196" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Sentence.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Sentence.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="37" column="19" lean-forward="false" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -153,13 +263,25 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/tokens/Tokens.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="38" column="14" lean-forward="false" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
+              <caret line="38" column="8" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>longerThan</find>
+      <find>lengthLessThan</find>
+      <find>Extracted</find>
+      <find>ExtractedImpl</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>Token</replace>
+      <replace>Source</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -540,12 +662,22 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/tokens/Tokens.java" />
-        <option value="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Absence.java" />
-        <option value="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/tokens/TokensOf.java" />
+        <option value="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/LangIT.java" />
         <option value="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Extracted.java" />
+        <option value="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/tokens/TokensOf.java" />
+        <option value="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Sense.java" />
+        <option value="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Source.java" />
+        <option value="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/tokens/TokensOfIT.java" />
+        <option value="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/token/ExtractedIT.java" />
+        <option value="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/token/SourceIT.java" />
+        <option value="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Unrecognized.java" />
+        <option value="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Text.java" />
+        <option value="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Source.java" />
+        <option value="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Absence.java" />
+        <option value="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Failed.java" />
         <option value="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Token.java" />
         <option value="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Incomplete.java" />
-        <option value="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/LangIT.java" />
+        <option value="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Marker.java" />
       </list>
     </option>
   </component>
@@ -610,15 +742,6 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="objectlr" type="462c0819:PsiDirectoryNode" />
-              <item name="print" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ObjectLR" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ObjectLR" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="objectlr" type="462c0819:PsiDirectoryNode" />
               <item name="token" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -650,6 +773,24 @@
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="objectlr" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ObjectLR" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ObjectLR" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="objectlr" type="462c0819:PsiDirectoryNode" />
+              <item name="token" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ObjectLR" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ObjectLR" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="objectlr" type="462c0819:PsiDirectoryNode" />
+              <item name="tokens" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -718,7 +859,7 @@
     <configuration name="LangIT.testConcat6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="su.izotov.java.objectlr.*" />
+          <option name="PATTERN" value="su.izotov.java.objectlr.text.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -743,7 +884,7 @@
     <configuration name="LangIT.testConcat8" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="su.izotov.java.objectlr.*" />
+          <option name="PATTERN" value="su.izotov.java.objectlr.text.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -854,25 +995,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="LangIT_testConcat6 - 2018.08.04 at 18h 19m 49s.xml">
-      <configuration name="LangIT.testConcat6" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="LangIT_testConcat8 - 2018.08.04 at 18h 21m 29s.xml">
-      <configuration name="LangIT.testConcat8" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Test - 2018.08.04 at 17h 59m 34s.xml">
+    <history-entry file="Test - 2018.08.05 at 14h 31m 34s.xml">
       <configuration name="Test" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="Test - 2018.08.04 at 18h 10m 08s.xml">
+    <history-entry file="Test - 2018.08.05 at 14h 32m 22s.xml">
       <configuration name="Test" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="Test - 2018.08.04 at 18h 20m 06s.xml">
+    <history-entry file="Test - 2018.08.05 at 14h 32m 47s.xml">
       <configuration name="Test" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="Test - 2018.08.04 at 18h 21m 13s.xml">
+    <history-entry file="Test - 2018.08.05 at 14h 33m 25s.xml">
       <configuration name="Test" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="Test - 2018.08.04 at 18h 21m 45s.xml">
+    <history-entry file="Test - 2018.08.06 at 17h 21m 45s.xml">
+      <configuration name="Test" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test - 2018.08.06 at 17h 25m 05s.xml">
+      <configuration name="Test" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test - 2018.08.06 at 17h 27m 34s.xml">
+      <configuration name="Test" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test - 2018.08.06 at 17h 32m 12s.xml">
+      <configuration name="Test" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test - 2018.08.06 at 17h 32m 38s.xml">
+      <configuration name="Test" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test - 2018.08.06 at 17h 53m 22s.xml">
       <configuration name="Test" configurationId="GradleRunConfiguration" />
     </history-entry>
   </component>
@@ -887,12 +1037,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24972437" sideWeight="0.49380806" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24972437" sideWeight="0.49380806" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -926,42 +1076,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Text.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="33" column="17" lean-forward="false" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/RecognitionException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="32" column="19" lean-forward="false" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Source.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="32" column="19" lean-forward="false" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/tokens/Tokens.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="38" column="14" lean-forward="false" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Absence.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="33" column="20" lean-forward="false" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -982,18 +1100,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Token.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/print/Printable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="777">
-          <caret line="184" column="3" lean-forward="false" selection-start-line="184" selection-start-column="3" selection-end-line="184" selection-end-column="3" />
+        <state relative-caret-position="170">
+          <caret line="32" column="17" lean-forward="false" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/LangIT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="112" column="34" lean-forward="false" selection-start-line="112" selection-start-column="34" selection-end-line="112" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Source.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="44" column="3" lean-forward="false" selection-start-line="44" selection-start-column="3" selection-end-line="44" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Absence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="34" column="17" lean-forward="false" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Text.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="40" column="16" lean-forward="false" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Incomplete.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="53" column="14" lean-forward="false" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/tokens/Tokens.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="38" column="8" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Sense.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="66" column="55" lean-forward="false" selection-start-line="66" selection-start-column="55" selection-end-line="66" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Extracted.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="32" column="14" lean-forward="true" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
+        <state relative-caret-position="425">
+          <caret line="150" column="15" lean-forward="false" selection-start-line="150" selection-start-column="15" selection-end-line="150" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Token.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="200" column="14" lean-forward="false" selection-start-line="200" selection-start-column="14" selection-end-line="200" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -1006,26 +1188,186 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Incomplete.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/LangIT.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="74" column="3" lean-forward="false" selection-start-line="74" selection-start-column="3" selection-end-line="74" selection-end-column="3" />
+        <state relative-caret-position="221">
+          <caret line="112" column="34" lean-forward="false" selection-start-line="112" selection-start-column="34" selection-end-line="112" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/LangIT.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Extracted.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="34" column="1" lean-forward="false" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/tokens/TokensOfIT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="52" column="40" lean-forward="false" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/token/SourceIT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="37" column="25" lean-forward="false" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Source.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="38" column="23" lean-forward="false" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Text.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="112" column="34" lean-forward="true" selection-start-line="112" selection-start-column="34" selection-end-line="112" selection-end-column="34" />
+          <caret line="35" column="17" lean-forward="false" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Unrecognized.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="35" column="19" lean-forward="false" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Absence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="62" column="3" lean-forward="false" selection-start-line="62" selection-start-column="3" selection-end-line="62" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Incomplete.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="658">
+          <caret line="75" column="3" lean-forward="false" selection-start-line="75" selection-start-column="3" selection-end-line="75" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Marker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Token.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="159" column="16" lean-forward="false" selection-start-line="159" selection-start-column="16" selection-end-line="159" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Failed.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="60" column="54" lean-forward="false" selection-start-line="60" selection-start-column="54" selection-end-line="60" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/tokens/Empty.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="40" column="11" lean-forward="false" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/tokens/Tokens.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="38" column="8" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/tokens/TokensOf.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-238">
+          <caret line="41" column="19" lean-forward="false" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Buffer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="32" column="17" lean-forward="false" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Chain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="78" column="3" lean-forward="false" selection-start-line="78" selection-start-column="3" selection-end-line="78" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Concat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="35" column="6" lean-forward="false" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Excluded.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="47" column="13" lean-forward="false" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/One.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="69" column="21" lean-forward="false" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/RecognitionException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="32" column="19" lean-forward="false" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Sense.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="54" column="17" lean-forward="true" selection-start-line="54" selection-start-column="17" selection-end-line="54" selection-end-column="17" />
+        <state relative-caret-position="340">
+          <caret line="196" column="15" lean-forward="false" selection-start-line="196" selection-start-column="15" selection-end-line="196" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Sentence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="37" column="19" lean-forward="false" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
           <folding />
         </state>
       </provider>

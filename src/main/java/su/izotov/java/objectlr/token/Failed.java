@@ -26,6 +26,7 @@ package su.izotov.java.objectlr.token;
 import su.izotov.java.objectlr.Sense;
 import su.izotov.java.objectlr.print.Cell;
 import su.izotov.java.objectlr.print.CellOf;
+import su.izotov.java.objectlr.text.Source;
 
 /**
  * If a token recognizes the following sequence of tokens as unsuitable for creating the desired
@@ -42,14 +43,14 @@ public final class Failed
     implements Sense {
 
   private final Token token;
-  private final String followingSource;
+  private final Source followingSource;
 
   /**
    * @param token the token with failed recognition
    * @param followingSource text to re-recognize
    */
   public Failed(final Token token,
-                final String followingSource) {
+                final Source followingSource) {
     this.token = token;
     this.followingSource = followingSource;
   }
@@ -57,7 +58,7 @@ public final class Failed
   @Override
   public final Failed concat(final Source text) {
     return new Failed(this.token,
-                      this.followingSource + text.toSource());
+                      this.followingSource.concat(text));
   }
 
   @Override

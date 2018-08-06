@@ -30,11 +30,12 @@ import su.izotov.java.objectlr.MKFirstToken;
 import su.izotov.java.objectlr.MKSecondToken;
 import su.izotov.java.objectlr.MKThirdToken;
 import su.izotov.java.objectlr.Sense;
+import su.izotov.java.objectlr.text.Source;
 
 /**
  * @author Vladimir Izotov
  */
-public final class ExtractedIT {
+public final class SourceIT {
   @Test public void testPreceding() {
     Source source = new Source("before second after");
     Token instance = new MKSecondToken();
@@ -79,8 +80,9 @@ public final class ExtractedIT {
     Token token = new MKFirstToken();
     String text = " no tokens exists";
     Token instance = new MKSecondToken();
-    Extracted expResult = new Absence();
-    Extracted result = instance.leftMost(token, text);
+    Token expResult = new Absence();
+    Token result = instance.leftMost(token,
+                                     text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
@@ -89,7 +91,8 @@ public final class ExtractedIT {
     String text = " exists only second";
     Token instance = new MKSecondToken();
     Token expResult = new MKSecondToken();
-    Extracted result = instance.leftMost(token, text);
+    Token result = instance.leftMost(token,
+                                     text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
@@ -98,7 +101,8 @@ public final class ExtractedIT {
     String text = " exists only first";
     Token instance = new MKSecondToken();
     Token expResult = new MKFirstToken();
-    Extracted result = instance.leftMost(token, text);
+    Token result = instance.leftMost(token,
+                                     text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
@@ -107,7 +111,8 @@ public final class ExtractedIT {
     String text = " exists only first and second";
     Token instance = new MKSecondToken();
     Token expResult = new MKFirstToken();
-    Extracted result = instance.leftMost(token, text);
+    Token result = instance.leftMost(token,
+                                     text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
@@ -116,7 +121,8 @@ public final class ExtractedIT {
     String text = " exists only second and first";
     Token instance = new MKSecondToken();
     Token expResult = new MKSecondToken();
-    Extracted result = instance.leftMost(token, text);
+    Token result = instance.leftMost(token,
+                                     text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
@@ -125,13 +131,14 @@ public final class ExtractedIT {
     String text = " exists only second and first";
     Token instance = new MKSecondToken();
     Token expResult = new MKSecondToken();
-    Extracted result = instance.leftMost(token, text);
+    Token result = instance.leftMost(token,
+                                     text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
   @Test public void testPreceding_IncompleteToken() {
     Incomplete it = new Incomplete(new MKFirstToken(), 3);
-    Extracted instance = new ExtractedImpl("the text is ending on fir");
+    Source instance = new Source("the text is ending on fir");
     String expResult = "the text is ending on ";
     String result = instance.precedingThe(it);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
@@ -139,7 +146,7 @@ public final class ExtractedIT {
 
   @Test public void testPreceding_Token() {
     Token token = new MKFirstToken();
-    Extracted instance = new ExtractedImpl("the text is containing first in the middle");
+    Source instance = new Source("the text is containing first in the middle");
     String expResult = "the text is containing ";
     String result = instance.precedingThe(token);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
@@ -151,7 +158,7 @@ public final class ExtractedIT {
    */
   @Test public void testPrecedingThe()
       throws Exception {
-    Extracted instance = new ExtractedImpl("preceding text second following text");
+    Source instance = new Source("preceding text second following text");
     String expResult = "preceding text ";
     String result = instance.precedingThe(new MKSecondToken());
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
@@ -163,38 +170,9 @@ public final class ExtractedIT {
    */
   @Test public void testFollowingThe()
       throws Exception {
-    Extracted instance = new ExtractedImpl("preceding text second following text");
+    Source instance = new Source("preceding text second following text");
     String expResult = " following text";
-    Extracted result = instance.followingThe(new MKSecondToken());
+    Source result = instance.followingThe(new MKSecondToken());
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result.toSource(), false, null, true));
-  }
-
-  public final class ExtractedImpl
-      implements Extracted {
-    private final String text;
-
-    private ExtractedImpl(String text) {
-      this.text = text;
-    }
-
-    @Override public String toSource() {
-      return text;
-    }
-
-    @Override public String precedingIn(final Extracted text) {
-      throw new UnsupportedOperationException("#precedingIn()");
-    }
-
-    @Override public Extracted followingIn(final Extracted text) {
-      throw new UnsupportedOperationException("#followingIn()");
-    }
-
-    @Override public int length() {
-      throw new UnsupportedOperationException("#length()");
-    }
-
-    @Override public int firstPositionIn(final String text) {
-      throw new UnsupportedOperationException("#firstPositionIn()");
-    }
   }
 }

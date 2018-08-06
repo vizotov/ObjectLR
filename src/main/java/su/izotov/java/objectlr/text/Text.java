@@ -21,36 +21,18 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package su.izotov.java.objectlr.token;
+package su.izotov.java.objectlr.text;
 
 import su.izotov.java.objectlr.Sense;
-import su.izotov.java.objectlr.Text;
 
 /**
- * unrecognized text that is treated as an error in the current recognition path
+ * the text is not containing tokens
  * Created with IntelliJ IDEA.
  * @author Vladimir Izotov
  * @version $Id$
  * @since 1.0
  */
-public final class Unrecognized
-    implements Text {
+public interface Text
+    extends Sense {
 
-  private final String text;
-
-  public Unrecognized(final String text) {
-    this.text = text;
-  }
-
-  public final Sense concat(final Unrecognized other) {
-    final String value = this.text + other.toSource();
-    return value.isEmpty() ?
-           new Absence() :
-           new Unrecognized(value);
-  }
-
-  @Override
-  public final String toSource() {
-    return this.text;
-  }
 }

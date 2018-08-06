@@ -21,62 +21,36 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package su.izotov.java.objectlr.token;
+package su.izotov.java.objectlr.text;
 
 import su.izotov.java.objectlr.Sense;
-import su.izotov.java.objectlr.print.Cell;
+import su.izotov.java.objectlr.token.Absence;
 
 /**
- * Source text for the recognition
+ * unrecognized text that is treated as an error in the current recognition path
+ * Created with IntelliJ IDEA.
  * @author Vladimir Izotov
+ * @version $Id$
+ * @since 1.0
  */
-public final class Source
-    implements Extracted {
+public final class Unrecognized
+    implements Text {
 
   private final String text;
 
-  public Source(final String text) {
+  public Unrecognized(final String text) {
     this.text = text;
   }
 
-  @Override
-  public Cell toVisual() {
-    return Extracted.super.toVisual()
-                          .addRight(this.text);
+  public final Sense concat(final Unrecognized other) {
+    final String value = this.text + other.toSource();
+    return value.isEmpty() ?
+           new Absence() :
+           new Unrecognized(value);
   }
 
   @Override
-  public String precedingIn(final Extracted text) {
-    return text.precedingThe(this.text);
-  }
-
-  @Override
-  public Extracted followingIn(final Extracted text) {
-    return text.followingThe(this.text);
-  }
-
-  @Override
-  public int length() {
-    return this.text.length();
-  }
-
-  @Override
-  public int firstPositionIn(final String text) {
-    return text.indexOf(this.text);
-  }
-
-  @Override
-  public Source concat(final Source source) {
-    return new Source(this.text + source.toSource());
-  }
-
-  @Override
-  public Sense textToken(final String text) {
-    return new Source(this.text + text);
-  }
-
-  @Override
-  public String toSource() {
+  public final String toSource() {
     return this.text;
   }
 }

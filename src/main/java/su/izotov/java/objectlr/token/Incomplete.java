@@ -24,6 +24,7 @@
 package su.izotov.java.objectlr.token;
 
 import su.izotov.java.objectlr.Sense;
+import su.izotov.java.objectlr.text.Source;
 
 /**
  * text, which corresponds to beginning of a token
@@ -50,12 +51,12 @@ public final class Incomplete
   }
 
   @Override
-  public String precedingIn(final Extracted text) {
+  public String precedingIn(final Source text) {
     return text.precedingThe(this);
   }
 
   @Override
-  public Extracted followingIn(final Extracted text) {
+  public Source followingIn(final Source text) {
     return text.followingThe(this);
   }
 
@@ -72,11 +73,6 @@ public final class Incomplete
     else {
       return -1;
     }
-  }
-
-  @Override
-  public Sense textToken(final String text) {
-    return new Source(this.toSource() + text);
   }
 
   @Override

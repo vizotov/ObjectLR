@@ -26,8 +26,8 @@ package su.izotov.java.objectlr;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
+import su.izotov.java.objectlr.text.Source;
 import su.izotov.java.objectlr.token.Incomplete;
-import su.izotov.java.objectlr.token.Source;
 
 /**
  * @author Vladimir Izotov

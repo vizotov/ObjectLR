@@ -25,6 +25,8 @@ package su.izotov.java.objectlr.token;
 
 import su.izotov.java.objectlr.Sense;
 import su.izotov.java.objectlr.print.Cell;
+import su.izotov.java.objectlr.text.Source;
+import su.izotov.java.objectlr.text.Unrecognized;
 import su.izotov.java.objectlr.tokens.Empty;
 import su.izotov.java.objectlr.tokens.Tokens;
 
@@ -33,7 +35,7 @@ import su.izotov.java.objectlr.tokens.Tokens;
  * @author Vladimir Izotov
  */
 public interface Token
-    extends Extracted,
+    extends Sense,
             Tokens {
 
   /**
@@ -90,21 +92,28 @@ public interface Token
 
   @Override
   default Cell toVisual() {
-    return Extracted.super.toVisual()
-                          .addRight('\'' + this.toSource() + '\'');
+    return Sense.super.toVisual()
+                      .addRight('\'' + this.toSource() + '\'');
   }
 
-  @Override
-  default String precedingIn(final Extracted text) {
+  /**
+   * if this text is contained in the parameter, then
+   * @param text parameter
+   * @return text is preceding to first occurrence
+   */
+  default String precedingIn(final Source text) {
     return text.precedingThe(this);
   }
 
-  @Override
-  default Extracted followingIn(final Extracted text) {
+  /**
+   * @param text parameter
+   * if this text is contained in the parameter, then
+   * @return text is following to first occurrence
+   */
+  default Source followingIn(final Source text) {
     return text.followingThe(this);
   }
 
-  @Override
   default int length() {
     return this.toSource()
                .length();
@@ -119,7 +128,11 @@ public interface Token
     return this.firstPositionIn(text) != -1;
   }
 
-  @Override
+  /**
+   * first position of this element in the string
+   * @param text parameter
+   * @return position
+   */
   default int firstPositionIn(final String text) {
     return text.indexOf(this.toSource());
   }
@@ -146,7 +159,7 @@ public interface Token
    */
   default Sense concat(final Unrecognized unrecognized) {
     return new Failed(this,
-                      unrecognized.toSource());
+                      new Source(unrecognized.toSource()));
   }
 
   /**

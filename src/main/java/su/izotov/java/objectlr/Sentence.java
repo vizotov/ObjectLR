@@ -24,7 +24,7 @@
 package su.izotov.java.objectlr;
 
 import java.util.logging.Logger;
-import su.izotov.java.objectlr.token.Source;
+import su.izotov.java.objectlr.text.Source;
 
 /**
  * the sentence on the certain master, containing string representation of the recognized object

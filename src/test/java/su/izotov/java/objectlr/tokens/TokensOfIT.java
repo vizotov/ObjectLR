@@ -36,8 +36,8 @@ import su.izotov.java.objectlr.MKLang;
 import su.izotov.java.objectlr.MKSecondToken;
 import su.izotov.java.objectlr.MKThirdToken;
 import su.izotov.java.objectlr.token.Absence;
-import su.izotov.java.objectlr.token.Extracted;
 import su.izotov.java.objectlr.token.Incomplete;
+import su.izotov.java.objectlr.token.Token;
 
 /**
  * @author Vladimir Izotov
@@ -51,8 +51,8 @@ public final class TokensOfIT {
       }
     };
     Tokens instance = (Tokens) mkLang.tokens();
-    Extracted expResult = new MKSecondToken();
-    Extracted result = instance.leftMostParsed(text);
+    Token expResult = new MKSecondToken();
+    Token result = instance.leftMostParsed(text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
@@ -64,8 +64,9 @@ public final class TokensOfIT {
       }
     };
     Tokens instance = (Tokens) mkLang.tokens();
-    Extracted expResult = new Incomplete(new MKThirdToken(), 4);
-    Extracted result = instance.leftMostParsed(text);
+    Token expResult = new Incomplete(new MKThirdToken(),
+                                     4);
+    Token result = instance.leftMostParsed(text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
@@ -77,8 +78,8 @@ public final class TokensOfIT {
       }
     };
     Tokens instance = (Tokens) mkLang.tokens();
-    Extracted expResult = new Absence();
-    Extracted result = instance.leftMostParsed(text);
+    Token expResult = new Absence();
+    Token result = instance.leftMostParsed(text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 }

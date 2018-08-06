@@ -33,7 +33,6 @@ import org.cactoos.collection.Mapped;
 import org.cactoos.scalar.Or;
 import org.cactoos.scalar.UncheckedScalar;
 import su.izotov.java.objectlr.token.Absence;
-import su.izotov.java.objectlr.token.Extracted;
 import su.izotov.java.objectlr.token.Token;
 
 /**

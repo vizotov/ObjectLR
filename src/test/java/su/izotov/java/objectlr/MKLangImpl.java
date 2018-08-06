@@ -23,8 +23,8 @@
  */
 package su.izotov.java.objectlr;
 
+import su.izotov.java.objectlr.text.Unrecognized;
 import su.izotov.java.objectlr.token.Token;
-import su.izotov.java.objectlr.token.Unrecognized;
 
 /**
  * <p>Created with IntelliJ IDEA.</p>

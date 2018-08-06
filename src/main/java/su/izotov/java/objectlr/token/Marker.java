@@ -23,8 +23,6 @@
  */
 package su.izotov.java.objectlr.token;
 
-import su.izotov.java.objectlr.Sense;
-
 /**
  * A token without behavior, like right bracket
  * Created with IntelliJ IDEA.
@@ -34,9 +32,4 @@ import su.izotov.java.objectlr.Sense;
  */
 public interface Marker
     extends Token {
-
-  @Override
-  default Sense textToken(final String text) {
-    return new Source(text);
-  }
 }
