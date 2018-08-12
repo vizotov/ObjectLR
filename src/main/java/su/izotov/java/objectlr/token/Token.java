@@ -24,8 +24,8 @@
 package su.izotov.java.objectlr.token;
 
 import su.izotov.java.objectlr.Sense;
-import su.izotov.java.objectlr.print.Cell;
 import su.izotov.java.objectlr.text.Source;
+import su.izotov.java.objectlr.text.Text;
 import su.izotov.java.objectlr.text.Unrecognized;
 import su.izotov.java.objectlr.tokens.Empty;
 import su.izotov.java.objectlr.tokens.Tokens;
@@ -35,7 +35,7 @@ import su.izotov.java.objectlr.tokens.Tokens;
  * @author Vladimir Izotov
  */
 public interface Token
-    extends Sense,
+    extends Text,
             Tokens {
 
   /**
@@ -50,30 +50,9 @@ public interface Token
       ret = this;
     }
     else {
-      ret = this.incompleteTokenAtEndOf(text);
+      ret = new Absence();
     }
     return ret;
-  }
-
-  /**
-   * the incomplete token, related to this token, at end of the string or
-   * empty token, if the string do not contains it
-   * @param text the string
-   * @return the ParsedElement
-   */
-  default Token incompleteTokenAtEndOf(final String text) {
-    for (int i = this.toSource()
-                     .length() - 1;
-         i > 0;
-         i--) {
-      if (text.endsWith(this.toSource()
-                            .substring(0,
-                                       i))) {
-        return new Incomplete(this,
-                              i);
-      }
-    }
-    return new Absence();
   }
 
   @Override
@@ -90,19 +69,22 @@ public interface Token
                                                 .equals(token.toSource());
   }
 
-  @Override
-  default Cell toVisual() {
-    return Sense.super.toVisual()
-                      .addRight('\'' + this.toSource() + '\'');
-  }
-
   /**
    * if this text is contained in the parameter, then
    * @param text parameter
    * @return text is preceding to first occurrence
    */
-  default String precedingIn(final Source text) {
-    return text.precedingThe(this);
+  default Text precedingIn(final Source text) {
+    return precedingTextWrapper(text.precedingThe(this));
+  }
+
+  /**
+   * Wrap string by special text type for following recognition
+   * @param text preceding text
+   * @return wrapped text
+   */
+  default Text precedingTextWrapper(String text) {
+    return Unrecognized.create(text);
   }
 
   /**

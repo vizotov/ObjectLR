@@ -26,103 +26,128 @@ package su.izotov.java.objectlr;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
+import su.izotov.java.objectlr.text.Incomplete;
 import su.izotov.java.objectlr.text.Source;
-import su.izotov.java.objectlr.token.Incomplete;
+import su.izotov.java.objectlr.text.Unrecognized;
 
 /**
  * @author Vladimir Izotov
  */
 public final class LangIT {
-  @Test public void testConcat()
-      throws Exception {
+
+  @Test
+  public void testConcat() throws
+                           Exception {
     String text = "string before token second string after token";
     MKLang instance = new MKLangImpl();
-    String expResult = "MKText 'string before token '\n"
-                       + "MKSecondToken 'second'\n"
-                       + "MKText ' string after token'";
-    String result = instance.concat(new Source(text))
-                            .toVisual()
-                            .toString();
-    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
+    Sense expResult = new Chain(new Chain(new One(Unrecognized.create("string before token ")),
+                                          new MKSecondToken()),
+                                new Incomplete(" string after token"));
+    Sense result = instance.concat(new Source(text));
+    assertTrue(EqualsBuilder.reflectionEquals(expResult,
+                                              result,
+                                              false,
+                                              null,
+                                              true));
   }
 
-  @Test public void testConcat2() {
+  @Test
+  public void testConcat2() {
     String text = "second string after token";
     MKLang instance = new MKLangImpl();
-    Sense expResult = new Chain(
-        new MKSecondToken(),//
-        new MKText(" string after token"));
-    Sense result = instance.concat(new Source(text));
-    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
+    Sense expResult = new Chain(new MKSecondToken(),
+                                //
+                                new Incomplete(" string after token"));
+    Sense result = instance.concatDD(new Source(text));
+    assertTrue(EqualsBuilder.reflectionEquals(expResult,
+                                              result,
+                                              false,
+                                              null,
+                                              true));
   }
 
-  @Test public void testConcat3() {
+  @Test
+  public void testConcat3() {
     String text = "string before token second";
     MKLang instance = new MKLangImpl();
-    Sense expResult = new Chain(
-        new MKText("string before token ")//
-        , new MKSecondToken());
+    Sense expResult = new Chain(Unrecognized.create("string before token ")
+                                //
+        ,
+                                new MKSecondToken());
     Sense result = instance.concat(new Source(text));
-    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
+    assertTrue(EqualsBuilder.reflectionEquals(expResult,
+                                              result,
+                                              false,
+                                              null,
+                                              true));
   }
 
-  @Test public void testConcat4() {
+  @Test
+  public void testConcat4() {
     String text = "second";
     MKLang instance = new MKLangImpl();
     Sense expResult = new MKSecondToken();
     Sense result = instance.concat(new Source(text));
-    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
+    assertTrue(EqualsBuilder.reflectionEquals(expResult,
+                                              result,
+                                              false,
+                                              null,
+                                              true));
   }
 
-  @Test public void testConcat5() {
+  @Test
+  public void testConcat5() {
     String text = "it is not token";
     Sense instance = new MKLangImpl();
-    Sense expResult = new MKText(text);
+    Sense expResult = new Incomplete(text);
     Sense result = instance.concat(new Source(text));
-    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
+    assertTrue(EqualsBuilder.reflectionEquals(expResult,
+                                              result,
+                                              false,
+                                              null,
+                                              true));
   }
 
-  @Test public void testConcat6() {
-    String text = "thi";
-    MKLang instance = new MKLangImpl();
-    Sense expResult = new Incomplete(new MKThirdToken(), 3);
-    Sense result = instance.concat(new Source(text));
-    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
-  }
-
-  @Test public void testConcat7() {
+  @Test
+  public void testConcat7() {
     String text = "firstsecond textik";
     MKLang instance = new MKLangImpl();
-    String expResult = "MKFirstToken 'first'\n" + "MKSecondToken 'second'\n" + "MKText ' textik'";
-    String result = instance.concat(new Source(text))
-                            .toVisual()
-                            .toString();
-    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
+    Sense expResult = new Chain(new Chain(new One(new MKFirstToken()),
+                                          new MKSecondToken()),
+                                new Incomplete(" textik"));
+    Sense result = instance.concat(new Source(text));
+    assertTrue(EqualsBuilder.reflectionEquals(expResult,
+                                              result,
+                                              false,
+                                              null,
+                                              true));
   }
 
-  @Test public void testConcat8() {
+  @Test
+  public void testConcat8() {
     String text = "start text firstsecond text third first ttt thi";
     MKLang instance = new MKLangImpl();
-    String expResult = "MKText 'start text '\n"
-                       + "MKFirstToken 'first'\n"
-                       + "MKSecondToken 'second'\n"
-                       + "MKText ' text '\n"
-                       + "MKThirdToken 'third'\n"
-                       + "MKText ' '\n"
-                       + "MKFirstToken 'first'\n"
-                       + "MKText ' ttt '\n"
-                       + "Incomplete 'thi'";
-    String result = instance.concat(new Source(text))
+    String expResult = "MKText 'start text '\n" + "MKFirstToken 'first'\n" + "MKSecondToken 'second'\n" + "MKText ' text '\n" + "MKThirdToken 'third'\n" + "MKText ' '\n" + "MKFirstToken 'first'\n" + "MKText ' ttt '\n" + "Incomplete 'thi'";
+    String result = instance.concatDD(new Source(text))
                             .toVisual()
                             .toString();
-    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
+    assertTrue(EqualsBuilder.reflectionEquals(expResult,
+                                              result,
+                                              false,
+                                              null,
+                                              true));
   }
 
-  @Test public void testConcat9() {
+  @Test
+  public void testConcat9() {
     String text = "";
     MKLang instance = new MKLangImpl();
     Sense expResult = new MKLangImpl();
     Sense result = instance.concat(new Source(text));
-    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
+    assertTrue(EqualsBuilder.reflectionEquals(expResult,
+                                              result,
+                                              false,
+                                              null,
+                                              true));
   }
 }

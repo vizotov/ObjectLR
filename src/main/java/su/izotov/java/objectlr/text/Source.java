@@ -24,9 +24,7 @@
 package su.izotov.java.objectlr.text;
 
 import su.izotov.java.objectlr.Sense;
-import su.izotov.java.objectlr.print.Cell;
 import su.izotov.java.objectlr.token.Absence;
-import su.izotov.java.objectlr.token.Incomplete;
 import su.izotov.java.objectlr.token.Token;
 
 /**
@@ -43,12 +41,6 @@ public final class Source
   }
 
   @Override
-  public Cell toVisual() {
-    return Sense.super.toVisual()
-                      .addRight(this.text);
-  }
-
-  @Override
   public Source concat(final Source source) {
     return new Source(this.text + source.toSource());
   }
@@ -60,24 +52,6 @@ public final class Source
 
   public int length() {
     return text.length();
-  }
-
-  /**
-   * The text preceding the incomplete token in the string
-   * @param incomplete token
-   * @return text
-   */
-  public String precedingThe(final Incomplete incomplete) {
-    if (this.toSource()
-            .endsWith(incomplete.toSource())) {
-      return this.toSource()
-                 .substring(0,
-                            this.toSource()
-                                .length() - incomplete.length());
-    }
-    else {
-      return "";
-    }
   }
 
   /**
@@ -114,21 +88,6 @@ public final class Source
    */
   public Source followingThe(final Token token) {
     return new Source(token.afterFirstOccurrenceIn(this.toSource()));
-  }
-
-  /**
-   * The text that follows the incomplete token in the string
-   * @param incomplete token
-   * @return text
-   */
-  public Source followingThe(final Incomplete incomplete) {
-    if (this.toSource()
-            .endsWith(incomplete.toSource())) {
-      return new Source("");
-    }
-    else {
-      return this;
-    }
   }
 
   /**

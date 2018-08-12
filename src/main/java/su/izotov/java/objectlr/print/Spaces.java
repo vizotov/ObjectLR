@@ -22,7 +22,31 @@
  *  SOFTWARE.
  */
 
-rootProject.name = 'ObjectLR'
-include ':JDoubleDispatch'
-project(':JDoubleDispatch').projectDir = new File(settingsDir, '../JDoubleDispatch')
+package su.izotov.java.objectlr.print;
 
+/**
+ * Created with IntelliJ IDEA.
+ * @author Vladimir Izotov
+ * @version $Id$
+ * @since 1.0
+ */
+public class Spaces
+    implements Cell {
+
+  private final Integer cnt;
+
+  public Spaces(final Integer cnt) {
+    this.cnt = cnt;
+  }
+
+  @Override
+  public String toString() {
+    StringBuffer spaces = new StringBuffer();
+    for (int i = 0;
+         i < cnt;
+         i++) {
+      spaces.append(' ');
+    }
+    return spaces.toString();
+  }
+}

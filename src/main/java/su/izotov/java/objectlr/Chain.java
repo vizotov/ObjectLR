@@ -24,6 +24,8 @@
 package su.izotov.java.objectlr;
 
 import su.izotov.java.objectlr.print.Cell;
+import su.izotov.java.objectlr.text.Source;
+import su.izotov.java.objectlr.token.Failed;
 import su.izotov.java.objectlr.tokens.Tokens;
 
 /**
@@ -63,8 +65,19 @@ public final class Chain
                        sense);
     }
     else {
-      return this.parent.concat(res);
+      return this.parent.concatDD(res);
     }
+  }
+
+  /**
+   * re-recognizing following token as text
+   * @param failed representation of the following token and following text
+   * @return recognition result
+   */
+  public Sense concat(final Failed failed) {
+    return new Chain(this.parent,
+                     new Excluded(failed.token(),
+                                  this.current)).concatDD(new Source(failed.toSource()));
   }
 
   @Override

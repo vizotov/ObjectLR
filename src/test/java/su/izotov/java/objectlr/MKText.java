@@ -23,7 +23,7 @@
  */
 package su.izotov.java.objectlr;
 
-import su.izotov.java.objectlr.token.Token;
+import su.izotov.java.objectlr.text.Text;
 
 /**
  * Created with IntelliJ IDEA.
@@ -32,7 +32,7 @@ import su.izotov.java.objectlr.token.Token;
  * @since 1.0
  */
 public final class MKText
-    implements Token {
+    implements Text {
   private final String text;
 
   public MKText(final String text) {

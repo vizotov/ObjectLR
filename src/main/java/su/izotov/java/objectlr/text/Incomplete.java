@@ -21,64 +21,33 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package su.izotov.java.objectlr.token;
+
+package su.izotov.java.objectlr.text;
 
 import su.izotov.java.objectlr.Sense;
-import su.izotov.java.objectlr.text.Source;
 
 /**
- * text, which corresponds to beginning of a token
+ * Text at the end of the recognized string
+ * Created with IntelliJ IDEA.
  * @author Vladimir Izotov
+ * @version $Id$
+ * @since 1.0
  */
-public final class Incomplete
-    implements Token {
+public class Incomplete
+    implements Text {
 
-  private final Token token;
-  private final int length;
+  private final String text;
 
-  public Incomplete(final Token token,
-                    final int length) {
-    this.token = token;
-    this.length = length;
+  public Incomplete(final String text) {
+    this.text = text;
   }
 
-  public Sense concat(final Incomplete incomplete) {
-    return new Source(this.toSource() + incomplete.toSource());
-  }
-
-  public Sense concat(final Token token) {
-    return new Source(this.toSource() + token.toSource());
-  }
-
-  @Override
-  public String precedingIn(final Source text) {
-    return text.precedingThe(this);
-  }
-
-  @Override
-  public Source followingIn(final Source text) {
-    return text.followingThe(this);
-  }
-
-  @Override
-  public int length() {
-    return this.length;
-  }
-
-  @Override
-  public int firstPositionIn(final String text) {
-    if (text.endsWith(this.toSource())) {
-      return text.length() - this.length;
-    }
-    else {
-      return -1;
-    }
+  public Source concat(Sense sense) {
+    return new Source(this.toSource() + sense.toSource());
   }
 
   @Override
   public String toSource() {
-    return this.token.toSource()
-                     .substring(0,
-                                this.length);
+    return text;
   }
 }

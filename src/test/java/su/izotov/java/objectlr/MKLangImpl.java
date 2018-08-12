@@ -23,6 +23,8 @@
  */
 package su.izotov.java.objectlr;
 
+import su.izotov.java.objectlr.text.Incomplete;
+import su.izotov.java.objectlr.text.Text;
 import su.izotov.java.objectlr.text.Unrecognized;
 import su.izotov.java.objectlr.token.Token;
 
@@ -35,6 +37,10 @@ import su.izotov.java.objectlr.token.Token;
 public final class MKLangImpl
     implements MKLang {
 
+  public Incomplete concat(Incomplete sense) {
+    return sense;
+  }
+
   public Unrecognized concat(Unrecognized sense) {
     return sense;
   }
@@ -43,7 +49,16 @@ public final class MKLangImpl
     return token;
   }
 
+  public Text concat(Text text) {
+    return text;
+  }
+
   @Override public String toSource() {
     return "";
+  }
+
+  @Override
+  public Sense textToken(final String text) {
+    return new MKText(text);
   }
 }

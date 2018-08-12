@@ -24,7 +24,6 @@
 package su.izotov.java.objectlr;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.HashSet;
@@ -35,9 +34,11 @@ import org.cactoos.collection.Filtered;
 import org.cactoos.collection.Joined;
 import org.cactoos.collection.Mapped;
 import su.izotov.java.ddispatch.methods.MethodAmbiguouslyDefinedException;
+import su.izotov.java.ddispatch.methods.ResultFunction;
 import su.izotov.java.objectlr.print.Cell;
 import su.izotov.java.objectlr.print.CellOf;
 import su.izotov.java.objectlr.print.Printable;
+import su.izotov.java.objectlr.print.Spaces;
 import su.izotov.java.objectlr.text.Source;
 import su.izotov.java.objectlr.text.Unrecognized;
 import su.izotov.java.objectlr.token.Absence;
@@ -53,53 +54,29 @@ import su.izotov.java.objectlr.tokens.TokensOf;
 public interface Sense
     extends Printable {
 
+  int[] logLevel = { 0 };
+  Cell[] logBuffer = { new CellOf(""),
+                       new CellOf("") };
+
   default Sense concat(final Source source) {
-    Source restPart = source;
-    Cell log = new CellOf("------ Start recognition");
-    log = log.addBottom(source.toVisual());
-    log = log.addBottom("------------------------------------------------");
-    Sense result = this;
-    while (restPart.length() != 0) {
-      // recognized element
-      final Token leftMostParsed = result.tokens()
-                                         .leftMostParsed(restPart.toSource());
-      // the text before recognized element
-      final String precedingString = leftMostParsed.precedingIn(restPart);
-      final Sense precedingText;
-      if (precedingString.isEmpty()) {
-        precedingText = new Absence();
-      }
-      else {
-        precedingText = result.textToken(precedingString);
-      }
-      restPart = leftMostParsed.followingIn(restPart);
-      log = log.addBottom(result.toVisual()
-                                .addRight(" | ")
-                                .addRight(precedingText.toVisual())
-                                .addRight(" | ")
-                                .addRight(leftMostParsed.toVisual())
-                                .addRight(" | ")
-                                .addRight(restPart.toVisual()));
-      log = log.addBottom("------------------------------------------------");
-      result = result.concatDD(precedingText);
-      log = log.addBottom(result.toVisual()
-                                .addRight(" | ")
-                                .addRight(leftMostParsed.toVisual())
-                                .addRight(" | ")
-                                .addRight(restPart.toVisual()));
-      log = log.addBottom("------------------------------------------------");
-      result = result.concatDD(leftMostParsed);
-      log = log.addBottom(result.toVisual()
-                                .addRight(" | ")
-                                .addRight(restPart.toVisual()));
-      log = log.addBottom("------------------------------------------------");
+    if (source.toSource()
+              .isEmpty()) {
+      return this;
     }
-    log = log.addBottom(result.toVisual())
-             .addBottom(new CellOf("------ End recognition"));
-    final Cell finalLog = log;
-    Logger.getGlobal()
-          .info(finalLog::toString);
-    return result;
+    // recognized element
+    final Token leftMostParsed = this.tokens()
+                                     .leftMostParsed(source.toSource());
+    // the text before recognized element
+    final Sense precedingText = new Absence().concatDD(textToken(source.precedingThe(leftMostParsed))); // leftMostParsed.precedingIn(restPart);
+    Sense restPart = new Absence().concatDD(leftMostParsed.followingIn(source));
+    Sense one = this.concatDD(precedingText);
+    Sense two = one.concatDD(leftMostParsed);
+    Sense three = two.concatDD(restPart);
+    return three;
+  }
+
+  default Sense concat(final Absence absence) {
+    return this;
   }
 
   /**
@@ -139,8 +116,8 @@ public interface Sense
       final Joined<Class> candidates = new Joined<Class>(firstParamCandidates,
                                                          secondParamCandidates);
       tokenClasses = new Joined<Class>(tokenClasses,
-                                  new Filtered<>(clazz -> Token.class.isAssignableFrom(clazz),
-                                                 candidates));
+                                       new Filtered<>(clazz -> Token.class.isAssignableFrom(clazz),
+                                                      candidates));
       parameterClasses = new Filtered<>(clazz -> !usedClasses.contains(clazz),
                                         new Filtered<>(clazz -> !Token.class.isAssignableFrom(clazz),
                                                        candidates));
@@ -164,11 +141,7 @@ public interface Sense
    * @return the wrapped text
    */
   default Sense textToken(final String text) {
-    return new Unrecognized(text);
-  }
-
-  default Sense concat(final Absence absence) {
-    return this;
+    return Unrecognized.create(text);
   }
 
   /**
@@ -177,15 +150,48 @@ public interface Sense
    * @return The result of interaction
    */
   default Sense concatDD(final Sense sense) {
+    if (logLevel[0] == 0) {
+      logBuffer[0] = new CellOf("");
+    }
+    logBottom(this.toVisual()
+                  .addRight(" | ")
+                  .addRight(sense.toVisual()));
+    Sense ret;
     try {
-      return new Concat(this,
-                        sense,
-                        Chain::new).invoke();
-    } catch (final InvocationTargetException e) {
-      throw new RuntimeException(e.getCause());
-    } catch (final IllegalAccessException | MethodAmbiguouslyDefinedException e) {
+      final ResultFunction<Sense, Sense, Sense> resultFunction = new Concat(this,
+                                                                            sense,
+                                                                            Chain::new).resultFunction();
+      logRight(new CellOf(" - " + resultFunction.toString()));
+      logLevel[0]++;
+      ret = resultFunction.apply(this,
+                                 sense);
+    } catch (final MethodAmbiguouslyDefinedException e) {
       throw new RuntimeException(e);
     }
+    logLevel[0]--;
+    logBottom(new CellOf("VVVVV").addBottom(ret.toVisual())
+                                 .addBottom(new CellOf("-----")));
+    if (logLevel[0] == 0) {
+      flushLog();
+    }
+    return ret;
+  }
+
+  static void logBottom(Cell content) {
+    logBuffer[0] = logBuffer[0].addBottom(logBuffer[1]);
+    logBuffer[1] = new Spaces(logLevel[0]).addRight(content);
+  }
+
+  static void logRight(Cell content) {
+    logBuffer[1] = logBuffer[1].addRight(content);
+  }
+
+  static void flushLog() {
+    logBuffer[0] = logBuffer[0].addBottom(logBuffer[1]);
+    Logger.getGlobal()
+          .info(logBuffer[0]::toString);
+    logBuffer[0] = new CellOf("");
+    logBuffer[1] = new CellOf("");
   }
 
   /**
@@ -202,4 +208,12 @@ public interface Sense
    * @return Source text of this
    */
   String toSource();
+
+  @Override
+  default Cell toVisual() {
+    return Printable.super.toVisual()
+                          .addRight(toSource().length() == 0 ?
+                                    "" :
+                                    " \'" + toSource() + "\'");
+  }
 }

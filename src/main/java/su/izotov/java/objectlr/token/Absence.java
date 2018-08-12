@@ -24,7 +24,9 @@
 package su.izotov.java.objectlr.token;
 
 import su.izotov.java.objectlr.Sense;
+import su.izotov.java.objectlr.text.Incomplete;
 import su.izotov.java.objectlr.text.Source;
+import su.izotov.java.objectlr.text.Text;
 
 /**
  * Empty token for using in situations of absence tokens in the string.
@@ -32,11 +34,29 @@ import su.izotov.java.objectlr.text.Source;
  * @author Vladimir Izotov
  */
 public final class Absence
-    implements Token {
+    implements Token,
+               Text {
+
+  public Text concat(Text text) {
+    return text.toSource()
+               .isEmpty() ?
+           this :
+           text;
+  }
+
+  public Sense concat(Source text) {
+    return text.toSource()
+               .isEmpty() ?
+           this :
+           text;
+  }
 
   @Override
-  public String precedingIn(final Source text) {
-    return text.toSource();
+  public Text precedingIn(final Source text) {
+    return text.toSource()
+               .isEmpty() ?
+           this :
+           new Incomplete(text.toSource());
   }
 
   public Sense concat(final Sense sense) {
@@ -46,10 +66,6 @@ public final class Absence
   @Override
   public Source followingIn(final Source text) {
     return new Source("");
-  }
-
-  public Token concat(final Token token) {
-    return token;
   }
 
   @Override

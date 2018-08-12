@@ -40,7 +40,8 @@ public final class SourceIT {
     Source source = new Source("before second after");
     Token instance = new MKSecondToken();
     String expResult = "before ";
-    String result = instance.precedingIn(source);
+    String result = instance.precedingIn(source)
+                            .toSource();
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
@@ -48,7 +49,8 @@ public final class SourceIT {
     Source source = new Source("before second after");
     Token instance = new MKFirstToken();
     String expResult = "";
-    String result = instance.precedingIn(source);
+    String result = instance.precedingIn(source)
+                            .toSource();
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
@@ -56,7 +58,8 @@ public final class SourceIT {
     Source source = new Source("before seco");
     Token instance = new MKSecondToken();
     String expResult = "";
-    String result = instance.precedingIn(source);
+    String result = instance.precedingIn(source)
+                            .toSource();
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
@@ -133,14 +136,6 @@ public final class SourceIT {
     Token expResult = new MKSecondToken();
     Token result = instance.leftMost(token,
                                      text);
-    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
-  }
-
-  @Test public void testPreceding_IncompleteToken() {
-    Incomplete it = new Incomplete(new MKFirstToken(), 3);
-    Source instance = new Source("the text is ending on fir");
-    String expResult = "the text is ending on ";
-    String result = instance.precedingThe(it);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 

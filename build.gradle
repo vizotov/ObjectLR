@@ -47,9 +47,11 @@ repositories {
 }
 
 dependencies {
-  compile 'su.izotov:JDoubleDispatch:0.3'
+  compile project(':JDoubleDispatch')
+  //compile 'su.izotov:JDoubleDispatch:0.4'
   compile 'org.cactoos:cactoos:0.36'
-    testCompile 'su.izotov:JDoubleDispatch:0.3'
+  testCompile project(':JDoubleDispatch')
+    //testCompile 'su.izotov:JDoubleDispatch:0.4'
     testCompile 'junit:junit:4.12'
     testCompile 'org.apache.commons:commons-lang3:3.7'
 }

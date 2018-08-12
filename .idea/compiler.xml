@@ -12,8 +12,16 @@
       <entry name="!?*.clj" />
     </wildcardResourcePatterns>
     <bytecodeTargetLevel>
+      <module name="JDoubleDispatch-JDoubleDispatch_main" target="1.8" />
+      <module name="JDoubleDispatch-JDoubleDispatch_test" target="1.8" />
+      <module name="JDoubleDispatch_main" target="1.8" />
+      <module name="JDoubleDispatch_test" target="1.8" />
+      <module name="Objec_main" target="1.8" />
+      <module name="Objec_test" target="1.8" />
       <module name="ObjectLR_main" target="1.8" />
       <module name="ObjectLR_test" target="1.8" />
+      <module name="su.izotov-JDoubleDispatch_main" target="1.8" />
+      <module name="su.izotov-JDoubleDispatch_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

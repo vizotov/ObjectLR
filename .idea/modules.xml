@@ -5,6 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ObjectLR.iml" filepath="$PROJECT_DIR$/.idea/modules/ObjectLR.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ObjectLR_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ObjectLR_main.iml" group="ObjectLR" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ObjectLR_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ObjectLR_test.iml" group="ObjectLR" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1539493607/su.izotov-JDoubleDispatch.iml" filepath="$PROJECT_DIR$/.idea/modules/1539493607/su.izotov-JDoubleDispatch.iml" group="JDoubleDispatch" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1539493607/su.izotov-JDoubleDispatch_main.iml" filepath="$PROJECT_DIR$/.idea/modules/1539493607/su.izotov-JDoubleDispatch_main.iml" group="JDoubleDispatch" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1539493607/su.izotov-JDoubleDispatch_test.iml" filepath="$PROJECT_DIR$/.idea/modules/1539493607/su.izotov-JDoubleDispatch_test.iml" group="JDoubleDispatch" />
     </modules>
   </component>
 </project>

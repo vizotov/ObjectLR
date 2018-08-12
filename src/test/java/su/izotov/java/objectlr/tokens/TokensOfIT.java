@@ -34,9 +34,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import su.izotov.java.objectlr.MKLang;
 import su.izotov.java.objectlr.MKSecondToken;
-import su.izotov.java.objectlr.MKThirdToken;
 import su.izotov.java.objectlr.token.Absence;
-import su.izotov.java.objectlr.token.Incomplete;
 import su.izotov.java.objectlr.token.Token;
 
 /**
@@ -52,20 +50,6 @@ public final class TokensOfIT {
     };
     Tokens instance = (Tokens) mkLang.tokens();
     Token expResult = new MKSecondToken();
-    Token result = instance.leftMostParsed(text);
-    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
-  }
-
-  @Test public void testLeftMostParsed2() {
-    String text = " there is only part of token thir";
-    final MKLang mkLang = new MKLang() {
-      @Override public String toSource() {
-        throw new UnsupportedOperationException("#toSource()");
-      }
-    };
-    Tokens instance = (Tokens) mkLang.tokens();
-    Token expResult = new Incomplete(new MKThirdToken(),
-                                     4);
     Token result = instance.leftMostParsed(text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }

@@ -68,14 +68,15 @@ public final class Failed
 
   @Override
   public final String toSource() {
-    return this.token.toSource() + this.followingSource;
+    return this.token.toSource() + this.followingSource.toSource();
   }
 
   @Override
   public final Cell toVisual() {
     return new CellOf(this.getClass()
                           .getSimpleName() + " ").addRight(this.token.toVisual())
-                                                 .addRight(" " + this.followingSource);
+                                                 .addRight(" ")
+                                                 .addRight(this.followingSource.toVisual());
   }
 
   public final Token token() {

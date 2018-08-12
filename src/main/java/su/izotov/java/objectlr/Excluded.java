@@ -23,6 +23,7 @@
  */
 package su.izotov.java.objectlr;
 
+import su.izotov.java.objectlr.print.Cell;
 import su.izotov.java.objectlr.token.Token;
 import su.izotov.java.objectlr.tokens.Tokens;
 
@@ -69,5 +70,10 @@ public final class Excluded
 
   public final Sense concat(final Sense sense) {
     return this.sense.concatDD(sense);
+  }
+
+  @Override
+  public Cell toVisual() {
+    return sense.toVisual();
   }
 }

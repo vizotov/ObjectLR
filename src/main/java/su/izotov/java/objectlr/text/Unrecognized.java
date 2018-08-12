@@ -38,19 +38,22 @@ public final class Unrecognized
 
   private final String text;
 
-  public Unrecognized(final String text) {
+  private Unrecognized(final String text) {
     this.text = text;
   }
 
   public final Sense concat(final Unrecognized other) {
-    final String value = this.text + other.toSource();
-    return value.isEmpty() ?
-           new Absence() :
-           new Unrecognized(value);
+    return create(this.text + other.toSource());
   }
 
   @Override
   public final String toSource() {
     return this.text;
+  }
+
+  public static Text create(String text) {
+    return text.isEmpty() ?
+           new Absence() :
+           new Unrecognized(text);
   }
 }
