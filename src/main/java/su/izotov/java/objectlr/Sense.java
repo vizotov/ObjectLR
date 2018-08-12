@@ -37,8 +37,8 @@ import su.izotov.java.ddispatch.methods.MethodAmbiguouslyDefinedException;
 import su.izotov.java.ddispatch.methods.ResultFunction;
 import su.izotov.java.objectlr.print.Cell;
 import su.izotov.java.objectlr.print.CellOf;
-import su.izotov.java.objectlr.print.Printable;
 import su.izotov.java.objectlr.print.Spaces;
+import su.izotov.java.objectlr.print.Visual;
 import su.izotov.java.objectlr.text.Source;
 import su.izotov.java.objectlr.text.Unrecognized;
 import su.izotov.java.objectlr.token.Absence;
@@ -52,7 +52,7 @@ import su.izotov.java.objectlr.tokens.TokensOf;
  * @author Vladimir Izotov
  */
 public interface Sense
-    extends Printable {
+    extends Visual {
 
   int[] logLevel = { 0 };
   Cell[] logBuffer = { new CellOf(""),
@@ -189,7 +189,7 @@ public interface Sense
   static void flushLog() {
     logBuffer[0] = logBuffer[0].addBottom(logBuffer[1]);
     Logger.getGlobal()
-          .info(logBuffer[0]::toString);
+          .info(logBuffer[0]::asString);
     logBuffer[0] = new CellOf("");
     logBuffer[1] = new CellOf("");
   }
@@ -211,8 +211,8 @@ public interface Sense
 
   @Override
   default Cell toVisual() {
-    return Printable.super.toVisual()
-                          .addRight(toSource().length() == 0 ?
+    return Visual.super.toVisual()
+                       .addRight(toSource().length() == 0 ?
                                     "" :
                                     " \'" + toSource() + "\'");
   }

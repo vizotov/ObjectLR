@@ -29,8 +29,7 @@ package su.izotov.java.objectlr.print;
  */
 public interface Cell {
 
-  @Override
-  String toString();
+  String asString();
 
   /**
    * add new cell to bottom

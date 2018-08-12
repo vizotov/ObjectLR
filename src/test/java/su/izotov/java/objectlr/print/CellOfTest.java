@@ -21,22 +21,33 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package su.izotov.java.objectlr.print;
 
-/**
- * the object can be represented as text, created from rectangular blocks
- * Created with IntelliJ IDEA.
- * @author Vladimir Izotov
- * @version $Id$
- * @since 1.0
- */
-public interface Printable {
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
-  /**
-   * @return formatted representation
-   */
-  default Cell toVisual() {
-    return new CellOf(this.getClass()
-                          .getSimpleName());
+/**
+ * @author Vladimir Izotov
+ */
+public final class CellOfTest {
+
+  @Test
+  public void testAsString() {
+    CellOf instance = new CellOf("a long line, which will have to be wrapped to a new line again and again until it ends",
+                                 40);
+    String expResult = "a long line, which will have to be wrapp\n" + "ed to a new line again and again until i\n" + "t ends";
+    String result = instance.asString();
+    assertTrue(EqualsBuilder.reflectionEquals(expResult,
+                                              result,
+                                              false,
+                                              null,
+                                              true));
   }
 }

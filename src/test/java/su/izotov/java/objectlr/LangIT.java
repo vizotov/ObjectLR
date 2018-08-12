@@ -130,7 +130,7 @@ public final class LangIT {
     String expResult = "MKText 'start text '\n" + "MKFirstToken 'first'\n" + "MKSecondToken 'second'\n" + "MKText ' text '\n" + "MKThirdToken 'third'\n" + "MKText ' '\n" + "MKFirstToken 'first'\n" + "MKText ' ttt '\n" + "Incomplete 'thi'";
     String result = instance.concatDD(new Source(text))
                             .toVisual()
-                            .toString();
+                            .asString();
     assertTrue(EqualsBuilder.reflectionEquals(expResult,
                                               result,
                                               false,

@@ -62,7 +62,7 @@ public final class Sentence<T extends Sense, R extends Sense> {
             .info("Unrecognizable text!");
       Logger.getGlobal()
             .info(ret.toVisual()
-                     .toString());
+                     .asString());
       throw new RecognitionException(ret);
     }
   }

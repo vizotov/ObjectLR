@@ -30,43 +30,47 @@ import org.junit.Test;
 /**
  * @author Vladimir Izotov
  */
-public final class HorizontalIT {
-  private static final String THREE_LINES_TEXT = "the first line\n" + "second\n" + "third";
-  private static final String FIVE_LINES_TEXT  = "the line number one\n"
-                                                 + "very long line number two\n"
-                                                 + "the third line\n"
-                                                 + "4\n"
-                                                 + "the last line";
+public final class HorizontalTest {
 
-  @Test public void testToString() {
+  private static final String THREE_LINES_TEXT = "the first line\n" + "second\n" + "third";
+  private static final String FIVE_LINES_TEXT = "the line number one\n" + "very long line number two\n" + "the third line\n" + "4\n" + "the last line";
+
+  @Test
+  public void testAsString() {
     Horizontal instance = new Horizontal(new CellOf("left"),
                                          (new CellOf("right")));
     String expResult = "left right";
-    String result = instance.toString();
-    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
+    String result = instance.asString();
+    assertTrue(EqualsBuilder.reflectionEquals(expResult,
+                                              result,
+                                              false,
+                                              null,
+                                              true));
   }
 
-  @Test public void testToString2() {
+  @Test
+  public void testAsString2() {
     Horizontal instance = new Horizontal(new CellOf(THREE_LINES_TEXT),
                                          (new CellOf(FIVE_LINES_TEXT)));
-    String expResult = "the first line the line number one\n"
-                       + "second         very long line number two\n"
-                       + "third          the third line\n"
-                       + "               4\n"
-                       + "               the last line";
-    String result = instance.toString();
-    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
+    String expResult = "the first line the line number one\n" + "second         very long line number two\n" + "third          the third line\n" + "               4\n" + "               the last line";
+    String result = instance.asString();
+    assertTrue(EqualsBuilder.reflectionEquals(expResult,
+                                              result,
+                                              false,
+                                              null,
+                                              true));
   }
 
-  @Test public void testToString3() {
+  @Test
+  public void testAsString3() {
     Horizontal instance = new Horizontal(new CellOf(FIVE_LINES_TEXT),
                                          (new CellOf(THREE_LINES_TEXT)));
-    String expResult = "the line number one       the first line\n"
-                       + "very long line number two second\n"
-                       + "the third line            third\n"
-                       + "4\n"
-                       + "the last line";
-    String result = instance.toString();
-    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
+    String expResult = "the line number one       the first line\n" + "very long line number two second\n" + "the third line            third\n" + "4\n" + "the last line";
+    String result = instance.asString();
+    assertTrue(EqualsBuilder.reflectionEquals(expResult,
+                                              result,
+                                              false,
+                                              null,
+                                              true));
   }
 }

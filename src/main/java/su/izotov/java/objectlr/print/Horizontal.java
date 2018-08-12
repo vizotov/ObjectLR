@@ -46,9 +46,9 @@ public final class Horizontal
   }
 
   @Override
-  public final String toString() {
-    final String strLeft = this.left.toString();
-    final String strRight = this.right.toString();
+  public final String asString() {
+    final String strLeft = this.left.asString();
+    final String strRight = this.right.asString();
     String ret;
     if (strLeft.isEmpty()) {
       ret = strRight;
