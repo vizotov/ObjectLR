@@ -41,7 +41,8 @@ public final class MKFirstToken
     return MKLang.tokens;
   }
 
-  @Override public String toSource() {
+  @Override
+  public String asString() {
     return "first";
   }
 }

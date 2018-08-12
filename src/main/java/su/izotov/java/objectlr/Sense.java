@@ -59,13 +59,13 @@ public interface Sense
                        new CellOf("") };
 
   default Sense concat(final Source source) {
-    if (source.toSource()
+    if (source.asString()
               .isEmpty()) {
       return this;
     }
     // recognized element
     final Token leftMostParsed = this.tokens()
-                                     .leftMostParsed(source.toSource());
+                                     .leftMostParsed(source.asString());
     // the text before recognized element
     final Sense precedingText = new Absence().concatDD(textToken(source.precedingThe(leftMostParsed))); // leftMostParsed.precedingIn(restPart);
     Sense restPart = new Absence().concatDD(leftMostParsed.followingIn(source));
@@ -201,19 +201,19 @@ public interface Sense
    */
   default Sense concat(final Failed failed) {
     return new Excluded(failed.token(),
-                        this).concatDD(new Source(failed.toSource()));
+                        this).concatDD(new Source(failed.asString()));
+  }
+
+  @Override
+  default Cell toVisual() {
+    return Visual.super.toVisual()
+                       .addRight(asString().length() == 0 ?
+                                 "" :
+                                 " \'" + asString() + "\'");
   }
 
   /**
    * @return Source text of this
    */
-  String toSource();
-
-  @Override
-  default Cell toVisual() {
-    return Visual.super.toVisual()
-                       .addRight(toSource().length() == 0 ?
-                                    "" :
-                                    " \'" + toSource() + "\'");
-  }
+  String asString();
 }

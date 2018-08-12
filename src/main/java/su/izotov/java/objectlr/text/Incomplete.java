@@ -21,13 +21,12 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-
 package su.izotov.java.objectlr.text;
 
 import su.izotov.java.objectlr.Sense;
 
 /**
- * Text at the end of the recognized string
+ * Text at the end of the recognized string. It is named 'incomplete' because we are waiting a followed string or the EOF token.
  * Created with IntelliJ IDEA.
  * @author Vladimir Izotov
  * @version $Id$
@@ -43,11 +42,11 @@ public class Incomplete
   }
 
   public Source concat(Sense sense) {
-    return new Source(this.toSource() + sense.toSource());
+    return new Source(this.asString() + sense.asString());
   }
 
   @Override
-  public String toSource() {
+  public String asString() {
     return text;
   }
 }

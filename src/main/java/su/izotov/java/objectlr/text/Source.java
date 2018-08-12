@@ -24,7 +24,6 @@
 package su.izotov.java.objectlr.text;
 
 import su.izotov.java.objectlr.Sense;
-import su.izotov.java.objectlr.token.Absence;
 import su.izotov.java.objectlr.token.Token;
 
 /**
@@ -42,16 +41,12 @@ public final class Source
 
   @Override
   public Source concat(final Source source) {
-    return new Source(this.text + source.toSource());
+    return new Source(this.text + source.asString());
   }
 
   @Override
-  public String toSource() {
+  public String asString() {
     return this.text;
-  }
-
-  public int length() {
-    return text.length();
   }
 
   /**
@@ -60,7 +55,7 @@ public final class Source
    * @return the text
    */
   public String precedingThe(final Token token) {
-    return this.precedingThe(token.toSource());
+    return this.precedingThe(token.asString());
   }
 
   /**
@@ -69,14 +64,13 @@ public final class Source
    * @return preceding text
    */
   public String precedingThe(final String text) {
-    if (this.toSource()
+    if (this.asString()
             .contains(text)) {
-      return this.toSource()
+      return this.asString()
                  .substring(0,
-                            this.toSource()
+                            this.asString()
                                 .indexOf(text));
-    }
-    else {
+    } else {
       return "";
     }
   }
@@ -86,8 +80,8 @@ public final class Source
    * @param token the token
    * @return following text
    */
-  public Source followingThe(final Token token) {
-    return new Source(token.afterFirstOccurrenceIn(this.toSource()));
+  public Sense followingThe(final Token token) {
+    return followingThe(token.asString());
   }
 
   /**
@@ -96,14 +90,13 @@ public final class Source
    * @return following text
    */
   public Sense followingThe(final String text) {
-    if (this.toSource()
+    if (this.asString()
             .contains(text)) {
-      return new Source(this.toSource()
-                            .substring(this.toSource()
+      return new Source(this.asString()
+                            .substring(this.asString()
                                            .indexOf(text) + text.length()));
-    }
-    else {
-      return new Absence();
+    } else {
+      return this;
     }
   }
 }

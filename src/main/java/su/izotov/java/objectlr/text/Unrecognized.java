@@ -43,11 +43,11 @@ public final class Unrecognized
   }
 
   public final Sense concat(final Unrecognized other) {
-    return create(this.text + other.toSource());
+    return create(this.text + other.asString());
   }
 
   @Override
-  public final String toSource() {
+  public final String asString() {
     return this.text;
   }
 

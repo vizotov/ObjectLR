@@ -39,7 +39,8 @@ public final class MKText
     this.text = text;
   }
 
-  @Override public String toSource() {
+  @Override
+  public String asString() {
     return text;
   }
 }

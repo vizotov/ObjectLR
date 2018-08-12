@@ -46,7 +46,7 @@ public interface Token
   @Override
   default Token leftMostParsed(final String text) {
     final Token ret;
-    if (text.contains(this.toSource())) {
+    if (text.contains(this.asString())) {
       ret = this;
     }
     else {
@@ -65,8 +65,8 @@ public interface Token
   @Override
   default boolean contains(final Token token) {
     return this.getClass()
-               .equals(token.getClass()) && this.toSource()
-                                                .equals(token.toSource());
+               .equals(token.getClass()) && this.asString()
+                                                .equals(token.asString());
   }
 
   /**
@@ -92,12 +92,12 @@ public interface Token
    * if this text is contained in the parameter, then
    * @return text is following to first occurrence
    */
-  default Source followingIn(final Source text) {
+  default Sense followingIn(final Source text) {
     return text.followingThe(this);
   }
 
   default int length() {
-    return this.toSource()
+    return this.asString()
                .length();
   }
 
@@ -111,27 +111,27 @@ public interface Token
   }
 
   /**
-   * first position of this element in the string
-   * @param text parameter
-   * @return position
-   */
-  default int firstPositionIn(final String text) {
-    return text.indexOf(this.toSource());
-  }
-
-  /**
    * text after first occurrence of this token in the string
    * @param text the string
    * @return the text
    */
   default String afterFirstOccurrenceIn(final String text) {
     if (this.existsIn(text)) {
-      return text.substring(this.firstPositionIn(text) + this.toSource()
+      return text.substring(this.firstPositionIn(text) + this.asString()
                                                              .length());
     }
     else {
       return text;
     }
+  }
+
+  /**
+   * first position of this element in the string
+   * @param text parameter
+   * @return position
+   */
+  default int firstPositionIn(final String text) {
+    return text.indexOf(this.asString());
   }
 
   /**
@@ -141,7 +141,7 @@ public interface Token
    */
   default Sense concat(final Unrecognized unrecognized) {
     return new Failed(this,
-                      new Source(unrecognized.toSource()));
+                      new Source(unrecognized.asString()));
   }
 
   /**

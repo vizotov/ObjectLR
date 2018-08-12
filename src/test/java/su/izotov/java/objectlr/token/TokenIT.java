@@ -28,6 +28,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import su.izotov.java.objectlr.MKFirstToken;
 import su.izotov.java.objectlr.MKSecondToken;
+import su.izotov.java.objectlr.MKThirdToken;
 
 /**
  * @author Vladimir Izotov
@@ -63,5 +64,95 @@ public final class TokenIT {
     Token expResult = new Absence();
     Token result = instance.leftMostParsed(text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
+  }
+
+  @Test
+  public void testLeftMost() {
+    Token token = new MKFirstToken();
+    String text = " no tokens exists";
+    Token instance = new MKSecondToken();
+    Token expResult = new Absence();
+    Token result = instance.leftMost(token,
+                                     text);
+    assertTrue(EqualsBuilder.reflectionEquals(expResult,
+                                              result,
+                                              false,
+                                              null,
+                                              true));
+  }
+
+  @Test
+  public void testLeftMost2() {
+    Token token = new MKFirstToken();
+    String text = " exists only second";
+    Token instance = new MKSecondToken();
+    Token expResult = new MKSecondToken();
+    Token result = instance.leftMost(token,
+                                     text);
+    assertTrue(EqualsBuilder.reflectionEquals(expResult,
+                                              result,
+                                              false,
+                                              null,
+                                              true));
+  }
+
+  @Test
+  public void testLeftMost3() {
+    Token token = new MKFirstToken();
+    String text = " exists only first";
+    Token instance = new MKSecondToken();
+    Token expResult = new MKFirstToken();
+    Token result = instance.leftMost(token,
+                                     text);
+    assertTrue(EqualsBuilder.reflectionEquals(expResult,
+                                              result,
+                                              false,
+                                              null,
+                                              true));
+  }
+
+  @Test
+  public void testLeftMost4() {
+    Token token = new MKFirstToken();
+    String text = " exists only first and second";
+    Token instance = new MKSecondToken();
+    Token expResult = new MKFirstToken();
+    Token result = instance.leftMost(token,
+                                     text);
+    assertTrue(EqualsBuilder.reflectionEquals(expResult,
+                                              result,
+                                              false,
+                                              null,
+                                              true));
+  }
+
+  @Test
+  public void testLeftMost5() {
+    Token token = new MKFirstToken();
+    String text = " exists only second and first";
+    Token instance = new MKSecondToken();
+    Token expResult = new MKSecondToken();
+    Token result = instance.leftMost(token,
+                                     text);
+    assertTrue(EqualsBuilder.reflectionEquals(expResult,
+                                              result,
+                                              false,
+                                              null,
+                                              true));
+  }
+
+  @Test
+  public void testLeftMost6() {
+    Token token = new MKThirdToken();
+    String text = " exists only second and first";
+    Token instance = new MKSecondToken();
+    Token expResult = new MKSecondToken();
+    Token result = instance.leftMost(token,
+                                     text);
+    assertTrue(EqualsBuilder.reflectionEquals(expResult,
+                                              result,
+                                              false,
+                                              null,
+                                              true));
   }
 }

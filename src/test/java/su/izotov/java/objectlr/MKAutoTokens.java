@@ -37,7 +37,8 @@ public final class MKAutoTokens
     return sense1;
   }
 
-  @Override public String toSource() {
+  @Override
+  public String asString() {
     return "";
   }
 }

@@ -53,7 +53,8 @@ public final class MKLangImpl
     return text;
   }
 
-  @Override public String toSource() {
+  @Override
+  public String asString() {
     return "";
   }
 

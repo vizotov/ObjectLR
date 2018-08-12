@@ -41,7 +41,8 @@ public final class MKSense1
 
   }
 
-  @Override public String toSource() {
+  @Override
+  public String asString() {
     throw new UnsupportedOperationException("#toSource()");
   }
 }

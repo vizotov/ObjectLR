@@ -42,7 +42,8 @@ public final class MKThirdToken
     return tokens;
   }
 
-  @Override public String toSource() {
+  @Override
+  public String asString() {
     return "third";
   }
 }

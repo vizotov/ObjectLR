@@ -67,8 +67,8 @@ public final class Failed
   }
 
   @Override
-  public final String toSource() {
-    return this.token.toSource() + this.followingSource.toSource();
+  public final String asString() {
+    return this.token.asString() + this.followingSource.asString();
   }
 
   @Override

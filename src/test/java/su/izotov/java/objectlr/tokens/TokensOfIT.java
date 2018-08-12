@@ -44,7 +44,8 @@ public final class TokensOfIT {
   @Test public void testLeftMostParsed() {
     String text = " tokens second first in the certain order third";
     final MKLang mkLang = new MKLang() {
-      @Override public String toSource() {
+      @Override
+      public String asString() {
         throw new UnsupportedOperationException("#toSource()");
       }
     };
@@ -57,7 +58,8 @@ public final class TokensOfIT {
   @Test public void testLeftMostParsed3() {
     String text = " no token";
     final MKLang mkLang = new MKLang() {
-      @Override public String toSource() {
+      @Override
+      public String asString() {
         throw new UnsupportedOperationException("#toSource()");
       }
     };
