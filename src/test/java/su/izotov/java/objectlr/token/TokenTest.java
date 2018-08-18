@@ -33,28 +33,13 @@ import su.izotov.java.objectlr.MKThirdToken;
 /**
  * @author Vladimir Izotov
  */
-public final class TokenIT {
-  @Test public void testTextAfterFirstOccupence() {
-    String text = "before second after second";
-    Token instance = new MKSecondToken();
-    String expResult = " after second";
-    String result = instance.afterFirstOccurrenceIn(text);
-    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
-  }
-
-  @Test public void testTextAfterFirstOccupence2() {
-    String text = "before second after second";
-    Token instance = new MKFirstToken();
-    String expResult = text;
-    String result = instance.afterFirstOccurrenceIn(text);
-    assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
-  }
+public final class TokenTest {
 
   @Test public void testLeftMostParsed() {
     String text = "the text with second token";
     Token instance = new MKSecondToken();
     Token expResult = new MKSecondToken();
-    Token result = instance.leftMostParsed(text);
+    Token result = instance.leftMostIn(text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
@@ -62,7 +47,7 @@ public final class TokenIT {
     String text = "the text without token";
     Token instance = new MKSecondToken();
     Token expResult = new Absence();
-    Token result = instance.leftMostParsed(text);
+    Token result = instance.leftMostIn(text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 

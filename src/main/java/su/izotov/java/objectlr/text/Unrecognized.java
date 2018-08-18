@@ -47,6 +47,11 @@ public final class Unrecognized
   }
 
   @Override
+  public String toString() {
+    return this.asString();
+  }
+
+  @Override
   public final String asString() {
     return this.text;
   }

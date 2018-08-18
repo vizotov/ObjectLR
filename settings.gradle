@@ -23,6 +23,6 @@
  */
 
 rootProject.name = 'ObjectLR'
-include ':JDoubleDispatch'
-project(':JDoubleDispatch').projectDir = new File(settingsDir, '../JDoubleDispatch')
+//include ':JDoubleDispatch'
+//project(':JDoubleDispatch').projectDir = new File(settingsDir, '../JDoubleDispatch')
 

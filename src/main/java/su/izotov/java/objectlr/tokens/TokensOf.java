@@ -53,18 +53,18 @@ public final class TokensOf
   }
 
   @Override
-  public final Token leftMostParsed(final String text) {
+  public final Token leftMostIn(final String text) {
     if (this.tokens.isEmpty()) {
       return new Absence();
     }
     final Iterator<Tokens> iterator = this.tokens.iterator();
     Token ret = iterator.hasNext() ?
                     iterator.next()
-                            .leftMostParsed(text) :
+                            .leftMostIn(text) :
                     new Absence();
     while (iterator.hasNext()) {
       ret = ret.leftMost(iterator.next()
-                                 .leftMostParsed(text),
+                                 .leftMostIn(text),
                          text);
     }
     return ret;

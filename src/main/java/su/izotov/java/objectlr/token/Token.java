@@ -44,12 +44,11 @@ public interface Token
    * @return token
    */
   @Override
-  default Token leftMostParsed(final String text) {
+  default Token leftMostIn(final String text) {
     final Token ret;
     if (text.contains(this.asString())) {
       ret = this;
-    }
-    else {
+    } else {
       ret = new Absence();
     }
     return ret;
@@ -75,16 +74,7 @@ public interface Token
    * @return text is preceding to first occurrence
    */
   default Text precedingIn(final Source text) {
-    return precedingTextWrapper(text.precedingThe(this));
-  }
-
-  /**
-   * Wrap string by special text type for following recognition
-   * @param text preceding text
-   * @return wrapped text
-   */
-  default Text precedingTextWrapper(String text) {
-    return Unrecognized.create(text);
+    return Unrecognized.create(text.precedingThe(this.asString()));
   }
 
   /**
@@ -93,36 +83,12 @@ public interface Token
    * @return text is following to first occurrence
    */
   default Sense followingIn(final Source text) {
-    return text.followingThe(this);
+    return text.followingThe(this.asString());
   }
 
   default int length() {
     return this.asString()
                .length();
-  }
-
-  /**
-   * check if this token exists in the string
-   * @param text the string
-   * @return result
-   */
-  default boolean existsIn(final String text) {
-    return this.firstPositionIn(text) != -1;
-  }
-
-  /**
-   * text after first occurrence of this token in the string
-   * @param text the string
-   * @return the text
-   */
-  default String afterFirstOccurrenceIn(final String text) {
-    if (this.existsIn(text)) {
-      return text.substring(this.firstPositionIn(text) + this.asString()
-                                                             .length());
-    }
-    else {
-      return text;
-    }
   }
 
   /**
@@ -158,23 +124,17 @@ public interface Token
     final int parsedPosition = parsed.firstPositionIn(text);
     if (thisPosition == -1 && parsedPosition == -1) {
       return new Absence();
-    }
-    else if (thisPosition == -1) {
+    } else if (thisPosition == -1) {
       return parsed;
-    }
-    else if (parsedPosition == -1) {
+    } else if (parsedPosition == -1) {
       return this;
-    }
-    else if (thisPosition > parsedPosition) {
+    } else if (thisPosition > parsedPosition) {
       return parsed;
-    }
-    else if (parsedPosition > thisPosition) {
+    } else if (parsedPosition > thisPosition) {
       return this;
-    }
-    else if (this.length() > parsed.length()) {
+    } else if (this.length() > parsed.length()) {
       return this;
-    }
-    else {
+    } else {
       return parsed;
     }
   }

@@ -29,6 +29,8 @@
  */
 package su.izotov.java.objectlr;
 
+import su.izotov.java.objectlr.text.Source;
+import su.izotov.java.objectlr.text.Text;
 import su.izotov.java.objectlr.token.Token;
 import su.izotov.java.objectlr.tokens.Tokens;
 
@@ -44,5 +46,11 @@ public final class MKFirstToken
   @Override
   public String asString() {
     return "first";
+  }
+
+  @Override
+  public Text precedingIn(final Source text) {
+    return new MKText(Token.super.precedingIn(text)
+                                 .asString());
   }
 }

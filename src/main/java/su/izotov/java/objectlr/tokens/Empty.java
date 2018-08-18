@@ -37,7 +37,7 @@ public final class Empty
     implements Tokens {
 
   @Override
-  public final Token leftMostParsed(final String text) {
+  public final Token leftMostIn(final String text) {
     return new Absence();
   }
 

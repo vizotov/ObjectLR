@@ -46,6 +46,11 @@ public class Incomplete
   }
 
   @Override
+  public String toString() {
+    return this.asString();
+  }
+
+  @Override
   public String asString() {
     return text;
   }

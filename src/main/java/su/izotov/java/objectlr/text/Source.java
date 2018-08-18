@@ -49,13 +49,9 @@ public final class Source
     return this.text;
   }
 
-  /**
-   * The text preceding the first occurrence of the token in the string
-   * @param token the token
-   * @return the text
-   */
-  public String precedingThe(final Token token) {
-    return this.precedingThe(token.asString());
+  @Override
+  public String toString() {
+    return this.asString();
   }
 
   /**
@@ -81,7 +77,7 @@ public final class Source
    * @return following text
    */
   public Sense followingThe(final Token token) {
-    return followingThe(token.asString());
+    return token.followingIn(this);
   }
 
   /**

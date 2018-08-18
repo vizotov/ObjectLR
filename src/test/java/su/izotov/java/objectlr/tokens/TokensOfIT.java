@@ -51,7 +51,7 @@ public final class TokensOfIT {
     };
     Tokens instance = (Tokens) mkLang.tokens();
     Token expResult = new MKSecondToken();
-    Token result = instance.leftMostParsed(text);
+    Token result = instance.leftMostIn(text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 
@@ -65,7 +65,7 @@ public final class TokensOfIT {
     };
     Tokens instance = (Tokens) mkLang.tokens();
     Token expResult = new Absence();
-    Token result = instance.leftMostParsed(text);
+    Token result = instance.leftMostIn(text);
     assertTrue(EqualsBuilder.reflectionEquals(expResult, result, false, null, true));
   }
 }

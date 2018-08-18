@@ -28,7 +28,6 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import su.izotov.java.objectlr.text.Incomplete;
 import su.izotov.java.objectlr.text.Source;
-import su.izotov.java.objectlr.text.Unrecognized;
 
 /**
  * @author Vladimir Izotov
@@ -40,7 +39,7 @@ public final class LangIT {
                            Exception {
     String text = "string before token second string after token";
     MKLang instance = new MKLangImpl();
-    Sense expResult = new Chain(new Chain(new One(Unrecognized.create("string before token ")),
+    Sense expResult = new Chain(new Chain(new One(new MKText("string before token ")),
                                           new MKSecondToken()),
                                 new Incomplete(" string after token"));
     Sense result = instance.concat(new Source(text));
@@ -70,7 +69,7 @@ public final class LangIT {
   public void testConcat3() {
     String text = "string before token second";
     MKLang instance = new MKLangImpl();
-    Sense expResult = new Chain(Unrecognized.create("string before token ")
+    Sense expResult = new Chain(new MKText("string before token ")
                                 //
         ,
                                 new MKSecondToken());
@@ -127,7 +126,7 @@ public final class LangIT {
   public void testConcat8() {
     String text = "start text firstsecond text third first ttt thi";
     MKLang instance = new MKLangImpl();
-    String expResult = "MKText 'start text '\n" + "MKFirstToken 'first'\n" + "MKSecondToken 'second'\n" + "MKText ' text '\n" + "MKThirdToken 'third'\n" + "MKText ' '\n" + "MKFirstToken 'first'\n" + "MKText ' ttt '\n" + "Incomplete 'thi'";
+    String expResult = "MKText  'start text '\n" + "MKFirstToken  'first'\n" + "MKSecondToken  'second'\n" + "MKText  ' text '\n" + "MKThirdToken  'third'\n" + "MKText  ' '\n" + "MKFirstToken  'first'\n" + "Incomplete  ' ttt thi'";
     String result = instance.concatDD(new Source(text))
                             .toVisual()
                             .asString();

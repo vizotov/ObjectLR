@@ -59,16 +59,12 @@ public interface Sense
                        new CellOf("") };
 
   default Sense concat(final Source source) {
-    if (source.asString()
-              .isEmpty()) {
-      return this;
-    }
     // recognized element
     final Token leftMostParsed = this.tokens()
-                                     .leftMostParsed(source.asString());
+                                     .leftMostIn(source.asString());
     // the text before recognized element
-    final Sense precedingText = new Absence().concatDD(textToken(source.precedingThe(leftMostParsed))); // leftMostParsed.precedingIn(restPart);
-    Sense restPart = new Absence().concatDD(leftMostParsed.followingIn(source));
+    final Sense precedingText = new Absence().concatDD(leftMostParsed.precedingIn(source));
+    Sense restPart = new Absence().concatDD(source.followingThe(leftMostParsed));
     Sense one = this.concatDD(precedingText);
     Sense two = one.concatDD(leftMostParsed);
     Sense three = two.concatDD(restPart);

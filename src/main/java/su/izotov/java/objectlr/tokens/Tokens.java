@@ -36,7 +36,7 @@ public interface Tokens {
    * @param text the string
    * @return token
    */
-  Token leftMostParsed(String text);
+  Token leftMostIn(String text);
 
   /**
    * Creates a new token set from an existing token set that does not intersect with a given

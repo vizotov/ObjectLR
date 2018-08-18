@@ -82,4 +82,9 @@ public final class Failed
   public final Token token() {
     return this.token;
   }
+
+  @Override
+  public String toString() {
+    return this.asString();
+  }
 }

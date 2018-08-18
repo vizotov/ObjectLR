@@ -61,8 +61,8 @@ public final class Absence
   }
 
   @Override
-  public Source followingIn(final Source text) {
-    return new Source("");
+  public Sense followingIn(final Source text) {
+    return this;
   }
 
   @Override
