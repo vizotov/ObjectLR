@@ -24,7 +24,6 @@
 package su.izotov.java.objectlr.token;
 
 import su.izotov.java.objectlr.Sense;
-import su.izotov.java.objectlr.text.Incomplete;
 import su.izotov.java.objectlr.text.Source;
 import su.izotov.java.objectlr.text.Text;
 
@@ -76,10 +75,7 @@ public final class Absence
   }
 
   @Override
-  public Text precedingIn(final Source text) {
-    return text.asString()
-               .isEmpty() ?
-           this :
-           new Incomplete(text.asString());
+  public String precedingIn(final Source text) {
+    return text.asString();
   }
 }

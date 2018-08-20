@@ -73,8 +73,8 @@ public interface Token
    * @param text parameter
    * @return text is preceding to first occurrence
    */
-  default Text precedingIn(final Source text) {
-    return Unrecognized.create(text.precedingThe(this.asString()));
+  default String precedingIn(final Source text) {
+    return text.precedingThe(this.asString());
   }
 
   /**

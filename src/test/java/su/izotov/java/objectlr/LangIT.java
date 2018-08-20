@@ -26,7 +26,6 @@ package su.izotov.java.objectlr;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-import su.izotov.java.objectlr.text.Incomplete;
 import su.izotov.java.objectlr.text.Source;
 
 /**
@@ -41,7 +40,7 @@ public final class LangIT {
     MKLang instance = new MKLangImpl();
     Sense expResult = new Chain(new Chain(new One(new MKText("string before token ")),
                                           new MKSecondToken()),
-                                new Incomplete(" string after token"));
+                                new MKText(" string after token"));
     Sense result = instance.concat(new Source(text));
     assertTrue(EqualsBuilder.reflectionEquals(expResult,
                                               result,
@@ -55,8 +54,7 @@ public final class LangIT {
     String text = "second string after token";
     MKLang instance = new MKLangImpl();
     Sense expResult = new Chain(new MKSecondToken(),
-                                //
-                                new Incomplete(" string after token"));
+                                new MKText(" string after token"));
     Sense result = instance.concatDD(new Source(text));
     assertTrue(EqualsBuilder.reflectionEquals(expResult,
                                               result,
@@ -98,7 +96,7 @@ public final class LangIT {
   public void testConcat5() {
     String text = "it is not token";
     Sense instance = new MKLangImpl();
-    Sense expResult = new Incomplete(text);
+    Sense expResult = new MKText(text);
     Sense result = instance.concat(new Source(text));
     assertTrue(EqualsBuilder.reflectionEquals(expResult,
                                               result,
@@ -113,7 +111,7 @@ public final class LangIT {
     MKLang instance = new MKLangImpl();
     Sense expResult = new Chain(new Chain(new One(new MKFirstToken()),
                                           new MKSecondToken()),
-                                new Incomplete(" textik"));
+                                new MKText(" textik"));
     Sense result = instance.concat(new Source(text));
     assertTrue(EqualsBuilder.reflectionEquals(expResult,
                                               result,
@@ -126,7 +124,7 @@ public final class LangIT {
   public void testConcat8() {
     String text = "start text firstsecond text third first ttt thi";
     MKLang instance = new MKLangImpl();
-    String expResult = "MKText  'start text '\n" + "MKFirstToken  'first'\n" + "MKSecondToken  'second'\n" + "MKText  ' text '\n" + "MKThirdToken  'third'\n" + "MKText  ' '\n" + "MKFirstToken  'first'\n" + "Incomplete  ' ttt thi'";
+    String expResult = "MKText  'start text '\n" + "MKFirstToken  'first'\n" + "MKSecondToken  'second'\n" + "MKText  ' text '\n" + "MKThirdToken  'third'\n" + "MKText  ' '\n" + "MKFirstToken  'first'\n" + "MKText  ' ttt thi'";
     String result = instance.concatDD(new Source(text))
                             .toVisual()
                             .asString();

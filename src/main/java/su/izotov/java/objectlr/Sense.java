@@ -54,7 +54,7 @@ import su.izotov.java.objectlr.tokens.TokensOf;
 public interface Sense
     extends Visual {
 
-  int[] logLevel = { 0 };
+  int[] logOffset = { 0 };
   Cell[] logBuffer = { new CellOf(""),
                        new CellOf("") };
 
@@ -63,7 +63,7 @@ public interface Sense
     final Token leftMostParsed = this.tokens()
                                      .leftMostIn(source.asString());
     // the text before recognized element
-    final Sense precedingText = new Absence().concatDD(leftMostParsed.precedingIn(source));
+    final Sense precedingText = new Absence().concatDD(textToken(leftMostParsed.precedingIn(source)));
     Sense restPart = new Absence().concatDD(source.followingThe(leftMostParsed));
     Sense one = this.concatDD(precedingText);
     Sense two = one.concatDD(leftMostParsed);
@@ -146,7 +146,7 @@ public interface Sense
    * @return The result of interaction
    */
   default Sense concatDD(final Sense sense) {
-    if (logLevel[0] == 0) {
+    if (logOffset[0] == 0) {
       logBuffer[0] = new CellOf("");
     }
     logBottom(this.toVisual()
@@ -158,16 +158,16 @@ public interface Sense
                                                                             sense,
                                                                             Chain::new).resultFunction();
       logRight(new CellOf(" - " + resultFunction.toString()));
-      logLevel[0]++;
+      logOffset[0]++;
       ret = resultFunction.apply(this,
                                  sense);
     } catch (final MethodAmbiguouslyDefinedException e) {
       throw new RuntimeException(e);
     }
-    logLevel[0]--;
+    logOffset[0]--;
     logBottom(new CellOf("VVVVV").addBottom(ret.toVisual())
                                  .addBottom(new CellOf("-----")));
-    if (logLevel[0] == 0) {
+    if (logOffset[0] == 0) {
       flushLog();
     }
     return ret;
@@ -175,7 +175,7 @@ public interface Sense
 
   static void logBottom(Cell content) {
     logBuffer[0] = logBuffer[0].addBottom(logBuffer[1]);
-    logBuffer[1] = new Spaces(logLevel[0]).addRight(content);
+    logBuffer[1] = new Spaces(logOffset[0]).addRight(content);
   }
 
   static void logRight(Cell content) {

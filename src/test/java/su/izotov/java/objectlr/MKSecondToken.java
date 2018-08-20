@@ -29,8 +29,6 @@
  */
 package su.izotov.java.objectlr;
 
-import su.izotov.java.objectlr.text.Source;
-import su.izotov.java.objectlr.text.Text;
 import su.izotov.java.objectlr.token.Token;
 import su.izotov.java.objectlr.tokens.Tokens;
 
@@ -38,20 +36,16 @@ import su.izotov.java.objectlr.tokens.Tokens;
  * @author Vladimir Izotov
  */
 public final class MKSecondToken
-    implements Token, MKLang {
+    implements Token,
+               MKLang {
 
-  @Override public Tokens tokens() {
+  @Override
+  public Tokens tokens() {
     return tokens;
   }
 
   @Override
   public String asString() {
     return "second";
-  }
-
-  @Override
-  public Text precedingIn(final Source text) {
-    return new MKText(Token.super.precedingIn(text)
-                                 .asString());
   }
 }

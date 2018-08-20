@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 import su.izotov.java.objectlr.text.Source;
 
 /**
- * the sentence on the certain master, containing string representation of the recognized object
+ * the sentence on the certain language, containing string representation of the recognized object
  * <p>Created with IntelliJ IDEA.</p>
  * @param <T> The type of the master object that will understand the sentence text
  * @param <R> the type of recognizable object
