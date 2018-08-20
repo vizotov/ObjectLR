@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e9bc43a3-4223-4794-bfcd-86f57b615ff6" name="Default" comment="Before adding Pattern">
-      <change beforePath="$PROJECT_DIR$/.idea/modules/ObjectLR.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ObjectLR.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/ObjectLR_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ObjectLR_main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/ObjectLR_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ObjectLR_test.iml" afterDir="false" />
+    <list default="true" id="e9bc43a3-4223-4794-bfcd-86f57b615ff6" name="Default" comment="This is the final version before rewriting in an fully object-oriented way">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Sense.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Sense.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Sentence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Sentence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Absence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Absence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKFirstToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKFirstToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKSecondToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKSecondToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKThirdToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKThirdToken.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/README.md/" />
@@ -74,15 +63,17 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gradle" value="38" />
-          <entry key="java" value="1697" />
-          <entry key="txt" value="68" />
+          <entry key="java" value="1722" />
+          <entry key="md" value="2" />
+          <entry key="txt" value="150" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="38" />
-          <entry key="JAVA" value="1697" />
-          <entry key="PLAIN_TEXT" value="68" />
+          <entry key="JAVA" value="1722" />
+          <entry key="Markdown" value="2" />
+          <entry key="PLAIN_TEXT" value="150" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -115,8 +106,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/LangIT.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1921">
-              <caret line="135" column="51" selection-start-line="135" selection-start-column="51" selection-end-line="135" selection-end-column="51" />
+            <state relative-caret-position="182">
+              <caret line="42" column="43" lean-forward="true" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -151,7 +142,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKFirstToken.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
@@ -178,11 +169,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="-102" />
+              <first_editor relative-caret-position="1666">
+                <caret line="98" column="35" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="35" />
+              </first_editor>
               <second_editor />
             </state>
           </provider>
@@ -734,7 +727,6 @@
         <option value="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Incomplete.java" />
         <option value="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Unrecognized.java" />
         <option value="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Failed.java" />
-        <option value="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/LangIT.java" />
         <option value="$PROJECT_DIR$/settings.gradle" />
         <option value="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/token/TokenTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Sentence.java" />
@@ -748,6 +740,8 @@
         <option value="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKThirdToken.java" />
         <option value="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKSecondToken.java" />
         <option value="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKFirstToken.java" />
+        <option value="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/LangIT.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -773,62 +767,6 @@
             <path>
               <item name="ObjectLR" type="b2602c69:ProjectViewProjectNode" />
               <item name="ObjectLR" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="ObjectLR" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ObjectLR" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ObjectLR" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ObjectLR" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="ObjectLR" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ObjectLR" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ObjectLR" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ObjectLR" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="objectlr" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ObjectLR" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ObjectLR" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="objectlr" type="462c0819:PsiDirectoryNode" />
-              <item name="token" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ObjectLR" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ObjectLR" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="ObjectLR" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ObjectLR" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ObjectLR" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ObjectLR" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="objectlr" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -1052,13 +990,17 @@
       <option name="project" value="LOCAL" />
       <updated>1534093650100</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="This is the final version before rewriting in an fully object-oriented way">
+      <created>1534794925480</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1534794925480</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Test - 2018.08.18 at 14h 44m 23s.xml">
-      <configuration name="Test" configurationId="GradleRunConfiguration" />
-    </history-entry>
     <history-entry file="Test - 2018.08.18 at 17h 24m 31s.xml">
       <configuration name="Test" configurationId="GradleRunConfiguration" />
     </history-entry>
@@ -1086,12 +1028,15 @@
     <history-entry file="Test - 2018.08.20 at 19h 50m 56s.xml">
       <configuration name="Test" configurationId="GradleRunConfiguration" />
     </history-entry>
+    <history-entry file="Test - 2018.08.20 at 22h 50m 22s.xml">
+      <configuration name="Test" configurationId="GradleRunConfiguration" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.45285714" visible="true" weight="0.2094818" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.45285714" visible="true" weight="0.2094818" />
       <window_info id="Structure" order="1" sideWeight="0.54714286" side_tool="true" visible="true" weight="0.2094818" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -1100,7 +1045,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32917964" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27310488" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.27310488" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3956386" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1134,7 +1079,8 @@
     <MESSAGE value="Package 'print' is refactored." />
     <MESSAGE value="Class Source is refactored." />
     <MESSAGE value="Before adding Pattern" />
-    <option name="LAST_COMMIT_MESSAGE" value="Before adding Pattern" />
+    <MESSAGE value="This is the final version before rewriting in an fully object-oriented way" />
+    <option name="LAST_COMMIT_MESSAGE" value="This is the final version before rewriting in an fully object-oriented way" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1151,7 +1097,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/LangIT.java</url>
-          <line>59</line>
+          <line>57</line>
           <properties />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
@@ -1163,13 +1109,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/LangIT.java</url>
-          <line>129</line>
+          <line>127</line>
           <properties />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/LangIT.java</url>
-          <line>116</line>
+          <line>114</line>
           <properties />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
@@ -1366,13 +1312,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/LangIT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1921">
-          <caret line="135" column="51" selection-start-line="135" selection-start-column="51" selection-end-line="135" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/settings.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1467,21 +1406,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-102" />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="91" column="12" selection-start-line="91" selection-start-column="12" selection-end-line="91" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Sense.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -1521,6 +1445,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="46" column="3" selection-start-line="46" selection-start-column="3" selection-end-line="46" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/LangIT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="42" column="43" lean-forward="true" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="91" column="12" selection-start-line="91" selection-start-column="12" selection-end-line="91" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="1666">
+            <caret line="98" column="35" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="35" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
