@@ -43,17 +43,17 @@ public final class Unrecognized
   }
 
   public final Sense concat(final Unrecognized other) {
-    return create(this.text + other.asString());
+    return create(this.text + other.toSource());
+  }
+
+  @Override
+  public final String toSource() {
+    return this.text;
   }
 
   @Override
   public String toString() {
-    return this.asString();
-  }
-
-  @Override
-  public final String asString() {
-    return this.text;
+    return this.toSource();
   }
 
   public static Text create(String text) {

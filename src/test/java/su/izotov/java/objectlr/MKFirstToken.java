@@ -42,7 +42,7 @@ public final class MKFirstToken
   }
 
   @Override
-  public String asString() {
+  public String toSource() {
     return "first";
   }
 }

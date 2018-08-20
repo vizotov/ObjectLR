@@ -40,7 +40,7 @@ public final class Vertical
   }
 
   @Override
-  public String asString() {
-    return this.top.asString() + '\n' + this.bottom.asString();
+  public String toSource() {
+    return this.top.toSource() + '\n' + this.bottom.toSource();
   }
 }

@@ -45,7 +45,7 @@ public final class TokensOfIT {
     String text = " tokens second first in the certain order third";
     final MKLang mkLang = new MKLang() {
       @Override
-      public String asString() {
+      public String toSource() {
         throw new UnsupportedOperationException("#toSource()");
       }
     };
@@ -59,7 +59,7 @@ public final class TokensOfIT {
     String text = " no token";
     final MKLang mkLang = new MKLang() {
       @Override
-      public String asString() {
+      public String toSource() {
         throw new UnsupportedOperationException("#toSource()");
       }
     };

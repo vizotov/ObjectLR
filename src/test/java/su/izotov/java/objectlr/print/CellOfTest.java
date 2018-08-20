@@ -43,7 +43,7 @@ public final class CellOfTest {
     CellOf instance = new CellOf("a long line, which will have to be wrapped to a new line again and again until it ends",
                                  40);
     String expResult = "a long line, which will have to be wrapp\n" + "ed to a new line again and again until i\n" + "t ends";
-    String result = instance.asString();
+    String result = instance.toSource();
     assertTrue(EqualsBuilder.reflectionEquals(expResult,
                                               result,
                                               false,

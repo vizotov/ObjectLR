@@ -35,7 +35,7 @@ import su.izotov.java.objectlr.text.Source;
  * @version $Id$
  * @since 1.0
  */
-public final class Sentence<T extends Sense, R extends Sense> {
+public class Sentence<T extends Sense, R extends Sense> {
 
   private final String text;
   private final T master;
@@ -62,8 +62,13 @@ public final class Sentence<T extends Sense, R extends Sense> {
             .info("Unrecognizable text!");
       Logger.getGlobal()
             .info(ret.toVisual()
-                     .asString());
+                     .toSource());
       throw new RecognitionException(ret);
     }
+  }
+
+  @Override
+  public String toString() {
+    return text;
   }
 }

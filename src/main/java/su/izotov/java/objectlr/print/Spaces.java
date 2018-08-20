@@ -40,7 +40,7 @@ public class Spaces
   }
 
   @Override
-  public String asString() {
+  public String toSource() {
     StringBuffer spaces = new StringBuffer();
     for (int i = 0;
          i < cnt;

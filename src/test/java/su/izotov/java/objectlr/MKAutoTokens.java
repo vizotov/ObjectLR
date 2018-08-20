@@ -38,7 +38,7 @@ public final class MKAutoTokens
   }
 
   @Override
-  public String asString() {
+  public String toSource() {
     return "";
   }
 }

@@ -45,7 +45,7 @@ public final class MKSecondToken
   }
 
   @Override
-  public String asString() {
+  public String toSource() {
     return "second";
   }
 }

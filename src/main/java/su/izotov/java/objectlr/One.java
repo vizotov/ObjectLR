@@ -66,7 +66,7 @@ public final class One
   }
 
   @Override
-  public final String asString() {
-    return this.sense.asString();
+  public final String toSource() {
+    return this.sense.toSource();
   }
 }

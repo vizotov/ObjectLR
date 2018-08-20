@@ -91,7 +91,6 @@ group 'su.izotov'
 archivesBaseName = "ObjectLR"
 version '0.6'
 
-/*
 uploadArchives {
   repositories {
     mavenDeployer {
@@ -157,4 +156,3 @@ nexusStaging {
   //stagingProfileId = "yourStagingProfileId" //when not defined will be got from server using
   //"packageGroup"
 }
-*/

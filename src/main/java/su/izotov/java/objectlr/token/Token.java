@@ -46,7 +46,7 @@ public interface Token
   @Override
   default Token leftMostIn(final String text) {
     final Token ret;
-    if (text.contains(this.asString())) {
+    if (text.contains(this.toSource())) {
       ret = this;
     } else {
       ret = new Absence();
@@ -64,8 +64,8 @@ public interface Token
   @Override
   default boolean contains(final Token token) {
     return this.getClass()
-               .equals(token.getClass()) && this.asString()
-                                                .equals(token.asString());
+               .equals(token.getClass()) && this.toSource()
+                                                .equals(token.toSource());
   }
 
   /**
@@ -74,7 +74,7 @@ public interface Token
    * @return text is preceding to first occurrence
    */
   default String precedingIn(final Source text) {
-    return text.precedingThe(this.asString());
+    return text.precedingThe(this.toSource());
   }
 
   /**
@@ -83,11 +83,11 @@ public interface Token
    * @return text is following to first occurrence
    */
   default Sense followingIn(final Source text) {
-    return text.followingThe(this.asString());
+    return text.followingThe(this.toSource());
   }
 
   default int length() {
-    return this.asString()
+    return this.toSource()
                .length();
   }
 
@@ -97,7 +97,7 @@ public interface Token
    * @return position
    */
   default int firstPositionIn(final String text) {
-    return text.indexOf(this.asString());
+    return text.indexOf(this.toSource());
   }
 
   /**
@@ -107,7 +107,7 @@ public interface Token
    */
   default Sense concat(final Unrecognized unrecognized) {
     return new Failed(this,
-                      new Source(unrecognized.asString()));
+                      new Source(unrecognized.toSource()));
   }
 
   /**

@@ -53,7 +53,7 @@ public final class CellOf
   }
 
   @Override
-  public final String asString() {
+  public final String toSource() {
     final String ret;
     if (this.margin == 0) {
       ret = this.text;

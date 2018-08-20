@@ -37,21 +37,21 @@ public final class Absence
                Text {
 
   public Text concat(Text text) {
-    return text.asString()
+    return text.toSource()
                .isEmpty() ?
            this :
            text;
   }
 
   public Sense concat(Source text) {
-    return text.asString()
+    return text.toSource()
                .isEmpty() ?
            this :
            text;
   }
 
   @Override
-  public String asString() {
+  public String toSource() {
     return "";
   }
 
@@ -76,6 +76,6 @@ public final class Absence
 
   @Override
   public String precedingIn(final Source text) {
-    return text.asString();
+    return text.toSource();
   }
 }

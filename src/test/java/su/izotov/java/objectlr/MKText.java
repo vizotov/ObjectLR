@@ -40,7 +40,7 @@ public final class MKText
   }
 
   @Override
-  public String asString() {
+  public String toSource() {
     return text;
   }
 }

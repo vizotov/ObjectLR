@@ -77,7 +77,7 @@ public final class Chain
   public Sense concat(final Failed failed) {
     return new Chain(this.parent,
                      new Excluded(failed.token(),
-                                  this.current)).concatDD(new Source(failed.asString()));
+                                  this.current)).concatDD(new Source(failed.toSource()));
   }
 
   @Override
@@ -97,7 +97,7 @@ public final class Chain
   }
 
   @Override
-  public final String asString() {
-    return this.parent.asString() + this.current.asString();
+  public final String toSource() {
+    return this.parent.toSource() + this.current.toSource();
   }
 }

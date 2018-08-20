@@ -58,17 +58,12 @@ public interface Sense
   Cell[] logBuffer = { new CellOf(""),
                        new CellOf("") };
 
-  default Sense concat(final Source source) {
-    // recognized element
-    final Token leftMostParsed = this.tokens()
-                                     .leftMostIn(source.asString());
-    // the text before recognized element
-    final Sense precedingText = new Absence().concatDD(textToken(leftMostParsed.precedingIn(source)));
-    Sense restPart = new Absence().concatDD(source.followingThe(leftMostParsed));
-    Sense one = this.concatDD(precedingText);
-    Sense two = one.concatDD(leftMostParsed);
-    Sense three = two.concatDD(restPart);
-    return three;
+  static void flushLog() {
+    logBuffer[0] = logBuffer[0].addBottom(logBuffer[1]);
+    Logger.getGlobal()
+          .info(logBuffer[0]::toSource);
+    logBuffer[0] = new CellOf("");
+    logBuffer[1] = new CellOf("");
   }
 
   default Sense concat(final Absence absence) {
@@ -182,12 +177,17 @@ public interface Sense
     logBuffer[1] = logBuffer[1].addRight(content);
   }
 
-  static void flushLog() {
-    logBuffer[0] = logBuffer[0].addBottom(logBuffer[1]);
-    Logger.getGlobal()
-          .info(logBuffer[0]::asString);
-    logBuffer[0] = new CellOf("");
-    logBuffer[1] = new CellOf("");
+  default Sense concat(final Source source) {
+    // recognized element
+    final Token leftMostParsed = this.tokens()
+                                     .leftMostIn(source.toSource());
+    // the text before recognized element
+    final Sense precedingText = new Absence().concatDD(textToken(leftMostParsed.precedingIn(source)));
+    Sense restPart = new Absence().concatDD(source.followingThe(leftMostParsed));
+    Sense one = this.concatDD(precedingText);
+    Sense two = one.concatDD(leftMostParsed);
+    Sense three = two.concatDD(restPart);
+    return three;
   }
 
   /**
@@ -197,19 +197,19 @@ public interface Sense
    */
   default Sense concat(final Failed failed) {
     return new Excluded(failed.token(),
-                        this).concatDD(new Source(failed.asString()));
+                        this).concatDD(new Source(failed.toSource()));
   }
 
   @Override
   default Cell toVisual() {
     return Visual.super.toVisual()
-                       .addRight(asString().length() == 0 ?
+                       .addRight(toSource().length() == 0 ?
                                  "" :
-                                 " \'" + asString() + "\'");
+                                 " \'" + toSource() + "\'");
   }
 
   /**
    * @return Source text of this
    */
-  String asString();
+  String toSource();
 }

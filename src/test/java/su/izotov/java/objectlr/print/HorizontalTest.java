@@ -40,7 +40,7 @@ public final class HorizontalTest {
     Horizontal instance = new Horizontal(new CellOf("left"),
                                          (new CellOf("right")));
     String expResult = "left right";
-    String result = instance.asString();
+    String result = instance.toSource();
     assertTrue(EqualsBuilder.reflectionEquals(expResult,
                                               result,
                                               false,
@@ -53,7 +53,7 @@ public final class HorizontalTest {
     Horizontal instance = new Horizontal(new CellOf(THREE_LINES_TEXT),
                                          (new CellOf(FIVE_LINES_TEXT)));
     String expResult = "the first line the line number one\n" + "second         very long line number two\n" + "third          the third line\n" + "               4\n" + "               the last line";
-    String result = instance.asString();
+    String result = instance.toSource();
     assertTrue(EqualsBuilder.reflectionEquals(expResult,
                                               result,
                                               false,
@@ -66,7 +66,7 @@ public final class HorizontalTest {
     Horizontal instance = new Horizontal(new CellOf(FIVE_LINES_TEXT),
                                          (new CellOf(THREE_LINES_TEXT)));
     String expResult = "the line number one       the first line\n" + "very long line number two second\n" + "the third line            third\n" + "4\n" + "the last line";
-    String result = instance.asString();
+    String result = instance.toSource();
     assertTrue(EqualsBuilder.reflectionEquals(expResult,
                                               result,
                                               false,

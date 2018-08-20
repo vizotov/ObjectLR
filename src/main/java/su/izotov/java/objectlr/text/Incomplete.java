@@ -42,16 +42,16 @@ public class Incomplete
   }
 
   public Source concat(Sense sense) {
-    return new Source(this.asString() + sense.asString());
+    return new Source(this.toSource() + sense.toSource());
+  }
+
+  @Override
+  public String toSource() {
+    return text;
   }
 
   @Override
   public String toString() {
-    return this.asString();
-  }
-
-  @Override
-  public String asString() {
-    return text;
+    return this.toSource();
   }
 }

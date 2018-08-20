@@ -41,17 +41,17 @@ public final class Source
 
   @Override
   public Source concat(final Source source) {
-    return new Source(this.text + source.asString());
+    return new Source(this.text + source.toSource());
   }
 
   @Override
-  public String asString() {
+  public String toSource() {
     return this.text;
   }
 
   @Override
   public String toString() {
-    return this.asString();
+    return this.toSource();
   }
 
   /**
@@ -60,11 +60,11 @@ public final class Source
    * @return preceding text
    */
   public String precedingThe(final String text) {
-    if (this.asString()
+    if (this.toSource()
             .contains(text)) {
-      return this.asString()
+      return this.toSource()
                  .substring(0,
-                            this.asString()
+                            this.toSource()
                                 .indexOf(text));
     } else {
       return "";
@@ -86,10 +86,10 @@ public final class Source
    * @return following text
    */
   public Sense followingThe(final String text) {
-    if (this.asString()
+    if (this.toSource()
             .contains(text)) {
-      return new Source(this.asString()
-                            .substring(this.asString()
+      return new Source(this.toSource()
+                            .substring(this.toSource()
                                            .indexOf(text) + text.length()));
     } else {
       return this;
