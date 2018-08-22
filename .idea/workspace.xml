@@ -1,39 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e9bc43a3-4223-4794-bfcd-86f57b615ff6" name="Default" comment="This is the final version before rewriting in an fully object-oriented way">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Chain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Chain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Excluded.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Excluded.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/One.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/One.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Sense.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Sense.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Sentence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/Sentence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/print/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/print/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/print/CellOf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/print/CellOf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/print/Horizontal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/print/Horizontal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/print/Spaces.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/print/Spaces.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/print/Vertical.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/print/Vertical.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Incomplete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Incomplete.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Source.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Source.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Unrecognized.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Unrecognized.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Absence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Absence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Failed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Failed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/LangIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/LangIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKAutoTokens.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKAutoTokens.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKFirstToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKFirstToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKLangImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKLangImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKSecondToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKSecondToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKSense1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKSense1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKSense2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKSense2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKSense3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKSense3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKThirdToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/MKThirdToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/print/CellOfTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/print/CellOfTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/print/HorizontalTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/print/HorizontalTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/tokens/TokensOfIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/su/izotov/java/objectlr/tokens/TokensOfIT.java" afterDir="false" />
-    </list>
+    <list default="true" id="e9bc43a3-4223-4794-bfcd-86f57b615ff6" name="Default" comment="This is the final version before rewriting in an fully object-oriented way" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/README.md/" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -242,7 +210,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Failed.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="513">
-              <caret line="88" column="3" selection-start-line="88" selection-start-column="3" selection-end-line="88" selection-end-column="3" />
+              <caret line="71" column="3" selection-start-line="71" selection-start-column="3" selection-end-line="71" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -305,7 +273,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Unrecognized.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
-              <caret line="51" column="3" selection-start-line="51" selection-start-column="3" selection-end-line="51" selection-end-column="3" />
+              <caret line="48" selection-start-line="48" selection-end-line="48" />
             </state>
           </provider>
         </entry>
@@ -596,7 +564,7 @@
         <entry key="$PROJECT_DIR$/../JDoubleDispatch/settings.gradle" value="3474229886" />
         <entry key="$PROJECT_DIR$" value="9193641531613" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="1733378728" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="3204130075" />
         <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="566444372" />
         <entry key="$PROJECT_DIR$/settings.gradle" value="187907673" />
       </map>
@@ -958,7 +926,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.Test">
+  <component name="RunManager" selected="Gradle.closeAndReleaseRepository">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -986,6 +954,42 @@
             <option value="build" />
             <option value="test" />
             <option value="idea" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="closeAndReleaseRepository" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="closeAndReleaseRepository" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="uploadArchives" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="uploadArchives" />
           </list>
         </option>
         <option name="vmOptions" value="" />
@@ -1102,6 +1106,8 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.Test" />
+      <item itemvalue="Gradle.uploadArchives" />
+      <item itemvalue="Gradle.closeAndReleaseRepository" />
       <item itemvalue="JUnit.LangIT.testConcat6" />
       <item itemvalue="JUnit.LangIT.testConcat8" />
       <item itemvalue="JUnit.LangIT.testConcat2" />
@@ -1150,7 +1156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1534794925480</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="This is the final version before rewriting in an fully object-oriented way">
+      <created>1534796719858</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1534796719858</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1187,6 +1200,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.45285714" visible="true" weight="0.21168688" />
       <window_info id="Structure" order="1" sideWeight="0.54714286" side_tool="true" visible="true" weight="0.21168688" />
@@ -1556,14 +1570,14 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/token/Failed.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
-          <caret line="88" column="3" selection-start-line="88" selection-start-column="3" selection-end-line="88" selection-end-column="3" />
+          <caret line="71" column="3" selection-start-line="71" selection-start-column="3" selection-end-line="71" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/su/izotov/java/objectlr/text/Unrecognized.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
-          <caret line="51" column="3" selection-start-line="51" selection-start-column="3" selection-end-line="51" selection-end-column="3" />
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
         </state>
       </provider>
     </entry>
