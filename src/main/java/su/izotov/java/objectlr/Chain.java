@@ -25,6 +25,7 @@ package su.izotov.java.objectlr;
 
 import su.izotov.java.objectlr.print.Cell;
 import su.izotov.java.objectlr.text.Source;
+import su.izotov.java.objectlr.text.Text;
 import su.izotov.java.objectlr.token.Failed;
 import su.izotov.java.objectlr.tokens.Tokens;
 

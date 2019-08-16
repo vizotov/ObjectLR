@@ -27,7 +27,7 @@ package su.izotov.java.objectlr.print;
  * two cells, concatenated from top to bottom
  * @author Vladimir Izotov
  */
-public final class Vertical
+final class Vertical
     implements Cell {
 
   private final Cell top;

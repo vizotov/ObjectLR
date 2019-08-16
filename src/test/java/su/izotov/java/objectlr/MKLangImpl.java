@@ -59,7 +59,7 @@ public final class MKLangImpl
   }
 
   @Override
-  public Sense textToken(final String text) {
+  public Text textToken(final String text) {
     return new MKText(text);
   }
 }

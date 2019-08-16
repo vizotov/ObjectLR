@@ -53,7 +53,7 @@ public final class CellOf
   }
 
   @Override
-  public final String toSource() {
+  public String toSource() {
     final String ret;
     if (this.margin == 0) {
       ret = this.text;
@@ -65,8 +65,8 @@ public final class CellOf
       for (final String line : lines) {
         String rest = line;
         while (true) {
-          if (!(builder.length() == 0)) {
-            builder.append("\n");
+          if (builder.length() != 0) {
+            builder.append('\n');
           }
           if (rest.length() > this.margin) {
             builder.append(rest.substring(0,

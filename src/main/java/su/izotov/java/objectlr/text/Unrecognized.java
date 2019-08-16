@@ -24,7 +24,6 @@
 package su.izotov.java.objectlr.text;
 
 import su.izotov.java.objectlr.Sense;
-import su.izotov.java.objectlr.token.Absence;
 
 /**
  * unrecognized text that is treated as an error in the current recognition path
@@ -38,12 +37,12 @@ public final class Unrecognized
 
   private final String text;
 
-  private Unrecognized(final String text) {
+  public Unrecognized(final String text) {
     this.text = text;
   }
 
   public final Sense concat(final Unrecognized other) {
-    return create(this.text + other.toSource());
+    return textToken(this.text + other.toSource());
   }
 
   @Override
@@ -54,11 +53,5 @@ public final class Unrecognized
   @Override
   public String toString() {
     return this.toSource();
-  }
-
-  public static Text create(String text) {
-    return text.isEmpty() ?
-           new Absence() :
-           new Unrecognized(text);
   }
 }

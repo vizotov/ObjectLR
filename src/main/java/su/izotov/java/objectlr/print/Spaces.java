@@ -30,7 +30,7 @@ package su.izotov.java.objectlr.print;
  * @version $Id$
  * @since 1.0
  */
-public class Spaces
+public final class Spaces
     implements Cell {
 
   private final Integer cnt;
@@ -41,9 +41,9 @@ public class Spaces
 
   @Override
   public String toSource() {
-    StringBuffer spaces = new StringBuffer();
+    final StringBuilder spaces = new StringBuilder(10);
     for (int i = 0;
-         i < cnt;
+         i < this.cnt;
          i++) {
       spaces.append(' ');
     }

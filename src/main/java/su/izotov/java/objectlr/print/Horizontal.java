@@ -27,7 +27,7 @@ package su.izotov.java.objectlr.print;
  * Two cells, concatenated left to right
  * @author Vladimir Izotov
  */
-public final class Horizontal
+final class Horizontal
     implements Cell {
 
   private final Cell left;
@@ -46,63 +46,63 @@ public final class Horizontal
   }
 
   @Override
-  public final String toSource() {
-    final String strLeft = this.left.toSource();
-    final String strRight = this.right.toSource();
+  public String toSource() {
+    final String leftCell = this.left.toSource();
+    final String rightCell = this.right.toSource();
     String ret;
-    if (strLeft.isEmpty()) {
-      ret = strRight;
+    if (leftCell.isEmpty()) {
+      ret = rightCell;
     }
-    else if (strRight.isEmpty()) {
-      ret = strLeft;
+    else if (rightCell.isEmpty()) {
+      ret = leftCell;
     }
     else {
-      final String[] arr1 = strLeft.split("\n",
+      final String[] leftStrings = leftCell.split("\n",
                                           -1);
-      final String[] arr2 = strRight.split("\n",
+      final String[] rightStrings = rightCell.split("\n",
                                            -1);
       int maximumLength = 0;
-      for (final String s1 : arr1) {
+      for (final String leftString : leftStrings) {
         maximumLength = Integer.max(maximumLength,
-                                    s1.length());
+                                    leftString.length());
       }
-      final int minBlockHigh = Integer.min(arr1.length,
-                                           arr2.length);
-      final StringBuilder sb = new StringBuilder(2000);
-      while (sb.length() < maximumLength) {
-        sb.append("                                                                                               ");
+      final int minCellHigh = Integer.min(leftStrings.length,
+                                           rightStrings.length);
+      final StringBuilder stringBuilder = new StringBuilder(2000);
+      while (stringBuilder.length() < maximumLength) {
+        stringBuilder.append("                                                                                               ");
       }
-      final String spaces = sb.toString();
+      final String spaces = stringBuilder.toString();
       ret = "";
-      for (int i = 0;
-           i < minBlockHigh;
-           i++) {
-        if (i != 0 && i < minBlockHigh) {
+      for (int leftStringNumber = 0;
+           leftStringNumber < minCellHigh;
+           leftStringNumber++) {
+        if (leftStringNumber != 0 && leftStringNumber < minCellHigh) {
           ret += "\n";
         }
-        ret += (arr1[i] + spaces).substring(0,
-                                            maximumLength) + ' ' + arr2[i];
+        ret += (leftStrings[leftStringNumber] + spaces).substring(0,
+                                            maximumLength) + ' ' + rightStrings[leftStringNumber];
       }
-      if (minBlockHigh < arr2.length) {
+      if (minCellHigh < rightStrings.length) {
         ret += "\n";
-        for (int i1 = minBlockHigh;
-             i1 < arr2.length;
-             i1++) {
-          if (i1 != minBlockHigh && i1 < arr2.length) {
+        for (int rightStringNumber = minCellHigh;
+             rightStringNumber < rightStrings.length;
+             rightStringNumber++) {
+          if (rightStringNumber != minCellHigh && rightStringNumber < rightStrings.length) {
             ret += "\n";
           }
           ret += spaces.substring(0,
-                                  maximumLength) + ' ' + arr2[i1];
+                                  maximumLength) + ' ' + rightStrings[rightStringNumber];
         }
       }
       else {
-        for (int i2 = minBlockHigh;
-             i2 < arr1.length;
-             i2++) {
-          if (i2 < arr1.length) {
+        for (int stringNumber = minCellHigh;
+             stringNumber < leftStrings.length;
+             stringNumber++) {
+          if (stringNumber < leftStrings.length) {
             ret += "\n";
           }
-          ret += arr1[i2];
+          ret += leftStrings[stringNumber];
         }
       }
     }

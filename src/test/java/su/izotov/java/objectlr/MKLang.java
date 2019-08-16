@@ -29,6 +29,7 @@
  */
 package su.izotov.java.objectlr;
 
+import su.izotov.java.objectlr.text.Text;
 import su.izotov.java.objectlr.tokens.Tokens;
 import su.izotov.java.objectlr.tokens.TokensOf;
 
@@ -46,7 +47,7 @@ public interface MKLang
     return tokens;
   }
 
-  @Override default Sense textToken(String text) {
+  @Override default Text textToken(String text) {
     return new MKText(text);
   }
 }

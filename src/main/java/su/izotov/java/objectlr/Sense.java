@@ -132,7 +132,9 @@ public interface Sense
    * @return the wrapped text
    */
   default Sense textToken(final String text) {
-    return Unrecognized.create(text);
+    return text.isEmpty() ?
+           new Absence() :
+           new Unrecognized(text);
   }
 
   /**
