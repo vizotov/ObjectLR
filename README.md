@@ -29,6 +29,10 @@ ResultType resultObject=new Sentence<SomeLanguage,ResultType>("the text for reco
 ...
 ```
 
+The Sentence class adds a special EOF token to the recognized chain of objects to indicate the completion
+of the input character stream. Therefore, only the full text must be passed to the constructor of the
+Sentence class for recognition, not part of it.
+
 ## Language creation
 
 The interaction between two objects is implemented as a call to the **concat** method of one of them.

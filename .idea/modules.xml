@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ObjectLR.iml" filepath="$PROJECT_DIR$/.idea/modules/ObjectLR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ObjectLR.iml" filepath="$PROJECT_DIR$/.idea/modules/ObjectLR.iml" group="ObjectLR" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ObjectLR_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ObjectLR_main.iml" group="ObjectLR" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ObjectLR_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ObjectLR_test.iml" group="ObjectLR" />
     </modules>

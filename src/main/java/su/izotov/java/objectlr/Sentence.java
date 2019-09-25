@@ -25,6 +25,7 @@ package su.izotov.java.objectlr;
 
 import java.util.logging.Logger;
 import su.izotov.java.objectlr.text.Source;
+import su.izotov.java.objectlr.token.EOF;
 
 /**
  * the sentence on the certain language, containing string representation of the recognized object
@@ -54,7 +55,7 @@ public class Sentence<T extends Sense, R extends Sense> {
   @SuppressWarnings("unchecked")
   public final R toObject() throws
                             RecognitionException {
-    final Sense ret = this.master.concat(new Source(this.text));
+    final Sense ret = this.master.concat(new Source(this.text)).concatDD(new EOF());
     try {
       return (R) ret;
     } catch (final RuntimeException ignored) {
